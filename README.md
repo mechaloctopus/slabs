@@ -1,13 +1,24 @@
-# Earpod Slab Yard
+# Slabyard
 
-A single-page field guide for milling, drying, tracking and selling live-edge earpod (guanacaste / parota) slabs.
+Slabbing toolkit for turning big logs into dry, tracked, sellable live-edge slabs. Static site, no build step, no server: open `index.html` or host the folder anywhere (GitHub Pages, Netlify, Vercel).
 
-Open `index.html` in any browser. No build step, no server.
+## What's in it
 
-Sections: the plan, species data, building the Alaskan mill, milling day (with a cut planner), end sealing, slab labeling, the air-drying yard, measuring moisture, drying times by thickness, the solar kiln, a slab journal (moisture log per slab with CSV export/import), flattening and sealing, grading and pricing (board-foot calculator), shipping a container to market, the partner agreement (split calculator), a gear list with Amazon links, and sources.
+- **Manual** (18 chapters): workflow, rigging a 76–84″ Alaskan mill (lengthening a 48″ mill, roller conveyor mod, double-ended bars), winch pull assist and a three-person crew, milling day, moving heavy slabs (gantry, overhead slab rail, forks), end sealing, labeling, air-drying yard, moisture measurement, drying times, solar kiln, species ID and legality (CITES / Lacey Act), flattening and finishing, grading and pricing, container shipping, landowner and partner agreements, gear and build-plan links, sources.
+- **Slab log**: inventory with species, dimensions, location, grade, status and price; moisture readings (weight-based MC from green weight + wafer MC, or meter readings); drying curve per slab; photo uploads per slab and per reading; backup/restore (JSON including photos); CSV export/import.
+- **Species & ID**: 21 species cards (density, shrinkage, drying class, ID features, safety, regulations, market) with an observation-based ID key, including narra ("Burmese rosewood", *Pterocarpus indicus*) vs. true rosewood (*Dalbergia*).
+- **Calculators**: cut planner, slab weight and board feet, drying time estimator, container load planner, partner split.
 
-The slab journal stores data in the browser's local storage on each device. Export CSV regularly and keep one master copy.
+## Slab log password
 
-## Hosting
+Editing is locked behind a password. The default is `abcd`; change it under Slab log → Settings. The lock keeps casual edits out on a shared device. It is not encryption.
 
-Any static host works. For GitHub Pages: Settings → Pages → deploy from branch, root folder.
+## Data storage
+
+The log is stored in the browser (IndexedDB) on each device, photos included. To share with a crew or move devices, save a backup file and import it on the other device (imports merge). Photos are resized to 1600 px JPEG before storing.
+
+## Files
+
+- `index.html`: layout, styles, manual content
+- `js/species.js`: species library
+- `js/app.js`: router, calculators, species view, slab log
