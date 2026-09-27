@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Pith &amp; Pixel</title>
-<meta name="description" content="Pith &amp; Pixel, Kauaʻi: fat slab milling with an 86-inch Alaskan mill, custom carpentry, art fabrication and software. Plus the Slabyard toolkit: field manual, slab log with moisture tracking and photos, species ID library and calculators for milling, drying and selling live-edge slabs.">
+<title>Kauaʻi Slab Yard</title>
+<meta name="description" content="Partner field guide for milling, drying, tracking and selling big live-edge slabs on Kauaʻi.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -200,7 +200,7 @@ button:hover:not(:disabled){filter:brightness(1.07)}
 .lockbar form{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
 .lockbar input{width:10rem}
 .toolbar{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.6rem}
-.inv td .id{font:600 .95rem var(--mono)}
+.inv td .id{font:600 .95rem var(--mono);white-space:nowrap}
 .inv tbody tr{cursor:pointer}
 .inv tbody tr:hover td{background:var(--accent-soft)}
 .inv tbody tr.sel td{background:var(--accent-soft)}
@@ -285,148 +285,136 @@ a.svc:hover{background:var(--raised)}
 th[scope="row"]{white-space:nowrap;width:1%}
 @media (max-width:560px){th[scope="row"]{white-space:normal}}
 @media print{.appbar,nav.toc,button,.lockbar{display:none!important}body{background:#fff;color:#000}}
+
+/* single-page layout */
+.mast{padding-inline:16px;border-bottom:1px solid var(--line);background:var(--surface)}
+.mast-in{max-width:1400px;margin:0 auto;padding-block:2.2rem 1.8rem;display:grid;gap:1.1rem}
+.mast h1{font-size:clamp(3rem,9vw,6rem);font-weight:700;text-transform:uppercase}
+.mast h1 span{color:var(--accent)}
+.mast .lede{font-size:1.1rem;color:var(--muted);max-width:64ch}
+.spec{font:500 .85rem/1 var(--mono);border:1px solid var(--line);padding:.5rem .65rem;border-radius:3px;background:var(--ground)}
+.spec b{color:var(--accent);font-weight:500}
+.wrap{max-width:1400px;margin:0 auto;padding-inline:16px;display:grid;grid-template-columns:220px minmax(0,1fr) 270px;gap:2.2rem}
+.wrap nav.toc{top:env(safe-area-inset-top,0px);max-height:100vh}
+aside.side{position:sticky;top:env(safe-area-inset-top,0px);align-self:start;padding-block:1.5rem;max-height:100vh;overflow:auto}
+.card{border:1px solid var(--line);border-radius:4px;background:var(--surface);padding:1rem;display:grid;gap:.7rem;font-size:.88rem}
+.card .eyebrow{color:var(--accent)}
+.card h3{font-size:1.3rem;text-transform:uppercase}
+.card .who b{display:block;font:600 1.15rem var(--display)}
+.card .who a{font:500 .95rem var(--mono)}
+.rl{list-style:none;padding:0;gap:.35rem}
+.rl li{display:flex;justify-content:space-between;gap:.6rem;border-bottom:1px dashed var(--line);padding-bottom:.3rem}
+.rl li b{font-variant-numeric:tabular-nums;white-space:nowrap}
+.rl li:last-child{border-bottom:0}
+.card .small{font-size:.8rem}
+@media (max-width:1180px){
+  .wrap{grid-template-columns:220px minmax(0,1fr)}
+  aside.side{grid-column:1/-1;position:static;max-height:none;padding-block:0 3rem}
+  aside.side .card{max-width:520px}
+}
+@media (max-width:860px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0}
+  .wrap nav.toc{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--ground);border-bottom:1px solid var(--line);padding-block:.4rem;margin-inline:-16px;padding-inline:16px;max-height:none;overflow-x:auto;overflow-y:hidden}
+  .wrap nav.toc ol{display:flex;gap:.25rem;white-space:nowrap}
+  .wrap nav.toc a{display:inline-flex;gap:.35rem;padding:.35rem .55rem;font-size:.85rem}
+  section.ch{scroll-margin-top:3.5rem}
+}
 </style>
 </head>
 <body>
 
-<header class="appbar">
-  <div class="appbar-in">
-    <a class="brand" href="#home"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="16" cy="16" r="9" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="16" cy="16" r="4" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M2 12h28M2 20h28" stroke="var(--tag)" stroke-width="2"/></svg>Pith &amp; Pixel</a>
-    <nav class="views" aria-label="Main">
-      <a href="#home" data-view-link="home">Home</a>
-      <a href="#services" data-view-link="services">Slab milling</a>
-      <a href="#guide" data-view-link="guide">Manual</a>
-      <a href="#log" data-view-link="log">Slab log</a>
-      <a href="#species" data-view-link="species">Species &amp; ID</a>
-      <a href="#tools" data-view-link="tools">Calculators</a>
-    </nav>
+<header class="mast">
+  <div class="mast-in">
+    <div class="eyebrow">Field guide · Kauaʻi · partner slab project</div>
+    <h1>Slab <span>Yard</span></h1>
+    <p class="lede">The full story of our slab project, from a 66″ earpod on the ground to dry, tracked, sellable slabs: the mill, milling day, moving slabs, drying, the solar kiln, the slab journal, and getting a container to market.</p>
+    <div class="chips">
+      <span class="spec">Log <b>66″ Ø earpod</b> + rosewood &amp; more</span>
+      <span class="spec">Mill <b>86″ Alaskan</b> · MS 881</span>
+      <span class="spec">Air dry <b>~6 mo</b> under cover</span>
+      <span class="spec">Kiln to <b>7–9% MC</b></span>
+      <span class="spec">Market <b>NYC · LA · SD</b></span>
+    </div>
   </div>
 </header>
 
-<!-- ============ MANUAL ============ -->
-<!-- ============ HOME ============ -->
-<div class="view" id="home" data-view="home">
-<div class="view-in" style="padding-block:1.5rem 4rem;display:grid;grid-template-columns:minmax(0,1fr);gap:2.4rem">
-  <div class="hero" style="border-bottom:0;padding-block:1rem 0">
-    <div class="eyebrow">Kauaʻi · wood · fabrication · code</div>
-    <h1>Pith <span>&amp;</span> Pixel</h1>
-    <p class="lede">Fat slab milling, custom carpentry, art fabrication and software, from one shop on Kauaʻi. From the heart of the tree to the last line of code.</p>
-    <div class="btns">
-      <a class="btn primary-link" href="tel:+18086477410">Call or text (808) 647-7410</a>
-      <a class="btn" href="#services">Slab milling rates</a>
-    </div>
-  </div>
-
-  <section class="ch" id="home-services">
-    <div class="sec-head"><span class="eyebrow">Services</span><h2>What I do</h2></div>
-    <div class="svc-grid">
-      <a class="svc" href="#services">
-        <span class="svc-k">01</span><h3>Fat slab milling</h3>
-        <p>On-site slabbing of giant logs with an 86″ Alaskan mill and a Stihl MS 881. Monkeypod, earpod, mango and other big hardwoods up to about 70″+ across, cut where they lie.</p>
-        <span class="svc-more">Rates and booking →</span>
-      </a>
-      <div class="svc">
-        <span class="svc-k">02</span><h3>Custom carpentry</h3>
-        <p>Live-edge tables, counters, benches, shelving, built-ins and repairs. Slabs milled, dried and finished in-house, or built from your own wood.</p>
-        <span class="svc-more">Quoted per project</span>
-      </div>
-      <div class="svc">
-        <span class="svc-k">03</span><h3>Art fabrication</h3>
-        <p>Multimedia art builds for artists and venues: wood, metal, resin, lighting and electronics, from sketch to installed piece.</p>
-        <span class="svc-more">Quoted per project</span>
-      </div>
-      <div class="svc">
-        <span class="svc-k">04</span><h3>Software &amp; research</h3>
-        <p>Websites, web and mobile apps, automation, data tools, and research on any topic. Any language, any stack. This site and its slab-tracking software are an example.</p>
-        <span class="svc-more">Hourly or fixed bid</span>
-      </div>
-    </div>
-  </section>
-
-  <section class="ch" id="home-tool">
-    <div class="sec-head"><span class="eyebrow">Built here</span><h2>Slabyard toolkit</h2></div>
-    <p class="intro">Free working software for anyone milling and drying slabs: an 18-chapter field manual, a slab log with moisture tracking and photos, a species ID library, and calculators for cut plans, weights, drying time and container loads.</p>
-    <div class="chips">
-      <a class="chip" href="#guide">Field <b>manual</b></a>
-      <a class="chip" href="#log">Slab <b>log</b></a>
-      <a class="chip" href="#species">Species <b>&amp; ID</b></a>
-      <a class="chip" href="#tools">Calculators</a>
-    </div>
-  </section>
-
-  <section class="ch" id="home-contact">
-    <div class="sec-head"><span class="eyebrow">Contact</span><h2>Get in touch</h2></div>
-    <div class="contact">
-      <div><span>Name</span><b>Josh Trembath</b></div>
-      <div><span>Phone / text</span><b><a href="tel:+18086477410">(808) 647-7410</a></b></div>
-      <div><span>Service area</span><b>Kauaʻi, island-wide</b></div>
-    </div>
-    <p>For milling, text photos of the log (both ends and full length), rough diameter and length, and the location. For builds and software, a few lines about what you need is plenty to start.</p>
-  </section>
-</div>
-</div>
-
-<div class="view" id="guide" data-view="guide" hidden>
-<div class="view-in">
-  <div class="hero">
-    <div class="eyebrow">Field manual · big-log chainsaw milling · live-edge slabs</div>
-    <h1>Log to <span>sellable slab</span></h1>
-    <p class="lede">A complete working system for turning big trees into dry, tracked, sellable live-edge slabs: rigging an oversize Alaskan mill, pull assist, moving heavy slabs, drying, solar kiln finishing, species identification, a slab log with photos, and getting a container to market.</p>
-    <div class="chips">
-      <a class="chip" href="#log">Open the <b>slab log</b></a>
-      <a class="chip" href="#species">Identify a <b>species</b></a>
-      <a class="chip" href="#tools">Plan a <b>cut</b></a>
-      <a class="chip" href="#ch-mill">Rig a <b>76–86″</b> mill</a>
-      <a class="chip" href="#services">Hire <b>on-site big-log milling</b></a>
-    </div>
-  </div>
-
-  <div class="guide">
-  <nav class="toc" aria-label="Manual chapters">
-    <ol>
-      <li><a href="#ch-flow"><span class="n">01</span>Workflow</a></li>
-      <li><a href="#ch-mill"><span class="n">02</span>Big-bar mill</a></li>
-      <li><a href="#ch-pull"><span class="n">03</span>Pull assist &amp; crew</a></li>
-      <li><a href="#ch-cut"><span class="n">04</span>Milling day</a></li>
-      <li><a href="#ch-move"><span class="n">05</span>Moving slabs</a></li>
-      <li><a href="#ch-seal"><span class="n">06</span>Seal the ends</a></li>
-      <li><a href="#ch-label"><span class="n">07</span>Label &amp; log</a></li>
-      <li><a href="#ch-yard"><span class="n">08</span>Air-drying yard</a></li>
-      <li><a href="#ch-moist"><span class="n">09</span>Measuring moisture</a></li>
-      <li><a href="#ch-times"><span class="n">10</span>Drying times</a></li>
-      <li><a href="#ch-kiln"><span class="n">11</span>Solar kiln</a></li>
-      <li><a href="#ch-id"><span class="n">12</span>Species ID &amp; legality</a></li>
-      <li><a href="#ch-finish"><span class="n">13</span>Flatten &amp; seal</a></li>
-      <li><a href="#ch-grade"><span class="n">14</span>Grade &amp; price</a></li>
-      <li><a href="#ch-ship"><span class="n">15</span>Container to market</a></li>
-      <li><a href="#ch-deal"><span class="n">16</span>Partners &amp; landowners</a></li>
-      <li><a href="#ch-gear"><span class="n">17</span>Gear &amp; build plans</a></li>
-      <li><a href="#ch-src"><span class="n">18</span>Sources</a></li>
-    </ol>
-  </nav>
-
-  <main class="content">
-
-<!-- 01 -->
-<section class="ch" id="ch-flow">
-  <div class="sec-head"><span class="eyebrow">01 · Overview</span><h2>Workflow</h2></div>
-  <p class="intro">Mill green, seal the ends the same hour, give every slab an ID, stack it on stickers under a roof with open sides, let the air bring it to about 20%, then finish in a solar kiln to 7–9%. Everything that happens to a slab is logged against its ID, with photos.</p>
-  <ol class="steps">
-    <li><div><b>Before the first cut.</b> Written agreement with the landowner and between partners (ch. 16). Species identified (ch. 12). Yard, roof, stickers and slab-moving equipment ready.</div></li>
-    <li><div><b>Mill.</b> Oversize the thickness, keep slabs in order, one crew member on logging and sealing.</div></li>
-    <li><div><b>Within the hour:</b> seal ends, mark the ID, nail the tag, photograph, weigh sample slabs, cut a moisture wafer per log.</div></li>
-    <li><div><b>Move and stack</b> on level foundations, stickers every 16″, weighted top, roof overhang, open sides.</div></li>
-    <li><div><b>Log moisture</b> every 2 weeks for the first 2 months, then monthly. Weight-based MC for thick slabs.</div></li>
-    <li><div><b>Kiln</b> at 20–25% (thin stock first), equalize, condition, heat-sterilize (133°F core, 30 min).</div></li>
-    <li><div><b>Finish, grade, photograph, price</b>, then sell locally or load a container.</div></li>
+<div class="wrap">
+<nav class="toc" aria-label="Sections">
+  <ol>
+    <li><a href="#plan"><span class="n">01</span>The plan</a></li>
+    <li><a href="#wood"><span class="n">02</span>Know the wood</a></li>
+    <li><a href="#ch-mill"><span class="n">03</span>Big-bar mill</a></li>
+    <li><a href="#ch-pull"><span class="n">04</span>Pull assist &amp; crew</a></li>
+    <li><a href="#ch-cut"><span class="n">05</span>Milling day</a></li>
+    <li><a href="#ch-move"><span class="n">06</span>Moving slabs</a></li>
+    <li><a href="#ch-seal"><span class="n">07</span>Seal the ends</a></li>
+    <li><a href="#ch-label"><span class="n">08</span>Label &amp; log</a></li>
+    <li><a href="#ch-yard"><span class="n">09</span>Air-drying yard</a></li>
+    <li><a href="#ch-moist"><span class="n">10</span>Measuring moisture</a></li>
+    <li><a href="#ch-times"><span class="n">11</span>Drying times</a></li>
+    <li><a href="#ch-kiln"><span class="n">12</span>Solar kiln</a></li>
+    <li><a href="#journal" class="navtool"><span class="n">13</span>Slab journal</a></li>
+    <li><a href="#ch-finish"><span class="n">14</span>Flatten &amp; seal</a></li>
+    <li><a href="#ch-grade"><span class="n">15</span>Grade &amp; price</a></li>
+    <li><a href="#ch-ship"><span class="n">16</span>Container to market</a></li>
+    <li><a href="#ch-deal"><span class="n">17</span>The partnership</a></li>
+    <li><a href="#ch-gear"><span class="n">18</span>Gear &amp; build plans</a></li>
+    <li><a href="#ch-src"><span class="n">19</span>Sources</a></li>
   </ol>
-  <div class="callout stop"><strong>Thickness sets the calendar</strong><p>A 6-month air-dry plan suits 2″ slabs and gets 4″ close for easy species. 6″ slabs take a year or more. Chapter 10 and the drying estimator in Calculators have the numbers.</p></div>
+</nav>
+
+<main class="content">
+
+<section class="ch" id="plan">
+  <div class="sec-head"><span class="eyebrow">01 · Overview</span><h2>The plan</h2></div>
+  <p class="intro">We mill the 66″ earpod and the other trees we've lined up (rosewood and other hardwoods) with an 86″ Alaskan mill, seal the ends the same hour, tag every slab, and stack it on stickers under a roof with open sides for about six months. A solar kiln finishes the drying to 7–9%. Then we flatten the best pieces, grade and price everything, and sell locally or ship a container to New York, Los Angeles or San Diego.</p>
+  <ol class="steps">
+    <li><div><b>Before the first cut.</b> Written agreement with the tree owners and between us (section 17). Species identified (02). Yard, roof, stickers and slab-moving equipment ready.</div></li>
+    <li><div><b>Mill.</b> 2″, 4″ and 6″ slabs cut oversize, kept in order.</div></li>
+    <li><div><b>Within the hour:</b> seal ends, mark the ID, nail the tag, photograph, weigh sample slabs, cut a moisture wafer per log.</div></li>
+    <li><div><b>Stack</b> on level foundations, stickers every 16″, weighted top, roof overhang, open sides.</div></li>
+    <li><div><b>Log moisture</b> every 2 weeks for 2 months, then monthly, in the slab journal (13).</div></li>
+    <li><div><b>Kiln</b> at 20–25%, thin stock first; equalize, condition, heat-sterilize (133°F core, 30 min).</div></li>
+    <li><div><b>Finish, grade, photograph, price,</b> then sell or load a container.</div></li>
+  </ol>
+  <div class="callout stop"><strong>Reality check on six months</strong><p>Six months under cover works for 2″ slabs and gets 4″ close. 6″ slabs need 12–19 months. Section 11 has the numbers and an estimator.</p></div>
 </section>
 
-<!-- 02 -->
+<section class="ch" id="wood">
+  <div class="sec-head"><span class="eyebrow">02 · Species</span><h2>Know the wood</h2></div>
+  <p class="intro">Species sets the price, the drying schedule, the dust precautions and whether there are legal limits on selling it. Identify every tree while leaves, pods and bark are still available, and keep that evidence with the tree record.</p>
+  <h3>"Burmese rosewood": which one is it?</h3>
+  <p>The name is used for two very different woods. Most "Burmese rosewood" growing as a street or park tree (Hawaii, Florida, SE Asia) is <b>narra, <i>Pterocarpus indicus</i></b>. The same name is used in the timber trade for <b>true rosewoods, <i>Dalbergia oliveri / bariensis</i></b>, which are CITES-regulated.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Feature</th><th>Narra (Pterocarpus indicus)</th><th>True rosewood (Dalbergia spp.)</th></tr></thead>
+    <tbody>
+      <tr><td>Seed pod</td><td>Flat round disc, 4–6 cm, papery wing all around</td><td>Thin flat strap, 1–4 seeds</td></tr>
+      <tr><td>Flowers</td><td>Small fragrant yellow, brief mass bloom</td><td>Small white to pale purple</td></tr>
+      <tr><td>Heartwood</td><td>Golden to blood-red, medium weight</td><td>Purple-brown to dark chocolate with black streaks, heavy, oily</td></tr>
+      <tr><td>UV test</td><td><b>Fluoresces</b>; water extract of shavings fluoresces</td><td>No fluorescence</td></tr>
+      <tr><td>Density (dry)</td><td>~41 lb/ft³</td><td>~52–65+ lb/ft³</td></tr>
+      <tr><td>CITES</td><td>Not listed (other Pterocarpus species are)</td><td>Appendix II (D. nigra: Appendix I)</td></tr>
+    </tbody>
+  </table></div>
+  <div class="callout stop"><strong>Regulated wood</strong><p><b>CITES</b> governs cross-border trade: listed species (all Dalbergia, big-leaf mahogany, several Pterocarpus) need permits to export or import. The US <b>Lacey Act</b> makes it illegal to trade wood taken in violation of any law, and requires a declaration for many imports. For domestically grown trees, keep the tree record (owner, location, date, photos, ID evidence). It's your proof of legal origin.</p></div>
+  <h3>How to identify a tree</h3>
+  <ol class="steps">
+    <li><div><b>Collect:</b> leaves (both sides), flowers or pods, a bark photo, and the whole tree's form.</div></li>
+    <li><div><b>End grain:</b> slice a clean surface with a razor and look with a 10× hand lens: pore size and arrangement, rays, tyloses.</div></li>
+    <li><div><b>Density:</b> weigh and measure a dry block (lb/ft³) or note if it floats.</div></li>
+    <li><div><b>Scent</b> of fresh shavings, and <b>fluorescence</b>: shine a 365 nm UV flashlight on fresh-cut heartwood, and on shavings soaked in water.</div></li>
+    <li><div><b>Confirm</b> valuable or regulated wood with an expert: the USDA Forest Products Lab's Center for Wood Anatomy Research, a university extension, or the InsideWood database.</div></li>
+  </ol>
+  <h3>Species library and ID key</h3>
+  <p>Tick what you can see on the tree or the wood; matching species move to the top.</p>
+  <div class="key" id="idkey"></div>
+  <div class="btns"><button type="button" class="ghost" id="key-reset">Clear observations</button><label for="sp-q" style="flex:1;min-width:200px">Search species<input id="sp-q" type="search" placeholder="Name, trade name, scientific name"></label></div>
+  <div class="sp-grid" id="sp-grid"></div>
+</section>
+
 <section class="ch" id="ch-mill">
-  <div class="sec-head"><span class="eyebrow">02 · Equipment</span><h2>Big-bar mill</h2></div>
-  <p class="intro">An Alaskan-style mill is two bar clamps joined by two rails. To cut logs over about 60″ you need a 72–84″ bar and a frame to match: buy a large mill, or lengthen and reinforce a smaller one. This chapter covers converting a 48″ mill to take a 76″ bar.</p>
+  <div class="sec-head"><span class="eyebrow">03 · Equipment</span><h2>Big-bar mill</h2></div>
+  <p class="intro">An Alaskan-style mill is two bar clamps joined by two rails. To cut logs over about 60″ you need a 72–84″ bar and a frame to match: buy a large mill, or lengthen and reinforce a smaller one. This section covers our build: a 48″ mill lengthened and reinforced into an 86″ frame.</p>
 
   <div class="tbl"><table>
     <thead><tr><th>Bar length</th><th>Usable cut width (approx.)</th><th>Log it suits</th><th>Power</th></tr></thead>
@@ -443,7 +431,7 @@ th[scope="row"]{white-space:nowrap;width:1%}
   <figure>
     <div class="diagram">
       <svg viewBox="0 0 760 330" role="img" aria-labelledby="d1t">
-        <title id="d1t">End view of a lengthened Alaskan mill: bar across the log, clamp posts at both ends, stiffened rails riding on rollers, with an optional second powerhead.</title>
+        <title id="d1t">End view of the lengthened Alaskan mill: bar across the log, clamp posts at both ends, stiffened rails riding on rollers, with an optional second powerhead.</title>
         <!-- log -->
         <path class="d-wood" d="M160 120 H600 A230 230 0 0 1 380 320 A230 230 0 0 1 160 120 Z" opacity=".35"/>
         <path class="d-wood" d="M160 150 H600 V178 H160 Z" opacity=".75"/>
@@ -476,7 +464,7 @@ th[scope="row"]{white-space:nowrap;width:1%}
         <text x="47" y="228" text-anchor="middle">head 1</text>
         <text x="713" y="228" text-anchor="middle">head 2 or</text>
         <text x="713" y="243" text-anchor="middle">helper handle</text>
-        <text x="380" y="206" text-anchor="middle">76″ bar</text>
+        <text x="380" y="206" text-anchor="middle">long bar</text>
       </svg>
     </div>
     <figcaption>End view. The rails ride on the guide or the previous cut; the posts set slab thickness. A king-post truss over the rails keeps a long frame from flexing where it overhangs the log.</figcaption>
@@ -485,7 +473,7 @@ th[scope="row"]{white-space:nowrap;width:1%}
   <div class="cols">
     <div class="panel"><h3>Lengthening a 48″ mill</h3>
       <ul>
-        <li><b>Rails:</b> replace the stock rails with longer ones cut to the 76″ bar plus the clamp spacing. Use 2″×1″ rectangular tube (steel, 1/8″ wall, or 6061 aluminum, 3/16″ wall), taller side vertical so it resists sag.</li>
+        <li><b>Rails:</b> replace the stock rails with longer ones cut to the long bar plus the clamp spacing. Use 2″×1″ rectangular tube (steel, 1/8″ wall, or 6061 aluminum, 3/16″ wall), taller side vertical so it resists sag.</li>
         <li><b>Joints:</b> re-drill the stock end brackets to the new rails, or weld/bolt sleeves over the old rail ends with at least 6″ of overlap and two bolts each side.</li>
         <li><b>Squareness:</b> add two diagonal braces between the rails (in plan view) so the frame can't rack into a parallelogram. Racking tilts the bar and makes wedge-shaped slabs.</li>
         <li><b>Stiffener:</b> where the rails overhang the log on narrow cuts, a light king-post truss (above) or a second rail stacked on top keeps them straight.</li>
@@ -503,16 +491,15 @@ th[scope="row"]{white-space:nowrap;width:1%}
     <div class="panel"><h3>Bar, chain, oil</h3>
       <ul>
         <li><b>Ripping chain</b> (10° top-plate angle), .404″ pitch, .063″ gauge on bars over 60″. Skip or semi-skip clears long chips better.</li>
-        <li><b>Auxiliary oiler</b> feeding the nose end. The saw's pump can't oil a 76″ bar alone. With two heads, both pumps run plus the aux oiler.</li>
-        <li><b>Double-ended bars</b> (Granberg, Cannon, others) take a powerhead at each end. On a 76–84″ bar that's the single biggest speed-up you can buy.</li>
+        <li><b>Auxiliary oiler</b> feeding the nose end. The saw's pump can't oil a bar this long alone. With two heads, both pumps run plus the aux oiler.</li>
+        <li><b>Double-ended bars</b> (Granberg, Cannon, others) take a powerhead at each end. On a 72–84″ bar that's the single biggest speed-up you can buy.</li>
         <li>3–4 sharpened loops on hand. Touch up every tank.</li>
       </ul></div>
   </div>
 </section>
 
-<!-- 03 -->
 <section class="ch" id="ch-pull">
-  <div class="sec-head"><span class="eyebrow">03 · Feed</span><h2>Pull assist &amp; crew</h2></div>
+  <div class="sec-head"><span class="eyebrow">04 · Feed</span><h2>Pull assist &amp; crew</h2></div>
   <p class="intro">On a 60″+ cut the operator's push is the limit, not the saw. A winch in front of the mill does the pulling at a steady rate so the operators only steer and watch the cut. The best systems let you feel the saw and slow down instantly.</p>
   <div class="tbl"><table>
     <thead><tr><th>Option</th><th>Control</th><th>Cost</th><th>Verdict</th></tr></thead>
@@ -580,15 +567,14 @@ th[scope="row"]{white-space:nowrap;width:1%}
   </ul>
 </section>
 
-<!-- 04 -->
 <section class="ch" id="ch-cut">
-  <div class="sec-head"><span class="eyebrow">04 · Procedure</span><h2>Milling day</h2></div>
+  <div class="sec-head"><span class="eyebrow">05 · Procedure</span><h2>Milling day</h2></div>
   <ol class="steps">
     <li><div><b>Clean the log.</b> Strip bark on the cut line; sand and rocks dull chain in seconds. Sweep with a metal detector for nails, wire and old hardware.</div></li>
     <li><div><b>Stabilize.</b> Log off the ground on cribbing, wedged so it can't roll. Knee-to-thigh height saves backs.</div></li>
     <li><div><b>First cut on a guide.</b> Screw two straight 2×10s, an aluminum ladder, or a slabbing rail across the top, shimmed level and in one plane. It sets every slab below it.</div></li>
     <li><div><b>Set thickness, cut, wedge.</b> Each later cut rides on the last face. Drive plastic wedges into the kerf behind the bar.</div></li>
-    <li><div><b>Lift off with equipment</b> (chapter 05). Big green slabs are 500–1,500 lb.</div></li>
+    <li><div><b>Lift off with equipment</b> (section 06). Big green slabs are 500–1,500 lb.</div></li>
     <li><div><b>Keep sequence.</b> Bookmatch sets sell for more. Mark the ID before the slab leaves the log.</div></li>
   </ol>
   <div class="tbl"><table>
@@ -601,12 +587,29 @@ th[scope="row"]{white-space:nowrap;width:1%}
     </tbody>
   </table></div>
   <div class="callout"><strong>The pith slab</strong><p>The slab through the center of the tree is most likely to split. Cut it thicker and plan bowties, rip it down the pith into two narrower slabs, or cut two slabs whose faces sit just either side of it. Many big tropical trunks are hollow or punky in the middle: look at the end grain first.</p></div>
-  <p><a href="#tools">Cut planner in Calculators</a> lists each slab's width, board feet and green weight for a log.</p>
+  
+  <div class="tool" id="planner">
+    <h3>Cut planner</h3>
+    <p class="small">Through-and-through cut plan for one log. Widths are at mid-thickness under the bark.</p>
+    <div class="fields">
+      <label for="cp-sp">Species<select id="cp-sp" class="sp-select"></select></label>
+      <label for="cp-d">Log Ø under bark (in)<input id="cp-d" type="number" value="60" min="6" step="1"></label>
+      <label for="cp-l">Log length (ft)<input id="cp-l" type="number" value="10" min="1" step="0.5"></label>
+      <label for="cp-t">Slab thickness, green (in)<input id="cp-t" type="number" value="2.5" min="0.5" step="0.125"></label>
+      <label for="cp-k">Kerf (in)<input id="cp-k" type="number" value="0.4" min="0.1" step="0.05"></label>
+      <label for="cp-min">Min useful width (in)<input id="cp-min" type="number" value="18" min="4" step="1"></label>
+      <label for="cp-mill">Mill usable width (in)<input id="cp-mill" type="number" value="66" min="10" step="1"></label>
+    </div>
+    <div class="out" id="cp-out"></div>
+    <div class="tbl"><table>
+      <thead><tr><th>#</th><th class="r">Width (in)</th><th class="r">Board ft</th><th class="r">Green wt (lb)</th><th>Note</th></tr></thead>
+      <tbody id="cp-rows"></tbody>
+    </table></div>
+  </div>
 </section>
 
-<!-- 05 -->
 <section class="ch" id="ch-move">
-  <div class="sec-head"><span class="eyebrow">05 · Handling</span><h2>Moving slabs</h2></div>
+  <div class="sec-head"><span class="eyebrow">06 · Handling</span><h2>Moving slabs</h2></div>
   <p class="intro">A green 60″ × 10′ × 4″ slab of a medium-density hardwood weighs well over half a ton. Plan the path from the log to the stack before milling day and never put a hand or foot under a suspended slab.</p>
   <div class="tbl"><table>
     <thead><tr><th>Slab (green)</th><th class="r">Light wood ~45 lb/ft³</th><th class="r">Medium ~58 lb/ft³</th><th class="r">Heavy ~68 lb/ft³</th></tr></thead>
@@ -617,7 +620,7 @@ th[scope="row"]{white-space:nowrap;width:1%}
       <tr><td>66″ × 12′ × 6.5″</td><td class="r">~1,610 lb</td><td class="r">~2,070 lb</td><td class="r">~2,430 lb</td></tr>
     </tbody>
   </table></div>
-  <p class="small">Weight = width × length × thickness (ft) × density. Earpod and albizia are light; monkeypod, narra, walnut medium; oaks, eucalyptus and true rosewoods heavy. Use the weight calculator for your species.</p>
+  <p class="small">Weight = width × length × thickness (ft) × density. Earpod and albizia are light; monkeypod, narra, walnut medium; oaks, eucalyptus and true rosewoods heavy. The weight calculator in section 15 does any species.</p>
 
   <div class="tbl"><table>
     <thead><tr><th>Equipment</th><th>Capacity</th><th>Best for</th><th>Notes</th></tr></thead>
@@ -700,9 +703,8 @@ th[scope="row"]{white-space:nowrap;width:1%}
   </div>
 </section>
 
-<!-- 06 -->
 <section class="ch" id="ch-seal">
-  <div class="sec-head"><span class="eyebrow">06 · Same hour</span><h2>Seal the ends</h2></div>
+  <div class="sec-head"><span class="eyebrow">07 · Same hour</span><h2>Seal the ends</h2></div>
   <p class="intro">End grain loses water 10–15 times faster than face grain. Unsealed ends shrink and split back into the slab, often a foot or more. Sealing is the cheapest step with the biggest payoff.</p>
   <ul>
     <li>Seal within an hour of cutting. Also seal log ends as soon as you buck.</li>
@@ -713,16 +715,15 @@ th[scope="row"]{white-space:nowrap;width:1%}
   </ul>
 </section>
 
-<!-- 07 -->
 <section class="ch" id="ch-label">
-  <div class="sec-head"><span class="eyebrow">07 · Inventory</span><h2>Label &amp; log</h2></div>
+  <div class="sec-head"><span class="eyebrow">08 · Inventory</span><h2>Label &amp; log</h2></div>
   <p class="intro">With hundreds of slabs from many trees, the ID is what ties a slab to its species, moisture history, photos and price. One format, never reused.</p>
   <div class="tagrow">
     <div class="alutag">NR03-B-11<small>Narra · 2.5″ · milled 2026-10-12</small></div>
     <div class="alutag">MP01-A-04<small>Monkeypod · bookmatch of -05</small></div>
   </div>
   <div class="idparts">
-    <div><b>NR</b><p class="small">Species code (see Species &amp; ID). XX when unknown.</p></div>
+    <div><b>NR</b><p class="small">Species code (see section 02). XX when unknown.</p></div>
     <div><b>03</b><p class="small">Tree number. One tree record: owner, location, date felled, photos, ID evidence.</p></div>
     <div><b>B</b><p class="small">Log letter. A is the butt log.</p></div>
     <div><b>11</b><p class="small">Slab number from the first cut (01 = top cap).</p></div>
@@ -730,14 +731,13 @@ th[scope="row"]{white-space:nowrap;width:1%}
   <ol class="steps">
     <li><div><b>Aluminum tag</b> stamped with a punch set, fixed with <b>aluminum nails only</b>. Steel ruins planer knives and saw teeth.</div></li>
     <li><div><b>Paint marker or lumber crayon</b> on the face near both ends as backup.</div></li>
-    <li><div><b>Photos</b> in the Slab log: green (tag in frame), dry, and finished. Add a photo whenever you note a defect.</div></li>
+    <li><div><b>Photos</b> in the slab journal: green (tag in frame), dry, and finished. Add a photo whenever you note a defect.</div></li>
   </ol>
-  <p>The <a href="#log">Slab log</a> keeps each slab's species, dimensions, location, sale status, readings and photos. It's password-protected for editing.</p>
+  <p>The <a href="#journal">slab journal</a> keeps each slab's species, dimensions, location, sale status, readings and photos. It's password-protected for editing.</p>
 </section>
 
-<!-- 08 -->
 <section class="ch" id="ch-yard">
-  <div class="sec-head"><span class="eyebrow">08 · Air drying</span><h2>Air-drying yard</h2></div>
+  <div class="sec-head"><span class="eyebrow">09 · Air drying</span><h2>Air-drying yard</h2></div>
   <p class="intro">Steady, gentle drying: off the rain, out of direct sun, air moving through every layer.</p>
   <div class="cols">
     <div class="panel"><h3>Foundation</h3><ul>
@@ -763,9 +763,8 @@ th[scope="row"]{white-space:nowrap;width:1%}
   <div class="callout"><strong>Air drying has a floor</strong><p>Wood outdoors only dries to the local equilibrium moisture content (EMC): usually 12–18% depending on climate. The kiln takes it the rest of the way. Dry slabs stored outside pick moisture back up.</p></div>
 </section>
 
-<!-- 09 -->
 <section class="ch" id="ch-moist">
-  <div class="sec-head"><span class="eyebrow">09 · Measurement</span><h2>Measuring moisture</h2></div>
+  <div class="sec-head"><span class="eyebrow">10 · Measurement</span><h2>Measuring moisture</h2></div>
   <p class="intro">Moisture content (MC) = weight of water ÷ weight of the dry wood. Green wood can be 60–150%. Target is 7–9% for most indoor markets (6–8% for heated northern interiors).</p>
   <h3>1 · Oven-dry wafer (the reference)</h3>
   <ol class="steps">
@@ -777,7 +776,7 @@ th[scope="row"]{white-space:nowrap;width:1%}
   <h3>2 · Sample slabs by weight (how you track thick stock)</h3>
   <p>Pick 3–5 representative sample slabs per thickness and species. Weigh each green with a crane scale; use the wafer MC from the same log to work out its bone-dry weight. Every later weighing gives its MC:</p>
   <div class="panel"><code>Oven-dry weight = green weight ÷ (1 + green MC/100)</code><code>Current MC % = (current weight ÷ oven-dry weight − 1) × 100</code>
-    <p class="small">Example: 610 lb green, wafer 105% → oven-dry 297.6 lb. Later 372 lb → MC 25%. The Slab log does this math automatically.</p></div>
+    <p class="small">Example: 610 lb green, wafer 105% → oven-dry 297.6 lb. Later 372 lb → MC 25%. The slab journal does this math automatically.</p></div>
   <h3>3 · Meters (fast, surface-biased)</h3>
   <div class="tbl"><table>
     <thead><tr><th>Type</th><th>Reads</th><th>Use</th></tr></thead>
@@ -796,10 +795,9 @@ th[scope="row"]{white-space:nowrap;width:1%}
   <p><b>Schedule:</b> sample slabs every 2 weeks for 2 months, then monthly in the yard; every 2–3 days in the kiln; every slab before sale or shipping.</p>
 </section>
 
-<!-- 10 -->
 <section class="ch" id="ch-times">
-  <div class="sec-head"><span class="eyebrow">10 · Schedule</span><h2>Drying times</h2></div>
-  <p class="intro">Rough figures for an easy-drying species (earpod, monkeypod, cherry) under a roof in a warm climate, then a solar kiln. Moderate species take about 25% longer, difficult ones (oaks, eucalyptus, kamani) 50–100% longer, and a cold or wet climate can double everything. The drying estimator in Calculators adjusts for species and climate.</p>
+  <div class="sec-head"><span class="eyebrow">11 · Schedule</span><h2>Drying times</h2></div>
+  <p class="intro">Rough figures for an easy-drying species (earpod, monkeypod, cherry) under a roof in a warm climate, then a solar kiln. Moderate species take about 25% longer, difficult ones (oaks, eucalyptus, kamani) 50–100% longer, and a cold or wet climate can double everything. The estimator below adjusts for species and climate.</p>
   <div class="tbl"><table>
     <thead><tr><th>Green cut</th><th>Air dry to ~20–25%</th><th>Solar kiln to 7–9%</th><th>Total, typical</th><th>6-month plan?</th></tr></thead>
     <tbody>
@@ -829,11 +827,21 @@ th[scope="row"]{white-space:nowrap;width:1%}
     <li>Thick stock can enter a solar kiln at 25–30% if run gently (shaded glazing, vents mostly closed, high humidity). Rushing it causes hidden internal checks (honeycomb).</li>
     <li>Your sample-slab weights overrule every table.</li>
   </ul>
+  <div class="tool" id="dcalc">
+      <h3>Drying time estimator</h3>
+      <div class="fields">
+        <label for="d-sp">Species<select id="d-sp" class="sp-select"></select></label>
+        <label for="d-t">Thickness (in)<input id="d-t" type="number" value="2.5" step="0.25" min="0.5"></label>
+        <label for="d-cl">Climate<select id="d-cl"><option value="0.8">Warm and dry</option><option value="1" selected>Warm and humid (tropical)</option><option value="1.6">Temperate, seasonal</option><option value="2.1">Cool or wet</option></select></label>
+        <label for="d-start">Date milled<input id="d-start" type="date"></label>
+      </div>
+      <div class="out" id="d-out"></div>
+      <p class="small">Model: months ≈ 1.1 × thickness<sup>1.5</sup> × species factor × climate, kiln about a quarter of that. A planning estimate only; sample weights decide.</p>
+    </div>
 </section>
 
-<!-- 11 -->
 <section class="ch" id="ch-kiln">
-  <div class="sec-head"><span class="eyebrow">11 · Finish drying</span><h2>Solar kiln</h2></div>
+  <div class="sec-head"><span class="eyebrow">12 · Finish drying</span><h2>Solar kiln</h2></div>
   <p class="intro">The Virginia Tech solar kiln is the proven low-cost design: a sloped clear roof over a black absorber, insulated walls, fans pushing hot air through the stack, and vents to exhaust moist air. Free plans are linked in Gear &amp; build plans.</p>
   <div class="cols">
     <div class="panel"><h3>Sizing</h3><ul>
@@ -870,256 +878,9 @@ th[scope="row"]{white-space:nowrap;width:1%}
   </div>
 </section>
 
-<!-- 12 -->
-<section class="ch" id="ch-id">
-  <div class="sec-head"><span class="eyebrow">12 · Identification</span><h2>Species ID &amp; legality</h2></div>
-  <p class="intro">Species drives price, drying schedule, safety and legality. Identify the tree while it's still standing or on the ground, when leaves, pods and bark are available, and keep the evidence with the tree record.</p>
-  <ol class="steps">
-    <li><div><b>Collect:</b> leaves (both sides), flowers or pods, a bark photo, and the whole tree's form.</div></li>
-    <li><div><b>End grain:</b> slice a clean surface with a razor and look with a 10× hand lens: pore size and arrangement, rays, tyloses.</div></li>
-    <li><div><b>Density:</b> weigh and measure a dry block (lb/ft³) or note if it floats.</div></li>
-    <li><div><b>Scent</b> of fresh shavings, and <b>fluorescence</b>: shine a 365 nm UV flashlight on fresh-cut heartwood, and on shavings soaked in water.</div></li>
-    <li><div><b>Confirm</b> valuable or regulated wood with an expert: the USDA Forest Products Lab's Center for Wood Anatomy Research, a university extension, or the InsideWood database.</div></li>
-  </ol>
-
-  <h3>"Burmese rosewood": which one is it?</h3>
-  <p>The name is used for two very different woods. Most "Burmese rosewood" growing as a street or park tree (Hawaii, Florida, SE Asia) is <b>narra, <i>Pterocarpus indicus</i></b>. The same name is used in the timber trade for <b>true rosewoods, <i>Dalbergia oliveri / bariensis</i></b>, which are CITES-regulated.</p>
-  <div class="tbl"><table>
-    <thead><tr><th>Feature</th><th>Narra (Pterocarpus indicus)</th><th>True rosewood (Dalbergia spp.)</th></tr></thead>
-    <tbody>
-      <tr><td>Seed pod</td><td>Flat round disc, 4–6 cm, papery wing all around</td><td>Thin flat strap, 1–4 seeds</td></tr>
-      <tr><td>Flowers</td><td>Small fragrant yellow, brief mass bloom</td><td>Small white to pale purple</td></tr>
-      <tr><td>Heartwood</td><td>Golden to blood-red, medium weight</td><td>Purple-brown to dark chocolate with black streaks, heavy, oily</td></tr>
-      <tr><td>UV test</td><td><b>Fluoresces</b>; water extract of shavings fluoresces</td><td>No fluorescence</td></tr>
-      <tr><td>Density (dry)</td><td>~41 lb/ft³</td><td>~52–65+ lb/ft³</td></tr>
-      <tr><td>CITES</td><td>Not listed (other Pterocarpus species are)</td><td>Appendix II (D. nigra: Appendix I)</td></tr>
-    </tbody>
-  </table></div>
-  <div class="callout stop"><strong>Regulated wood</strong><p><b>CITES</b> governs cross-border trade: listed species (all Dalbergia, big-leaf mahogany, several Pterocarpus) need permits to export or import. The US <b>Lacey Act</b> makes it illegal to trade wood taken in violation of any law, and requires a declaration for many imports. For domestically grown trees, keep the tree record (owner, location, date, photos, ID evidence). It's your proof of legal origin.</p></div>
-  <p><a href="#species">Open the species library and ID key →</a></p>
-</section>
-
-<!-- 13 -->
-<section class="ch" id="ch-finish">
-  <div class="sec-head"><span class="eyebrow">13 · After drying</span><h2>Flatten &amp; seal</h2></div>
-  <p class="intro">Sell rough (cheapest), flattened and sanded (best value per hour), or finished (highest price and labor). Most slab yards sell flattened and sanded.</p>
-  <div class="cols">
-    <div class="panel"><h3>Flatten</h3><ul>
-      <li>Router sled with a 2–2½″ slab-flattening bit. Shim so the slab can't rock; flatten one face, flip, do the other.</li>
-      <li>Or pay a shop with a wide-belt sander or CNC; price per ft² first.</li>
-      <li>Sand 80 → 120 → 180; raise the grain and re-sand on fuzzy species.</li>
-      <li>Wire-brush or drawknife the bark edge.</li></ul></div>
-    <div class="panel"><h3>Cracks and voids</h3><ul>
-      <li>Bowties across cracks, after drying. Router template plus chisel.</li>
-      <li>Voids: slow-cure or deep-pour epoxy, clear or tinted. Tape the back of through-cracks.</li>
-      <li>Stabilize punky or spalted spots with thin penetrating epoxy.</li></ul></div>
-    <div class="panel"><h3>Sealing for sale</h3><ul>
-      <li>Unfinished slabs: one coat of dewaxed shellac or sanding sealer slows moisture pickup in transit.</li>
-      <li>Finished: hardwax oil (Rubio Monocoat, Osmo Polyx) or catalyzed / water-based poly for hard use.</li>
-      <li>Oily woods (rosewoods, teak): wipe with acetone before finish or glue.</li>
-      <li>Coat both faces equally or the slab can cup.</li>
-      <li>Store dry slabs indoors or shrink-wrapped.</li></ul></div>
-  </div>
-</section>
-
-<!-- 14 -->
-<section class="ch" id="ch-grade">
-  <div class="sec-head"><span class="eyebrow">14 · Sales</span><h2>Grade &amp; price</h2></div>
-  <div class="tbl"><table>
-    <thead><tr><th>Grade</th><th>What it is</th><th>How to sell it</th></tr></thead>
-    <tbody>
-      <tr><td><b>A · Showpiece</b></td><td>40″+ wide, 8′+, clean, figure or strong color contrast, flat, dry. Bookmatched pairs. Burls.</td><td>By the piece. Pro photos, video, individual listings.</td></tr>
-      <tr><td><b>B · Table slab</b></td><td>24–40″ wide, dining/desk length, minor cracks that bowtie well.</td><td>By board foot with a width premium. Most of the revenue.</td></tr>
-      <tr><td><b>C · Shorts &amp; narrow</b></td><td>Under 24″ or under 5′.</td><td>By board foot or bundle, to makers and hobbyists.</td></tr>
-      <tr><td><b>D · Offcuts</b></td><td>Cookies, pieces with rot or big checks.</td><td>Turning blanks, boards, firewood.</td></tr>
-    </tbody>
-  </table></div>
-  <div class="callout"><strong>Price from real comparables</strong><p>Before anything is listed or shipped, collect 10 current listings per species in each target market (slab yards, Marketplace, Etsy, Craigslist). Record width, length, thickness, finish and price, and compute $/bf. Rare, wide, dry and flat is what earns the top of the range.</p></div>
-  <h3>Listing checklist</h3>
-  <ul class="checklist">
-    <li>Full-slab photo of both faces in daylight, one wiped with mineral spirits to show color, close-ups of figure and defects.</li>
-    <li>ID, species (common and scientific name), thickness, length, width at both ends and middle, board feet.</li>
-    <li>Final MC with date, kiln-dried and heat-treated (133°F core).</li>
-    <li>Finish state and any fills or bowties.</li>
-    <li>Pickup location, freight options, and origin documentation for regulated species.</li>
-  </ul>
-</section>
-
-<!-- 15 -->
-<section class="ch" id="ch-ship">
-  <div class="sec-head"><span class="eyebrow">15 · Logistics</span><h2>Container to market</h2></div>
-  <p class="intro">A container pays off only with dry, sorted, photographed slabs that are mostly pre-sold or listed. Green wood in a steel box arrives covered in mold.</p>
-  <div class="tbl"><table>
-    <thead><tr><th>Container</th><th>Inside (L × W × H)</th><th>Door</th><th>Realistic slab load</th><th>Weight at 40 lb/ft³</th></tr></thead>
-    <tbody>
-      <tr><td>20′ standard</td><td class="num">19′4″ × 7′8″ × 7′10″</td><td class="num">7′8″ × 7′6″</td><td class="num">~4,000–6,500 bf</td><td class="num">~13,000–22,000 lb</td></tr>
-      <tr><td>40′ standard</td><td class="num">39′6″ × 7′8″ × 7′10″</td><td class="num">7′8″ × 7′6″</td><td class="num">~9,000–13,000 bf</td><td class="num">~30,000–43,000 lb</td></tr>
-      <tr><td>40′ high cube</td><td class="num">39′6″ × 7′8″ × 8′10″</td><td class="num">7′8″ × 8′5″</td><td class="num">~10,000–15,000 bf</td><td class="num">~33,000–50,000 lb</td></tr>
-    </tbody>
-  </table></div>
-  <p class="small">Road limits usually cap a 40′ at roughly 42,000–44,000 lb of cargo, so heavy species weigh out before the box is full. Light species (earpod ~27 lb/ft³) fill the space first. Use the load planner in Calculators and confirm with your forwarder.</p>
-  <h3>Packing</h3>
-  <ul>
-    <li>Only slabs at target MC, each metered and logged with stage "Shipped".</li>
-    <li>Bundle by grade on 4×4 skids with dry stickers, strapped, so forks can unload them.</li>
-    <li>Stretch-wrap or blanket; protect edges and corners.</li>
-    <li>Container desiccant on the walls: boxes condense ("container rain") crossing temperature zones.</li>
-    <li>Block and brace; heavy bundles low and centered.</li>
-    <li>Packing list per box from the Slab log export: ID, species, size, bf, grade, photo.</li>
-  </ul>
-  <h3>Paperwork</h3>
-  <ul>
-    <li><b>Islands and territories</b> (e.g. Hawaii): mainland ocean freight is limited to Jones Act carriers. Call USDA APHIS Plant Protection and Quarantine before booking; keep your heat-treatment log.</li>
-    <li><b>International:</b> phytosanitary certificate, ISPM-15 for any wood packaging, CITES permits for listed species, Lacey Act declaration on US imports.</li>
-    <li><b>Domestic:</b> check state quarantines (walnut thousand cankers, oak wilt, invasive borers) for logs; kiln-dried, bark-free wood is usually exempt.</li>
-    <li>Three door-to-door quotes including drayage both ends; ask about demurrage and per-diem. Insure at declared value.</li>
-  </ul>
-  <h3>Ways to sell a container</h3>
-  <div class="tbl"><table>
-    <thead><tr><th>Option</th><th>Price</th><th>Speed</th><th>Work</th></tr></thead>
-    <tbody>
-      <tr><td>Whole box to a slab yard or importer, before shipping</td><td>Lowest $/bf</td><td>Fastest, least risk</td><td>Packing list, photos</td></tr>
-      <tr><td>Pre-sell A-grade individually, wholesale the rest</td><td>Mixed</td><td>Medium</td><td>Top-slab listings</td></tr>
-      <tr><td>Short-term warehouse + weekend sale or sealed-bid auction</td><td>High for top pieces</td><td>1–3 months</td><td>On-site staff, marketing, delivery</td></tr>
-      <tr><td>Consignment with a gallery or maker</td><td>Good, less 25–50%</td><td>Slow</td><td>Low</td></tr>
-    </tbody>
-  </table></div>
-  <p>For a bid sale: send the packing list with photos to 10–20 slab yards, furniture makers and designers in the destination city 4–6 weeks before arrival, set a deadline, and take deposits. Selling before the box lands saves warehouse rent.</p>
-</section>
-
-<!-- 16 -->
-<section class="ch" id="ch-deal">
-  <div class="sec-head"><span class="eyebrow">16 · Agreements</span><h2>Partners &amp; landowners</h2></div>
-  <p class="intro">Trees, labor, equipment and a year or more of drying: write the deal down before milling day and have everyone sign.</p>
-  <div class="cols">
-    <div class="panel"><h3>With the landowner</h3><ul class="checklist">
-      <li>Who owns the slabs: the miller, the owner, or a split (slabs of their choice or a % of sales).</li>
-      <li>Milling fee, tree removal and hauling costs.</li>
-      <li>Site access, how long logs can stay, cleanup.</li>
-      <li>Liability and insurance on site.</li>
-      <li>Written proof of ownership and permission to harvest (your legal-origin record).</li></ul></div>
-    <div class="panel"><h3>Between partners</h3><ul class="checklist">
-      <li>Who puts in cash and who puts in labor or equipment.</li>
-      <li>Costs reimbursed first, then profit split (equal or weighted).</li>
-      <li>Who sets prices and accepts offers; the floor price anyone can accept.</li>
-      <li>What happens if someone leaves, or stock doesn't sell.</li>
-      <li>One ledger for every expense and sale, with receipt photos.</li></ul></div>
-  </div>
-  <p class="small">A planning checklist, not legal or tax advice. An hour with a local attorney or accountant is worth it at these amounts. The split calculator is in Calculators.</p>
-</section>
-
-<!-- 17 -->
-<section class="ch" id="ch-gear">
-  <div class="sec-head"><span class="eyebrow">17 · Shopping &amp; plans</span><h2>Gear &amp; build plans</h2></div>
-  <p class="intro">Manufacturer pages where a specific product matters; Amazon search links elsewhere so you can compare current sellers. Steel, lumber, roofing and polycarbonate are usually cheaper from local suppliers.</p>
-  <div class="gear">
-    <div class="panel"><h3>Mill &amp; bars</h3><ul>
-      <li><a href="https://www.granberg.com/product-category/alaskan-mill/" target="_blank" rel="noopener">Granberg Alaskan mills</a><span class="small">MK-IV mills in sizes up to 84″; parts to rebuild or extend.</span></li>
-      <li><a href="https://www.granberg.com/product/72-gb-double-ended-milling-bar-404-x-063/" target="_blank" rel="noopener">72″ double-ended milling bar (.404 × .063)</a><span class="small">Runs two powerheads, or one plus a helper handle.</span></li>
-      <li><a href="https://www.baileysonline.com/chainsaws/chainsaw-bars/double-ended-milling-bars.html" target="_blank" rel="noopener">Double-ended milling bars at Bailey's</a><span class="small">Compare 66–84″ options.</span></li>
-      <li><a href="https://www.amazon.com/s?k=.404+ripping+chain+loop" target="_blank" rel="noopener">.404 ripping chain</a><span class="small">Order loops by drive-link count for your bar.</span></li>
-      <li><a href="https://www.amazon.com/s?k=Granberg+auxiliary+bar+oiler" target="_blank" rel="noopener">Auxiliary bar oiler</a></li>
-      <li><a href="https://www.amazon.com/s?k=Granberg+File-N-Joint+chain+sharpener" target="_blank" rel="noopener">Bar-mounted chain sharpener</a></li>
-      <li><a href="https://www.amazon.com/s?k=chainsaw+mill+slabbing+rails" target="_blank" rel="noopener">Slabbing rails / first-cut guide</a></li>
-    </ul></div>
-    <div class="panel"><h3>Mill fabrication</h3><ul>
-      <li><a href="https://www.amazon.com/s?k=2x1+aluminum+rectangular+tube+6061" target="_blank" rel="noopener">6061 aluminum rectangular tube</a><span class="small">Or order cut-to-length from a metal supplier.</span></li>
-      <li><a href="https://www.amazon.com/s?k=gravity+conveyor+roller+1.9+inch" target="_blank" rel="noopener">1.9″ gravity conveyor rollers</a><span class="small">Roller mod under the rails.</span></li>
-      <li><a href="https://www.amazon.com/s?k=conveyor+skate+wheels+with+axle" target="_blank" rel="noopener">Conveyor skate wheels</a><span class="small">Lighter alternative to full rollers.</span></li>
-      <li><a href="https://www.amazon.com/s?k=UHMW+polyethylene+strip" target="_blank" rel="noopener">UHMW polyethylene strip</a><span class="small">Low-friction skid under rails.</span></li>
-      <li><a href="https://www.amazon.com/s?k=stainless+steel+bolt+nut+assortment+3%2F8" target="_blank" rel="noopener">Bolt and lock-nut assortment</a></li>
-    </ul></div>
-    <div class="panel"><h3>Pull assist</h3><ul>
-      <li><a href="https://www.granberg.com/product/alaskan-winch/" target="_blank" rel="noopener">Granberg Alaskan Winch (G478)</a><span class="small">Purpose-built hand winch for the Alaskan mill.</span></li>
-      <li><a href="https://www.granberg.com/product/winch-arm/" target="_blank" rel="noopener">Granberg Winch Arm</a><span class="small">Lever-arm anchor to cut to the end of the log.</span></li>
-      <li><a href="https://www.amazon.com/s?k=hand+crank+trailer+winch+2600+lb" target="_blank" rel="noopener">Hand-crank trailer winch, 2,600 lb</a></li>
-      <li><a href="https://www.amazon.com/s?k=snatch+block+rope" target="_blank" rel="noopener">Snatch block</a><span class="small">Doubles pull, halves speed.</span></li>
-      <li><a href="https://www.amazon.com/s?k=drill+powered+winch" target="_blank" rel="noopener">Drill-powered winch</a><span class="small">Variable speed from the trigger.</span></li>
-      <li><a href="https://www.amazon.com/s?k=block+and+tackle+4%3A1" target="_blank" rel="noopener">4:1 block and tackle</a></li>
-      <li><a href="https://www.amazon.com/s?k=tree+saver+strap+winch" target="_blank" rel="noopener">Anchor strap (tree saver)</a></li>
-    </ul></div>
-    <div class="panel"><h3>Lifting &amp; moving</h3><ul>
-      <li><a href="https://www.amazon.com/s?k=portable+steel+gantry+crane+2+ton+adjustable" target="_blank" rel="noopener">Portable steel gantry crane, 2 ton</a></li>
-      <li><a href="https://www.amazon.com/s?k=manual+chain+hoist+2+ton" target="_blank" rel="noopener">Chain hoist, 2 ton</a></li>
-      <li><a href="https://www.amazon.com/s?k=push+beam+trolley+2+ton" target="_blank" rel="noopener">Push beam trolley</a></li>
-      <li><a href="https://www.amazon.com/s?k=lifting+spreader+bar" target="_blank" rel="noopener">Spreader bar</a></li>
-      <li><a href="https://www.amazon.com/s?k=polyester+web+lifting+sling+2+inch+10+ft" target="_blank" rel="noopener">Web lifting slings</a></li>
-      <li><a href="https://www.amazon.com/s?k=tractor+loader+pallet+forks" target="_blank" rel="noopener">Loader pallet forks</a></li>
-      <li><a href="https://www.amazon.com/s?k=log+arch+timber" target="_blank" rel="noopener">Log arch</a><span class="small">For moving logs to the mill site.</span></li>
-      <li><a href="https://www.amazon.com/s?k=cant+hook+peavey" target="_blank" rel="noopener">Cant hook / peavey</a></li>
-    </ul></div>
-    <div class="panel"><h3>Moisture</h3><ul>
-      <li><a href="https://www.amazon.com/s?k=Wagner+Meters+Orion+930" target="_blank" rel="noopener">Wagner Orion 930 pinless meter</a></li>
-      <li><a href="https://www.amazon.com/s?k=Delmhorst+J-2000+moisture+meter" target="_blank" rel="noopener">Delmhorst J-2000 pin meter</a></li>
-      <li><a href="https://www.amazon.com/s?k=moisture+meter+hammer+electrode+insulated+pins" target="_blank" rel="noopener">Hammer electrode, insulated pins</a></li>
-      <li><a href="https://www.amazon.com/s?k=General+Tools+MMD4E" target="_blank" rel="noopener">General Tools MMD4E (budget)</a></li>
-      <li><a href="https://www.amazon.com/s?k=digital+crane+scale+2000+lb" target="_blank" rel="noopener">Crane scale, 2,000 lb</a></li>
-      <li><a href="https://www.amazon.com/s?k=digital+scale+0.1g+3000g" target="_blank" rel="noopener">Gram scale 0.1 g</a></li>
-      <li><a href="https://www.amazon.com/s?k=365nm+UV+flashlight" target="_blank" rel="noopener">365 nm UV flashlight</a><span class="small">Fluorescence test for species ID.</span></li>
-      <li><a href="https://www.amazon.com/s?k=10x+hand+lens+loupe" target="_blank" rel="noopener">10× hand lens</a></li>
-    </ul></div>
-    <div class="panel"><h3>Seal, tag, safety</h3><ul>
-      <li><a href="https://www.amazon.com/s?k=Anchorseal+2+end+grain+sealer" target="_blank" rel="noopener">Anchorseal 2 end sealer</a></li>
-      <li><a href="https://www.amazon.com/s?k=aluminum+tree+tags+blank" target="_blank" rel="noopener">Aluminum tags</a></li>
-      <li><a href="https://www.amazon.com/s?k=metal+letter+number+stamp+set" target="_blank" rel="noopener">Letter/number punch set</a></li>
-      <li><a href="https://www.amazon.com/s?k=aluminum+nails" target="_blank" rel="noopener">Aluminum nails</a></li>
-      <li><a href="https://www.amazon.com/s?k=Sakura+Solid+Marker" target="_blank" rel="noopener">Solid paint markers</a></li>
-      <li><a href="https://www.amazon.com/s?k=chainsaw+chaps" target="_blank" rel="noopener">Chainsaw chaps</a></li>
-      <li><a href="https://www.amazon.com/s?k=forestry+helmet+face+shield+ear+muffs" target="_blank" rel="noopener">Forestry helmet system</a></li>
-      <li><a href="https://www.amazon.com/s?k=3M+6502QL+P100" target="_blank" rel="noopener">Half-face respirator, P100</a></li>
-    </ul></div>
-    <div class="panel"><h3>Yard &amp; kiln</h3><ul>
-      <li><a href="https://sbio.vt.edu/for-the-community/vt-solar-kiln.html" target="_blank" rel="noopener">Virginia Tech solar kiln plans</a><span class="small">Free drawings, two sizes.</span></li>
-      <li><a href="https://www.pubs.ext.vt.edu/420/420-030/420-030.html" target="_blank" rel="noopener">VT kiln design &amp; operation guide</a></li>
-      <li><a href="https://www.amazon.com/s?k=Govee+WiFi+thermometer+hygrometer" target="_blank" rel="noopener">WiFi temp/RH logger</a></li>
-      <li><a href="https://www.amazon.com/s?k=Inkbird+ITC-308" target="_blank" rel="noopener">Fan thermostat controller</a></li>
-      <li><a href="https://www.amazon.com/s?k=high+velocity+air+circulator+fan+20+inch" target="_blank" rel="noopener">Circulation fans</a></li>
-      <li><a href="https://www.amazon.com/s?k=twin+wall+polycarbonate+sheet+UV" target="_blank" rel="noopener">Twin-wall polycarbonate</a></li>
-      <li><a href="https://www.amazon.com/s?k=shade+cloth+50+percent" target="_blank" rel="noopener">Shade cloth 50%</a></li>
-      <li><a href="https://www.amazon.com/s?k=ratchet+straps+heavy+duty" target="_blank" rel="noopener">Ratchet straps</a></li>
-    </ul></div>
-    <div class="panel"><h3>Finishing &amp; shipping</h3><ul>
-      <li><a href="https://www.amazon.com/s?k=router+slab+flattening+bit" target="_blank" rel="noopener">Slab flattening bit</a></li>
-      <li><a href="https://www.amazon.com/s?k=router+sled+slab+flattening+jig" target="_blank" rel="noopener">Router sled kit</a></li>
-      <li><a href="https://www.amazon.com/s?k=bowtie+inlay+router+template" target="_blank" rel="noopener">Bowtie inlay template</a></li>
-      <li><a href="https://www.amazon.com/s?k=deep+pour+epoxy+wood" target="_blank" rel="noopener">Deep-pour epoxy</a></li>
-      <li><a href="https://www.amazon.com/s?k=Rubio+Monocoat+Oil+Plus+2C" target="_blank" rel="noopener">Rubio Monocoat Oil Plus 2C</a></li>
-      <li><a href="https://www.amazon.com/s?k=Osmo+Polyx+Oil" target="_blank" rel="noopener">Osmo Polyx-Oil</a></li>
-      <li><a href="https://www.amazon.com/s?k=Zinsser+SealCoat" target="_blank" rel="noopener">Dewaxed shellac</a></li>
-      <li><a href="https://www.amazon.com/s?k=shipping+container+desiccant" target="_blank" rel="noopener">Container desiccant</a></li>
-    </ul></div>
-  </div>
-</section>
-
-<!-- 18 -->
-<section class="ch" id="ch-src">
-  <div class="sec-head"><span class="eyebrow">18 · Reference</span><h2>Sources</h2></div>
-  <ul>
-    <li><a href="https://www.fpl.fs.usda.gov/documnts/fplgtr/fplgtr117.pdf" target="_blank" rel="noopener">Air Drying of Lumber, USDA FPL-GTR-117</a>: yard layout, stickers, stacking.</li>
-    <li><a href="https://www.fpl.fs.usda.gov/documnts/fplgtr/fplgtr118.pdf" target="_blank" rel="noopener">Drying Hardwood Lumber, USDA FPL-GTR-118</a>: sample boards, schedules, defects, conditioning.</li>
-    <li><a href="https://www.fpl.fs.usda.gov/documnts/fplgtr/fplgtr190/fplgtr190.pdf" target="_blank" rel="noopener">Wood Handbook, USDA FPL-GTR-190</a>: densities, shrinkage, moisture relations.</li>
-    <li><a href="https://www.pubs.ext.vt.edu/420/420-030/420-030.html" target="_blank" rel="noopener">Design and Operation of a Solar-Heated Dry Kiln, Virginia Tech 420-030</a>.</li>
-    <li><a href="https://www.fpl.fs.usda.gov/documnts/TechSheets/Chudnoff/TropAmerican/htmlDocs_tropamerican/Enterolobiumcyclocarpum.html" target="_blank" rel="noopener">USDA FPL tropical timber tech sheets</a> (earpod shown).</li>
-    <li><a href="https://www.delta-intkey.com/wood/en/www/papptind.htm" target="_blank" rel="noopener">Commercial timbers: Pterocarpus indicus</a>: anatomy and fluorescence.</li>
-    <li><a href="https://insidewood.lib.ncsu.edu/" target="_blank" rel="noopener">InsideWood</a>: wood anatomy database for identification.</li>
-    <li><a href="https://www.fpl.fs.usda.gov/research/centers/woodanatomy/" target="_blank" rel="noopener">USDA FPL Center for Wood Anatomy Research</a>: wood identification service.</li>
-    <li><a href="https://cites.org/eng/app/appendices.php" target="_blank" rel="noopener">CITES Appendices</a> and <a href="https://www.aphis.usda.gov/plant-imports/lacey-act" target="_blank" rel="noopener">USDA APHIS Lacey Act</a>.</li>
-    <li><a href="https://www.wood-database.com/" target="_blank" rel="noopener">The Wood Database</a>: species photos and working notes.</li>
-    <li><a href="https://www.granberg.com/winch-system/" target="_blank" rel="noopener">Granberg Alaskan Winch system</a>.</li>
-  </ul>
-  <p class="small">Species figures are approximate published values. Your own wafers, weights and meter readings are the numbers that count.</p>
-</section>
-
-  </main>
-  </div>
-</div>
-</div>
-
-<!-- ============ SLAB LOG ============ -->
-<div class="view" id="log" data-view="log" hidden>
-<div class="view-in" style="padding-block:1.5rem 4rem;display:grid;grid-template-columns:minmax(0,1fr);gap:1.1rem">
-  <div class="sec-head"><span class="eyebrow">Inventory · moisture · photos</span><h2>Slab log</h2></div>
-
+<section class="ch" id="journal">
+  <div class="sec-head"><span class="eyebrow">13 · Tool</span><h2>Slab journal</h2></div>
+  <p class="intro">Every slab gets registered once, then every weight, meter reading and photo is logged against its ID. Anyone can view; editing needs the password.</p>
   <div class="lockbar locked" id="lockbar">
     <div id="lock-text"><b>View only.</b> Enter the password to add or edit slabs, readings and photos.</div>
     <form id="f-unlock"><input id="unlock-pw" type="password" placeholder="Password" autocomplete="current-password" aria-label="Password"><button class="primary" type="submit">Unlock</button><span class="msg" id="unlock-msg"></span></form>
@@ -1234,46 +995,51 @@ th[scope="row"]{white-space:nowrap;width:1%}
     </div>
     <p class="small">The password keeps casual edits out on a shared device. It isn't encryption: the data is stored unencrypted in this browser.</p>
   </div>
-</div>
-</div>
+</section>
 
-<!-- ============ SPECIES ============ -->
-<div class="view" id="species" data-view="species" hidden>
-<div class="view-in" style="padding-block:1.5rem 4rem;display:grid;grid-template-columns:minmax(0,1fr);gap:1.2rem">
-  <div class="sec-head"><span class="eyebrow">Library · ID key · regulations</span><h2>Species &amp; ID</h2></div>
-  <p class="intro">Tick what you can see on the tree or the wood. Species are ranked by how many observations match. Always confirm valuable or regulated wood (chapter 12).</p>
-  <div class="key" id="idkey"></div>
-  <div class="btns"><button type="button" class="ghost" id="key-reset">Clear observations</button><label for="sp-q" style="flex:1;min-width:200px">Search species<input id="sp-q" type="search" placeholder="Name, trade name, scientific name"></label></div>
-  <div class="sp-grid" id="sp-grid"></div>
-</div>
-</div>
-
-<!-- ============ TOOLS ============ -->
-<div class="view" id="tools" data-view="tools" hidden>
-<div class="view-in" style="padding-block:1.5rem 4rem;display:grid;grid-template-columns:minmax(0,1fr);gap:1.2rem">
-  <div class="sec-head"><span class="eyebrow">Plan · weigh · price · split</span><h2>Calculators</h2></div>
-
-  <div class="tool" id="planner">
-    <h3>Cut planner</h3>
-    <p class="small">Through-and-through cut plan for one log. Widths are at mid-thickness under the bark.</p>
-    <div class="fields">
-      <label for="cp-sp">Species<select id="cp-sp" class="sp-select"></select></label>
-      <label for="cp-d">Log Ø under bark (in)<input id="cp-d" type="number" value="60" min="6" step="1"></label>
-      <label for="cp-l">Log length (ft)<input id="cp-l" type="number" value="10" min="1" step="0.5"></label>
-      <label for="cp-t">Slab thickness, green (in)<input id="cp-t" type="number" value="2.5" min="0.5" step="0.125"></label>
-      <label for="cp-k">Kerf (in)<input id="cp-k" type="number" value="0.4" min="0.1" step="0.05"></label>
-      <label for="cp-min">Min useful width (in)<input id="cp-min" type="number" value="18" min="4" step="1"></label>
-      <label for="cp-mill">Mill usable width (in)<input id="cp-mill" type="number" value="66" min="10" step="1"></label>
-    </div>
-    <div class="out" id="cp-out"></div>
-    <div class="tbl"><table>
-      <thead><tr><th>#</th><th class="r">Width (in)</th><th class="r">Board ft</th><th class="r">Green wt (lb)</th><th>Note</th></tr></thead>
-      <tbody id="cp-rows"></tbody>
-    </table></div>
+<section class="ch" id="ch-finish">
+  <div class="sec-head"><span class="eyebrow">14 · After drying</span><h2>Flatten &amp; seal</h2></div>
+  <p class="intro">Sell rough (cheapest), flattened and sanded (best value per hour), or finished (highest price and labor). Most slab yards sell flattened and sanded.</p>
+  <div class="cols">
+    <div class="panel"><h3>Flatten</h3><ul>
+      <li>Router sled with a 2–2½″ slab-flattening bit. Shim so the slab can't rock; flatten one face, flip, do the other.</li>
+      <li>Or pay a shop with a wide-belt sander or CNC; price per ft² first.</li>
+      <li>Sand 80 → 120 → 180; raise the grain and re-sand on fuzzy species.</li>
+      <li>Wire-brush or drawknife the bark edge.</li></ul></div>
+    <div class="panel"><h3>Cracks and voids</h3><ul>
+      <li>Bowties across cracks, after drying. Router template plus chisel.</li>
+      <li>Voids: slow-cure or deep-pour epoxy, clear or tinted. Tape the back of through-cracks.</li>
+      <li>Stabilize punky or spalted spots with thin penetrating epoxy.</li></ul></div>
+    <div class="panel"><h3>Sealing for sale</h3><ul>
+      <li>Unfinished slabs: one coat of dewaxed shellac or sanding sealer slows moisture pickup in transit.</li>
+      <li>Finished: hardwax oil (Rubio Monocoat, Osmo Polyx) or catalyzed / water-based poly for hard use.</li>
+      <li>Oily woods (rosewoods, teak): wipe with acetone before finish or glue.</li>
+      <li>Coat both faces equally or the slab can cup.</li>
+      <li>Store dry slabs indoors or shrink-wrapped.</li></ul></div>
   </div>
+</section>
 
-  <div class="cols-2">
-    <div class="tool" id="wcalc">
+<section class="ch" id="ch-grade">
+  <div class="sec-head"><span class="eyebrow">15 · Sales</span><h2>Grade &amp; price</h2></div>
+  <div class="tbl"><table>
+    <thead><tr><th>Grade</th><th>What it is</th><th>How to sell it</th></tr></thead>
+    <tbody>
+      <tr><td><b>A · Showpiece</b></td><td>40″+ wide, 8′+, clean, figure or strong color contrast, flat, dry. Bookmatched pairs. Burls.</td><td>By the piece. Pro photos, video, individual listings.</td></tr>
+      <tr><td><b>B · Table slab</b></td><td>24–40″ wide, dining/desk length, minor cracks that bowtie well.</td><td>By board foot with a width premium. Most of the revenue.</td></tr>
+      <tr><td><b>C · Shorts &amp; narrow</b></td><td>Under 24″ or under 5′.</td><td>By board foot or bundle, to makers and hobbyists.</td></tr>
+      <tr><td><b>D · Offcuts</b></td><td>Cookies, pieces with rot or big checks.</td><td>Turning blanks, boards, firewood.</td></tr>
+    </tbody>
+  </table></div>
+  <div class="callout"><strong>Price from real comparables</strong><p>Before anything is listed or shipped, collect 10 current listings per species in each target market (slab yards, Marketplace, Etsy, Craigslist). Record width, length, thickness, finish and price, and compute $/bf. Rare, wide, dry and flat is what earns the top of the range.</p></div>
+  <h3>Listing checklist</h3>
+  <ul class="checklist">
+    <li>Full-slab photo of both faces in daylight, one wiped with mineral spirits to show color, close-ups of figure and defects.</li>
+    <li>ID, species (common and scientific name), thickness, length, width at both ends and middle, board feet.</li>
+    <li>Final MC with date, kiln-dried and heat-treated (133°F core).</li>
+    <li>Finish state and any fills or bowties.</li>
+    <li>Pickup location, freight options, and origin documentation for regulated species.</li>
+  </ul>
+  <div class="tool" id="wcalc">
       <h3>Slab weight &amp; board feet</h3>
       <div class="fields">
         <label for="w-sp">Species<select id="w-sp" class="sp-select"></select></label>
@@ -1288,22 +1054,48 @@ th[scope="row"]{white-space:nowrap;width:1%}
       <div class="out" id="w-out"></div>
       <p class="small">Sample price is a placeholder. Use your own comparables.</p>
     </div>
+</section>
 
-    <div class="tool" id="dcalc">
-      <h3>Drying time estimator</h3>
-      <div class="fields">
-        <label for="d-sp">Species<select id="d-sp" class="sp-select"></select></label>
-        <label for="d-t">Thickness (in)<input id="d-t" type="number" value="2.5" step="0.25" min="0.5"></label>
-        <label for="d-cl">Climate<select id="d-cl"><option value="0.8">Warm and dry</option><option value="1" selected>Warm and humid (tropical)</option><option value="1.6">Temperate, seasonal</option><option value="2.1">Cool or wet</option></select></label>
-        <label for="d-start">Date milled<input id="d-start" type="date"></label>
-      </div>
-      <div class="out" id="d-out"></div>
-      <p class="small">Model: months ≈ 1.1 × thickness<sup>1.5</sup> × species factor × climate, kiln about a quarter of that. A planning estimate only; sample weights decide.</p>
-    </div>
-  </div>
-
-  <div class="cols-2">
-    <div class="tool" id="lcalc">
+<section class="ch" id="ch-ship">
+  <div class="sec-head"><span class="eyebrow">16 · Logistics</span><h2>Container to market</h2></div>
+  <p class="intro">A container pays off only with dry, sorted, photographed slabs that are mostly pre-sold or listed. Green wood in a steel box arrives covered in mold.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Container</th><th>Inside (L × W × H)</th><th>Door</th><th>Realistic slab load</th><th>Weight at 40 lb/ft³</th></tr></thead>
+    <tbody>
+      <tr><td>20′ standard</td><td class="num">19′4″ × 7′8″ × 7′10″</td><td class="num">7′8″ × 7′6″</td><td class="num">~4,000–6,500 bf</td><td class="num">~13,000–22,000 lb</td></tr>
+      <tr><td>40′ standard</td><td class="num">39′6″ × 7′8″ × 7′10″</td><td class="num">7′8″ × 7′6″</td><td class="num">~9,000–13,000 bf</td><td class="num">~30,000–43,000 lb</td></tr>
+      <tr><td>40′ high cube</td><td class="num">39′6″ × 7′8″ × 8′10″</td><td class="num">7′8″ × 8′5″</td><td class="num">~10,000–15,000 bf</td><td class="num">~33,000–50,000 lb</td></tr>
+    </tbody>
+  </table></div>
+  <p class="small">Road limits usually cap a 40′ at roughly 42,000–44,000 lb of cargo, so heavy species weigh out before the box is full. Light species (earpod ~27 lb/ft³) fill the space first. Use the load planner below and confirm with your forwarder.</p>
+  <h3>Packing</h3>
+  <ul>
+    <li>Only slabs at target MC, each metered and logged with stage "Shipped".</li>
+    <li>Bundle by grade on 4×4 skids with dry stickers, strapped, so forks can unload them.</li>
+    <li>Stretch-wrap or blanket; protect edges and corners.</li>
+    <li>Container desiccant on the walls: boxes condense ("container rain") crossing temperature zones.</li>
+    <li>Block and brace; heavy bundles low and centered.</li>
+    <li>Packing list per box from the slab journal export: ID, species, size, bf, grade, photo.</li>
+  </ul>
+  <h3>Paperwork</h3>
+  <ul>
+    <li><b>Islands and territories</b> (e.g. Hawaii): mainland ocean freight is limited to Jones Act carriers. Call USDA APHIS Plant Protection and Quarantine before booking; keep your heat-treatment log.</li>
+    <li><b>International:</b> phytosanitary certificate, ISPM-15 for any wood packaging, CITES permits for listed species, Lacey Act declaration on US imports.</li>
+    <li><b>Domestic:</b> check state quarantines (walnut thousand cankers, oak wilt, invasive borers) for logs; kiln-dried, bark-free wood is usually exempt.</li>
+    <li>Three door-to-door quotes including drayage both ends; ask about demurrage and per-diem. Insure at declared value.</li>
+  </ul>
+  <h3>Ways to sell a container</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Option</th><th>Price</th><th>Speed</th><th>Work</th></tr></thead>
+    <tbody>
+      <tr><td>Whole box to a slab yard or importer, before shipping</td><td>Lowest $/bf</td><td>Fastest, least risk</td><td>Packing list, photos</td></tr>
+      <tr><td>Pre-sell A-grade individually, wholesale the rest</td><td>Mixed</td><td>Medium</td><td>Top-slab listings</td></tr>
+      <tr><td>Short-term warehouse + weekend sale or sealed-bid auction</td><td>High for top pieces</td><td>1–3 months</td><td>On-site staff, marketing, delivery</td></tr>
+      <tr><td>Consignment with a gallery or maker</td><td>Good, less 25–50%</td><td>Slow</td><td>Low</td></tr>
+    </tbody>
+  </table></div>
+  <p>For a bid sale: send the packing list with photos to 10–20 slab yards, furniture makers and designers in the destination city 4–6 weeks before arrival, set a deadline, and take deposits. Selling before the box lands saves warehouse rent.</p>
+  <div class="tool" id="lcalc">
       <h3>Container load planner</h3>
       <div class="fields">
         <label for="l-sp">Main species<select id="l-sp" class="sp-select"></select></label>
@@ -1313,8 +1105,27 @@ th[scope="row"]{white-space:nowrap;width:1%}
       </div>
       <div class="out" id="l-out"></div>
     </div>
+</section>
 
-    <div class="tool" id="split">
+<section class="ch" id="ch-deal">
+  <div class="sec-head"><span class="eyebrow">17 · Agreements</span><h2>The partnership</h2></div>
+  <p class="intro">Trees, labor, equipment and a year or more of drying: write the deal down before milling day and have everyone sign.</p>
+  <div class="cols">
+    <div class="panel"><h3>With the landowner</h3><ul class="checklist">
+      <li>Who owns the slabs: the miller, the owner, or a split (slabs of their choice or a % of sales).</li>
+      <li>Milling fee, tree removal and hauling costs.</li>
+      <li>Site access, how long logs can stay, cleanup.</li>
+      <li>Liability and insurance on site.</li>
+      <li>Written proof of ownership and permission to harvest (your legal-origin record).</li></ul></div>
+    <div class="panel"><h3>Between partners</h3><ul class="checklist">
+      <li>Who puts in cash and who puts in labor or equipment.</li>
+      <li>Costs reimbursed first, then profit split (equal or weighted).</li>
+      <li>Who sets prices and accepts offers; the floor price anyone can accept.</li>
+      <li>What happens if someone leaves, or stock doesn't sell.</li>
+      <li>One ledger for every expense and sale, with receipt photos.</li></ul></div>
+  </div>
+  <p class="small">A planning checklist, not legal or tax advice. An hour with a local attorney or accountant is worth it at these amounts.</p>
+  <div class="tool" id="split">
       <h3>Partner split</h3>
       <div class="fields">
         <label for="p-n">Partners<select id="p-n"><option>2</option><option selected>3</option><option>4</option></select></label>
@@ -1329,117 +1140,130 @@ th[scope="row"]{white-space:nowrap;width:1%}
       <div class="out" id="p-out"></div>
       <p class="small">Order: landowner share, shared costs (freight, storage, commission), reimburse each partner, split the rest equally. Example numbers.</p>
     </div>
+</section>
+
+<section class="ch" id="ch-gear">
+  <div class="sec-head"><span class="eyebrow">18 · Shopping &amp; plans</span><h2>Gear &amp; build plans</h2></div>
+  <p class="intro">Manufacturer pages where a specific product matters; Amazon search links elsewhere so you can compare current sellers. Steel, lumber, roofing and polycarbonate are usually cheaper from local suppliers.</p>
+  <div class="gear">
+    <div class="panel"><h3>Mill &amp; bars</h3><ul>
+      <li><a href="https://www.granberg.com/product-category/alaskan-mill/" target="_blank" rel="noopener">Granberg Alaskan mills</a><span class="small">MK-IV mills in sizes up to 84″; parts to rebuild or extend.</span></li>
+      <li><a href="https://www.granberg.com/product/72-gb-double-ended-milling-bar-404-x-063/" target="_blank" rel="noopener">72″ double-ended milling bar (.404 × .063)</a><span class="small">Runs two powerheads, or one plus a helper handle.</span></li>
+      <li><a href="https://www.baileysonline.com/chainsaws/chainsaw-bars/double-ended-milling-bars.html" target="_blank" rel="noopener">Double-ended milling bars at Bailey's</a><span class="small">Compare 66–84″ options.</span></li>
+      <li><a href="https://www.amazon.com/s?k=.404+ripping+chain+loop" target="_blank" rel="noopener">.404 ripping chain</a><span class="small">Order loops by drive-link count for your bar.</span></li>
+      <li><a href="https://www.amazon.com/s?k=Granberg+auxiliary+bar+oiler" target="_blank" rel="noopener">Auxiliary bar oiler</a></li>
+      <li><a href="https://www.amazon.com/s?k=Granberg+File-N-Joint+chain+sharpener" target="_blank" rel="noopener">Bar-mounted chain sharpener</a></li>
+      <li><a href="https://www.amazon.com/s?k=chainsaw+mill+slabbing+rails" target="_blank" rel="noopener">Slabbing rails / first-cut guide</a></li>
+    </ul></div>
+    <div class="panel"><h3>Mill fabrication</h3><ul>
+      <li><a href="https://www.amazon.com/s?k=2x1+aluminum+rectangular+tube+6061" target="_blank" rel="noopener">6061 aluminum rectangular tube</a><span class="small">Or order cut-to-length from a metal supplier.</span></li>
+      <li><a href="https://www.amazon.com/s?k=gravity+conveyor+roller+1.9+inch" target="_blank" rel="noopener">1.9″ gravity conveyor rollers</a><span class="small">Roller mod under the rails.</span></li>
+      <li><a href="https://www.amazon.com/s?k=conveyor+skate+wheels+with+axle" target="_blank" rel="noopener">Conveyor skate wheels</a><span class="small">Lighter alternative to full rollers.</span></li>
+      <li><a href="https://www.amazon.com/s?k=UHMW+polyethylene+strip" target="_blank" rel="noopener">UHMW polyethylene strip</a><span class="small">Low-friction skid under rails.</span></li>
+      <li><a href="https://www.amazon.com/s?k=stainless+steel+bolt+nut+assortment+3%2F8" target="_blank" rel="noopener">Bolt and lock-nut assortment</a></li>
+    </ul></div>
+    <div class="panel"><h3>Pull assist</h3><ul>
+      <li><a href="https://www.granberg.com/product/alaskan-winch/" target="_blank" rel="noopener">Granberg Alaskan Winch (G478)</a><span class="small">Purpose-built hand winch for the Alaskan mill.</span></li>
+      <li><a href="https://www.granberg.com/product/winch-arm/" target="_blank" rel="noopener">Granberg Winch Arm</a><span class="small">Lever-arm anchor to cut to the end of the log.</span></li>
+      <li><a href="https://www.amazon.com/s?k=hand+crank+trailer+winch+2600+lb" target="_blank" rel="noopener">Hand-crank trailer winch, 2,600 lb</a></li>
+      <li><a href="https://www.amazon.com/s?k=snatch+block+rope" target="_blank" rel="noopener">Snatch block</a><span class="small">Doubles pull, halves speed.</span></li>
+      <li><a href="https://www.amazon.com/s?k=drill+powered+winch" target="_blank" rel="noopener">Drill-powered winch</a><span class="small">Variable speed from the trigger.</span></li>
+      <li><a href="https://www.amazon.com/s?k=block+and+tackle+4%3A1" target="_blank" rel="noopener">4:1 block and tackle</a></li>
+      <li><a href="https://www.amazon.com/s?k=tree+saver+strap+winch" target="_blank" rel="noopener">Anchor strap (tree saver)</a></li>
+    </ul></div>
+    <div class="panel"><h3>Lifting &amp; moving</h3><ul>
+      <li><a href="https://www.amazon.com/s?k=portable+steel+gantry+crane+2+ton+adjustable" target="_blank" rel="noopener">Portable steel gantry crane, 2 ton</a></li>
+      <li><a href="https://www.amazon.com/s?k=manual+chain+hoist+2+ton" target="_blank" rel="noopener">Chain hoist, 2 ton</a></li>
+      <li><a href="https://www.amazon.com/s?k=push+beam+trolley+2+ton" target="_blank" rel="noopener">Push beam trolley</a></li>
+      <li><a href="https://www.amazon.com/s?k=lifting+spreader+bar" target="_blank" rel="noopener">Spreader bar</a></li>
+      <li><a href="https://www.amazon.com/s?k=polyester+web+lifting+sling+2+inch+10+ft" target="_blank" rel="noopener">Web lifting slings</a></li>
+      <li><a href="https://www.amazon.com/s?k=tractor+loader+pallet+forks" target="_blank" rel="noopener">Loader pallet forks</a></li>
+      <li><a href="https://www.amazon.com/s?k=log+arch+timber" target="_blank" rel="noopener">Log arch</a><span class="small">For moving logs to the mill site.</span></li>
+      <li><a href="https://www.amazon.com/s?k=cant+hook+peavey" target="_blank" rel="noopener">Cant hook / peavey</a></li>
+    </ul></div>
+    <div class="panel"><h3>Moisture</h3><ul>
+      <li><a href="https://www.amazon.com/s?k=Wagner+Meters+Orion+930" target="_blank" rel="noopener">Wagner Orion 930 pinless meter</a></li>
+      <li><a href="https://www.amazon.com/s?k=Delmhorst+J-2000+moisture+meter" target="_blank" rel="noopener">Delmhorst J-2000 pin meter</a></li>
+      <li><a href="https://www.amazon.com/s?k=moisture+meter+hammer+electrode+insulated+pins" target="_blank" rel="noopener">Hammer electrode, insulated pins</a></li>
+      <li><a href="https://www.amazon.com/s?k=General+Tools+MMD4E" target="_blank" rel="noopener">General Tools MMD4E (budget)</a></li>
+      <li><a href="https://www.amazon.com/s?k=digital+crane+scale+2000+lb" target="_blank" rel="noopener">Crane scale, 2,000 lb</a></li>
+      <li><a href="https://www.amazon.com/s?k=digital+scale+0.1g+3000g" target="_blank" rel="noopener">Gram scale 0.1 g</a></li>
+      <li><a href="https://www.amazon.com/s?k=365nm+UV+flashlight" target="_blank" rel="noopener">365 nm UV flashlight</a><span class="small">Fluorescence test for species ID.</span></li>
+      <li><a href="https://www.amazon.com/s?k=10x+hand+lens+loupe" target="_blank" rel="noopener">10× hand lens</a></li>
+    </ul></div>
+    <div class="panel"><h3>Seal, tag, safety</h3><ul>
+      <li><a href="https://www.amazon.com/s?k=Anchorseal+2+end+grain+sealer" target="_blank" rel="noopener">Anchorseal 2 end sealer</a></li>
+      <li><a href="https://www.amazon.com/s?k=aluminum+tree+tags+blank" target="_blank" rel="noopener">Aluminum tags</a></li>
+      <li><a href="https://www.amazon.com/s?k=metal+letter+number+stamp+set" target="_blank" rel="noopener">Letter/number punch set</a></li>
+      <li><a href="https://www.amazon.com/s?k=aluminum+nails" target="_blank" rel="noopener">Aluminum nails</a></li>
+      <li><a href="https://www.amazon.com/s?k=Sakura+Solid+Marker" target="_blank" rel="noopener">Solid paint markers</a></li>
+      <li><a href="https://www.amazon.com/s?k=chainsaw+chaps" target="_blank" rel="noopener">Chainsaw chaps</a></li>
+      <li><a href="https://www.amazon.com/s?k=forestry+helmet+face+shield+ear+muffs" target="_blank" rel="noopener">Forestry helmet system</a></li>
+      <li><a href="https://www.amazon.com/s?k=3M+6502QL+P100" target="_blank" rel="noopener">Half-face respirator, P100</a></li>
+    </ul></div>
+    <div class="panel"><h3>Yard &amp; kiln</h3><ul>
+      <li><a href="https://sbio.vt.edu/for-the-community/vt-solar-kiln.html" target="_blank" rel="noopener">Virginia Tech solar kiln plans</a><span class="small">Free drawings, two sizes.</span></li>
+      <li><a href="https://www.pubs.ext.vt.edu/420/420-030/420-030.html" target="_blank" rel="noopener">VT kiln design &amp; operation guide</a></li>
+      <li><a href="https://www.amazon.com/s?k=Govee+WiFi+thermometer+hygrometer" target="_blank" rel="noopener">WiFi temp/RH logger</a></li>
+      <li><a href="https://www.amazon.com/s?k=Inkbird+ITC-308" target="_blank" rel="noopener">Fan thermostat controller</a></li>
+      <li><a href="https://www.amazon.com/s?k=high+velocity+air+circulator+fan+20+inch" target="_blank" rel="noopener">Circulation fans</a></li>
+      <li><a href="https://www.amazon.com/s?k=twin+wall+polycarbonate+sheet+UV" target="_blank" rel="noopener">Twin-wall polycarbonate</a></li>
+      <li><a href="https://www.amazon.com/s?k=shade+cloth+50+percent" target="_blank" rel="noopener">Shade cloth 50%</a></li>
+      <li><a href="https://www.amazon.com/s?k=ratchet+straps+heavy+duty" target="_blank" rel="noopener">Ratchet straps</a></li>
+    </ul></div>
+    <div class="panel"><h3>Finishing &amp; shipping</h3><ul>
+      <li><a href="https://www.amazon.com/s?k=router+slab+flattening+bit" target="_blank" rel="noopener">Slab flattening bit</a></li>
+      <li><a href="https://www.amazon.com/s?k=router+sled+slab+flattening+jig" target="_blank" rel="noopener">Router sled kit</a></li>
+      <li><a href="https://www.amazon.com/s?k=bowtie+inlay+router+template" target="_blank" rel="noopener">Bowtie inlay template</a></li>
+      <li><a href="https://www.amazon.com/s?k=deep+pour+epoxy+wood" target="_blank" rel="noopener">Deep-pour epoxy</a></li>
+      <li><a href="https://www.amazon.com/s?k=Rubio+Monocoat+Oil+Plus+2C" target="_blank" rel="noopener">Rubio Monocoat Oil Plus 2C</a></li>
+      <li><a href="https://www.amazon.com/s?k=Osmo+Polyx+Oil" target="_blank" rel="noopener">Osmo Polyx-Oil</a></li>
+      <li><a href="https://www.amazon.com/s?k=Zinsser+SealCoat" target="_blank" rel="noopener">Dewaxed shellac</a></li>
+      <li><a href="https://www.amazon.com/s?k=shipping+container+desiccant" target="_blank" rel="noopener">Container desiccant</a></li>
+    </ul></div>
   </div>
-</div>
-</div>
+</section>
 
-<!-- ============ SERVICES ============ -->
-<div class="view" id="services" data-view="services" hidden>
-<div class="view-in" style="padding-block:1.5rem 4rem;display:grid;grid-template-columns:minmax(0,1fr);gap:2.2rem">
-  <div class="hero" style="border-bottom:0;padding-block:.5rem 0">
-    <div class="eyebrow">Pith &amp; Pixel · fat slab milling · Kauaʻi</div>
-    <h1>Big-log <span>milling on site</span></h1>
-    <p class="lede">An 86″ Alaskan chainsaw mill powered by a Stihl MS 881 slabs the logs most portable sawmills can't reach or can't fit. If you have a 50–75″ monkeypod, earpod, mango or other big hardwood on the ground, it can become table slabs where it lies instead of firewood.</p>
-    <div class="chips">
-      <span class="chip">Mill <b>86″ Alaskan</b></span>
-      <span class="chip">Power <b>Stihl MS 881</b></span>
-      <span class="chip">Logs to <b>~70″+ Ø</b></span>
-      <span class="chip">From <b>$175/hr</b></span>
-    </div>
+<section class="ch" id="ch-src">
+  <div class="sec-head"><span class="eyebrow">19 · Reference</span><h2>Sources</h2></div>
+  <ul>
+    <li><a href="https://www.fpl.fs.usda.gov/documnts/fplgtr/fplgtr117.pdf" target="_blank" rel="noopener">Air Drying of Lumber, USDA FPL-GTR-117</a>: yard layout, stickers, stacking.</li>
+    <li><a href="https://www.fpl.fs.usda.gov/documnts/fplgtr/fplgtr118.pdf" target="_blank" rel="noopener">Drying Hardwood Lumber, USDA FPL-GTR-118</a>: sample boards, schedules, defects, conditioning.</li>
+    <li><a href="https://www.fpl.fs.usda.gov/documnts/fplgtr/fplgtr190/fplgtr190.pdf" target="_blank" rel="noopener">Wood Handbook, USDA FPL-GTR-190</a>: densities, shrinkage, moisture relations.</li>
+    <li><a href="https://www.pubs.ext.vt.edu/420/420-030/420-030.html" target="_blank" rel="noopener">Design and Operation of a Solar-Heated Dry Kiln, Virginia Tech 420-030</a>.</li>
+    <li><a href="https://www.fpl.fs.usda.gov/documnts/TechSheets/Chudnoff/TropAmerican/htmlDocs_tropamerican/Enterolobiumcyclocarpum.html" target="_blank" rel="noopener">USDA FPL tropical timber tech sheets</a> (earpod shown).</li>
+    <li><a href="https://www.delta-intkey.com/wood/en/www/papptind.htm" target="_blank" rel="noopener">Commercial timbers: Pterocarpus indicus</a>: anatomy and fluorescence.</li>
+    <li><a href="https://insidewood.lib.ncsu.edu/" target="_blank" rel="noopener">InsideWood</a>: wood anatomy database for identification.</li>
+    <li><a href="https://www.fpl.fs.usda.gov/research/centers/woodanatomy/" target="_blank" rel="noopener">USDA FPL Center for Wood Anatomy Research</a>: wood identification service.</li>
+    <li><a href="https://cites.org/eng/app/appendices.php" target="_blank" rel="noopener">CITES Appendices</a> and <a href="https://www.aphis.usda.gov/plant-imports/lacey-act" target="_blank" rel="noopener">USDA APHIS Lacey Act</a>.</li>
+    <li><a href="https://www.wood-database.com/" target="_blank" rel="noopener">The Wood Database</a>: species photos and working notes.</li>
+    <li><a href="https://www.granberg.com/winch-system/" target="_blank" rel="noopener">Granberg Alaskan Winch system</a>.</li>
+  </ul>
+  <p class="small">Species figures are approximate published values. Your own wafers, weights and meter readings are the numbers that count.</p>
+</section>
+
+</main>
+
+<aside class="side" aria-label="Sawyer and rates">
+  <div class="card">
+    <div class="eyebrow">The sawyer</div>
+    <div class="who"><b>Josh Trembath</b><a href="tel:+18086477410">(808) 647-7410</a><br><span class="small">Pith &amp; Pixel · Kauaʻi</span></div>
+    <p>86″ Alaskan mill on a Stihl MS 881. Slabs logs up to about 70″+ across on site.</p>
+    <h3>Outside rates</h3>
+    <ul class="rl">
+      <li><span>Standard milling</span><b>$175/hr</b></li>
+      <li><span>50″+ logs, full 86″ setup</span><b>$225/hr</b></li>
+      <li><span>Two-person crew</span><b>$250–300/hr</b></li>
+      <li><span>Minimum</span><b>3 hr ($525)</b></li>
+      <li><span>Travel</span><b>$75–150</b></li>
+      <li><span>Chain ruined by metal</span><b>$300</b></li>
+      <li><span>Chain regrind</span><b>$60</b></li>
+      <li><span>Extra sharpening (dirt)</span><b>$40</b></li>
+    </ul>
+    <p class="small">Hourly covers setup, first-cut leveling, milling, fuel, sharpening and adjustments. Customer supplies equipment to move logs and slabs. Priced by the hour, not the board foot, because speed swings widely with log size, species and condition.</p>
+    <p class="small">Also: custom carpentry, art fabrication, software and research.</p>
   </div>
-
-  <section class="ch" id="svc-why">
-    <div class="sec-head"><span class="eyebrow">What you're hiring</span><h2>Why a long-bar mill</h2></div>
-    <div class="cols">
-      <div class="panel"><h3>Cuts what band mills can't</h3><p>Most portable band mills cut up to about 30–36″ wide and need the log lifted onto the mill. This mill goes to the log and cuts across the full width of trunks far bigger than that, so a 60″+ tree becomes 60″-wide slabs instead of being quartered or cut up.</p></div>
-      <div class="panel"><h3>Goes where the tree fell</h3><p>No trailer mill to back in, no loader needed just to get the log on a deck. Backyards, hillsides, narrow access, and trees that can't be moved in one piece.</p></div>
-      <div class="panel"><h3>Recovers the tree</h3><p>A huge tropical hardwood is usually the most valuable thing a tree service hauls away as waste. Slabbed, sealed and dried, it becomes dining tables, counters, benches and bar tops.</p></div>
-    </div>
-  </section>
-
-  <section class="ch" id="svc-rates">
-    <div class="sec-head"><span class="eyebrow">Rate sheet</span><h2>Rates</h2></div>
-    <div class="rates">
-      <div class="rate"><span class="rate-p">$175<small>/hr</small></span><b>Standard chainsaw milling</b><span>Sawyer, MS 881 and long-bar Alaskan mill. Logs under about 50″ in diameter.</span></div>
-      <div class="rate hi"><span class="rate-p">$225<small>/hr</small></span><b>Big-log work</b><span>Logs 50″+ in diameter, difficult hardwoods, or any cut that needs the full 86″ setup.</span></div>
-      <div class="rate"><span class="rate-p">$250–300<small>/hr</small></span><b>Two-person crew</b><span>Sawyer plus a helper on wedges, fuel, rigging and slab handling. Faster on big jobs; rate depends on log size.</span></div>
-    </div>
-    <div class="tbl"><table>
-      <tbody>
-        <tr><th scope="row">Minimum</th><td>3 hours, starting when I arrive and begin setting up ($525 at the standard rate).</td></tr>
-        <tr><th scope="row">Travel / mobilization</th><td>$75–$150, depending on distance.</td></tr>
-        <tr><th scope="row">Included in the hourly rate</th><td>Mill setup, leveling and cutting the first guide cut, milling, refueling, chain sharpening and normal adjustments.</td></tr>
-        <tr><th scope="row">Moving logs and slabs</th><td>You supply the machinery (tractor, loader, forklift) and an operator, or handling is quoted separately.</td></tr>
-        <tr><th scope="row">Embedded metal</th><td>Nails, fence wire, bolts and old hardware destroy chain. The clock keeps running while chain is changed or repaired, plus:<br><b>$300</b> per long-bar ripping chain ruined (replacement loop for the 84″ bar)<br><b>$60</b> per chain that can be saved with a regrind</td></tr>
-        <tr><th scope="row">Dirt and rocks</th><td><b>$40</b> per extra chain sharpening caused by dirt, sand or stone in the bark or cracks. Clean logs avoid it.</td></tr>
-      </tbody>
-    </table></div>
-  </section>
-
-  <section class="ch" id="svc-hourly">
-    <div class="sec-head"><span class="eyebrow">How it's priced</span><h2>Why hourly, not by the board foot</h2></div>
-    <p class="intro">Board-foot pricing works for band mills cutting average logs all day. It doesn't work for giant logs on a chainsaw mill:</p>
-    <ul>
-      <li><b>Speed changes enormously with the log.</b> A 30″ softwood and a 70″ dense hardwood can differ several-fold in feet per minute, and log condition, bark, cracks and grain all move it further.</li>
-      <li><b>The kerf is wide.</b> A chainsaw mill turns more of the log into sawdust than a band mill, so a per-board-foot price ends up charging for wood that isn't there.</li>
-      <li><b>The hard work doesn't show up in board feet.</b> Rigging, leveling the first cut, wedging and handling are where the time goes on a huge log.</li>
-    </ul>
-    <p>Hourly pricing is fair to both sides: an easy log costs you less, and a difficult one doesn't turn into a loss for the sawyer mid-job.</p>
-    <h3>Why the rate is above ordinary portable milling</h3>
-    <ul>
-      <li>Specialty capacity: very few mobile sawyers on the island can cut logs this wide.</li>
-      <li>Equipment cost and wear: a 120cc pro saw, an 86″ mill, long ripping chains that cost far more than standard loops, and bars that wear with every hour of full-throttle milling.</li>
-      <li>Fuel, bar oil and sharpening on every cut.</li>
-      <li>Extremely physical work, done safely.</li>
-    </ul>
-  </section>
-
-  <section class="ch" id="svc-prep">
-    <div class="sec-head"><span class="eyebrow">Before I come out</span><h2>Getting a quote</h2></div>
-    <div class="cols">
-      <div class="panel"><h3>Send me</h3><ul class="checklist">
-        <li>Photos of the log(s), both ends and full length.</li>
-        <li>Diameter at each end and length (a tape measure is fine).</li>
-        <li>Species, if you know it.</li>
-        <li>Location and access: can a truck get close, is the ground flat?</li>
-        <li>Slab thickness you want (2″, 3″, 4″, 6″…).</li>
-        <li>How the slabs will be moved and where they're going.</li>
-      </ul></div>
-      <div class="panel"><h3>On the day</h3><ul class="checklist">
-        <li>Log accessible and stable, ideally raised off the dirt.</li>
-        <li>Tell me about any known nails, wire, signs, clotheslines or old hardware in the tree.</li>
-        <li>Equipment and an operator for moving slabs, if you're supplying them.</li>
-        <li>A place to stack slabs on stickers, out of the rain and sun.</li>
-        <li>End sealer on hand so slabs can be sealed as they come off (see <a href="#ch-seal">Seal the ends</a>).</li>
-      </ul></div>
-    </div>
-  </section>
-
-  <section class="ch" id="svc-contact">
-    <div class="sec-head"><span class="eyebrow">Book it</span><h2>Contact</h2></div>
-    <div class="contact">
-      <div><span>Sawyer</span><b>Josh Trembath</b></div>
-      <div><span>Call or text</span><b><a href="tel:+18086477410">(808) 647-7410</a></b></div>
-      <div><span>Service area</span><b>Kauaʻi, island-wide</b></div>
-    </div>
-  </section>
-
-  <section class="ch" id="svc-est">
-    <div class="sec-head"><span class="eyebrow">Ballpark</span><h2>Job estimator</h2></div>
-    <div class="tool" id="svc-calc">
-      <div class="fields">
-        <label for="q-rate">Service<select id="q-rate"><option value="175">Standard · $175/hr</option><option value="225" selected>Big-log 50″+ · $225/hr</option><option value="250">Two-person crew · $250/hr</option><option value="300">Two-person crew, biggest logs · $300/hr</option></select></label>
-        <label for="q-hrs">Estimated hours on site<input id="q-hrs" type="number" value="6" min="0" step="0.5"></label>
-        <label for="q-trav">Travel<select id="q-trav"><option value="75">Near · $75</option><option value="100" selected>Mid · $100</option><option value="150">Far · $150</option></select></label>
-        <label for="q-chain">Chains ruined by metal ($300)<input id="q-chain" type="number" value="0" min="0" step="1"></label>
-        <label for="q-regrind">Chains reground ($60)<input id="q-regrind" type="number" value="0" min="0" step="1"></label>
-        <label for="q-dirt">Extra sharpenings, dirt ($40)<input id="q-dirt" type="number" value="0" min="0" step="1"></label>
-      </div>
-      <div class="out" id="q-out"></div>
-      <p class="small">An estimate for planning, not a quote. Actual time depends on the log; hours are billed as worked with the 3-hour minimum.</p>
-    </div>
-  </section>
-</div>
+</aside>
 </div>
 
 <div class="lightbox" id="lightbox" hidden>
@@ -1449,7 +1273,7 @@ th[scope="row"]{white-space:nowrap;width:1%}
   </div>
 </div>
 
-<footer><div><b>Pith &amp; Pixel</b> · Josh Trembath · (808) 647-7410 · Kauaʻi, Hawaiʻi<br>Slabyard toolkit figures are planning estimates; your sample slabs, wafers and meters decide when wood is ready.</div></footer>
+<footer><div>Kauaʻi Slab Yard · partner field guide. Figures are planning estimates; our sample slabs, wafers and meters decide when wood is ready.</div></footer>
 
 <script src="js/species.js"></script>
 <script src="js/app.js"></script>
