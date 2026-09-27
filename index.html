@@ -1,0 +1,1179 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Earpod Slab Yard</title>
+<meta name="description" content="Field guide for milling, drying, kiln-finishing, tracking and selling live-edge earpod (guanacaste / parota) slabs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --ground:#EEF0EB;
+  --surface:#F8F9F6;
+  --ink:#1B211E;
+  --muted:#58635D;
+  --line:#CDD3CC;
+  --accent:#1E6B57;
+  --accent-ink:#FFFFFF;
+  --tag:#F1C232;
+  --tag-ink:#1B211E;
+  --metal:#C9CEC9;
+  --ok:#23704A; --ok-bg:#DCEFE2;
+  --warn:#8A5A00; --warn-bg:#F7EACB;
+  --bad:#9B2C1F; --bad-bg:#F6DEDA;
+  --info:#24527A; --info-bg:#DCE7F2;
+  --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#121614; --surface:#1A201D; --ink:#E4E9E5; --muted:#9AA69F; --line:#2E3733;
+    --accent:#5DB595; --accent-ink:#0E1311; --tag:#E9BC2E; --tag-ink:#16140C; --metal:#3A423E;
+    --ok:#7FD3A2; --ok-bg:#16301F; --warn:#F0C66A; --warn-bg:#352A10; --bad:#F29A8C; --bad-bg:#3A1A15; --info:#9CC3EA; --info-bg:#172838;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#121614; --surface:#1A201D; --ink:#E4E9E5; --muted:#9AA69F; --line:#2E3733;
+  --accent:#5DB595; --accent-ink:#0E1311; --tag:#E9BC2E; --tag-ink:#16140C; --metal:#3A423E;
+  --ok:#7FD3A2; --ok-bg:#16301F; --warn:#F0C66A; --warn-bg:#352A10; --bad:#F29A8C; --bad-bg:#3A1A15; --info:#9CC3EA; --info-bg:#172838;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--ground);color:var(--ink);font:16px/1.6 var(--body);-webkit-text-size-adjust:100%}
+a{color:var(--accent);text-underline-offset:2px}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid var(--tag);outline-offset:2px}
+h1,h2,h3{font-family:var(--display);line-height:1.05;text-wrap:balance;margin:0}
+h2{font-size:clamp(2rem,4.5vw,2.8rem);font-weight:700;text-transform:uppercase;letter-spacing:.01em}
+h3{font-size:1.45rem;font-weight:600;margin-top:.4rem}
+p,li{max-width:68ch}
+p{margin:0}
+ul,ol{margin:0;padding-left:1.25rem;display:grid;gap:.35rem}
+code,.mono{font-family:var(--mono);font-size:.92em}
+.num{font-variant-numeric:tabular-nums}
+
+/* masthead */
+.mast{padding-inline:16px;border-bottom:1px solid var(--line);background:var(--surface)}
+.mast-in{max-width:1180px;margin:0 auto;padding-block:2.2rem 1.8rem;display:grid;gap:1.1rem}
+.eyebrow{font:500 .78rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.mast h1{font-size:clamp(3rem,9vw,6rem);font-weight:700;text-transform:uppercase;letter-spacing:-.005em}
+.mast h1 span{color:var(--accent)}
+.mast .lede{font-size:1.1rem;color:var(--muted);max-width:60ch}
+.specs{display:flex;flex-wrap:wrap;gap:.5rem}
+.spec{font:500 .85rem/1 var(--mono);border:1px solid var(--line);padding:.5rem .65rem;border-radius:3px;background:var(--ground)}
+.spec b{color:var(--accent);font-weight:500}
+
+/* layout */
+.wrap{max-width:1180px;margin:0 auto;padding-inline:16px;display:grid;grid-template-columns:220px minmax(0,1fr);gap:2.5rem}
+nav.toc{position:sticky;top:env(safe-area-inset-top,0px);align-self:start;max-height:100vh;overflow:auto;padding-block:1.5rem}
+nav.toc ol{list-style:none;padding:0;gap:0;counter-reset:toc}
+nav.toc a{display:grid;grid-template-columns:2.1rem 1fr;align-items:baseline;padding:.32rem .4rem;color:var(--ink);text-decoration:none;border-radius:3px;font-size:.93rem}
+nav.toc a:hover{background:var(--surface)}
+nav.toc a .n{font:500 .75rem var(--mono);color:var(--muted)}
+nav.toc a.navtool .n{color:var(--accent)}
+main{padding-block:1.5rem 4rem;display:grid;grid-template-columns:minmax(0,1fr);gap:3.5rem;min-width:0}
+section{display:grid;grid-template-columns:minmax(0,1fr);gap:1.1rem;scroll-margin-top:4rem}
+.sec-head{display:grid;gap:.4rem;border-top:3px solid var(--ink);padding-top:.9rem}
+.sec-head .eyebrow{color:var(--accent)}
+.intro{font-size:1.07rem}
+
+@media (max-width:860px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0}
+  nav.toc{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--ground);border-bottom:1px solid var(--line);padding-block:.4rem;margin-inline:-16px;padding-inline:16px;max-height:none;overflow-x:auto;overflow-y:hidden}
+  nav.toc ol{display:flex;gap:.25rem;white-space:nowrap}
+  nav.toc a{display:inline-flex;gap:.35rem;padding:.35rem .55rem;font-size:.85rem}
+  section{scroll-margin-top:3.5rem}
+}
+
+/* blocks */
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:1rem 1.1rem;display:grid;gap:.6rem;align-content:start}
+.panel h3{margin:0}
+.callout{border-left:4px solid var(--tag);background:var(--surface);padding:.85rem 1rem;display:grid;gap:.4rem}
+.callout.stop{border-left-color:var(--bad)}
+.callout.go{border-left-color:var(--accent)}
+.callout strong:first-child{font-family:var(--display);font-size:1.15rem;text-transform:uppercase;letter-spacing:.03em}
+.steps{counter-reset:s;list-style:none;padding:0;gap:.75rem}
+.steps>li{counter-increment:s;display:grid;grid-template-columns:2.2rem 1fr;gap:.6rem;align-items:start}
+.steps>li::before{content:counter(s);font:700 1.15rem/1 var(--display);background:var(--ink);color:var(--ground);width:1.9rem;height:1.9rem;display:grid;place-items:center;border-radius:2px;margin-top:.1rem}
+.steps>li>div{display:grid;gap:.2rem}
+.panel,.tool,details>div,.steps>li>div,.gantt{grid-template-columns:minmax(0,1fr)}
+.small{font-size:.88rem;color:var(--muted)}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:4px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.93rem}
+th,td{padding:.55rem .7rem;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:600 .74rem/1.2 var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted);background:var(--ground)}
+tr:last-child td{border-bottom:0}
+td.r,th.r{text-align:right}
+td{font-variant-numeric:tabular-nums}
+details{border:1px solid var(--line);border-radius:4px;background:var(--surface)}
+details>summary{cursor:pointer;padding:.7rem 1rem;font-weight:600}
+details>div{padding:0 1rem 1rem;display:grid;gap:.6rem}
+
+/* tag mock */
+.tagrow{display:flex;flex-wrap:wrap;gap:1.2rem;align-items:center}
+.alutag{background:var(--metal);color:var(--ink);border-radius:6px 6px 6px 6px;padding:.8rem 1.1rem .8rem 2.1rem;position:relative;font:500 1.35rem/1.2 var(--mono);letter-spacing:.06em;box-shadow:inset 0 0 0 1px var(--line)}
+.alutag::before{content:"";position:absolute;left:.7rem;top:50%;width:.6rem;height:.6rem;margin-top:-.3rem;border-radius:50%;background:var(--ground);box-shadow:inset 0 0 0 1px var(--line)}
+.alutag small{display:block;font-size:.72rem;letter-spacing:.04em;color:var(--muted)}
+.idparts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.6rem}
+.idparts div{border-top:3px solid var(--tag);padding-top:.4rem}
+.idparts b{font:500 1.1rem var(--mono)}
+
+/* timeline chart */
+.gantt{display:grid;gap:.55rem;background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:1rem}
+.g-row{display:grid;grid-template-columns:5.5rem 1fr;gap:.6rem;align-items:center}
+.g-lab{font:600 1.05rem var(--display);text-transform:uppercase}
+.g-track{position:relative;height:1.6rem;background:var(--ground);border-radius:2px}
+.g-bar{position:absolute;top:0;bottom:0;border-radius:2px}
+.g-air{background:var(--accent);opacity:.85}
+.g-air-x{background:var(--accent);opacity:.35}
+.g-kiln{background:var(--tag)}
+.g-kiln-x{background:var(--tag);opacity:.45}
+.g-axis{display:grid;grid-template-columns:5.5rem 1fr;gap:.6rem}
+.g-ticks{position:relative;height:1.1rem;font:500 .72rem var(--mono);color:var(--muted)}
+.g-ticks span{position:absolute;transform:translateX(-50%)}
+.g-ticks span:first-child{transform:none}
+.g-ticks span:last-child{transform:translateX(-100%)}
+.g-mark{position:absolute;top:-.3rem;bottom:-.3rem;border-left:2px dashed var(--bad)}
+.legend{display:flex;flex-wrap:wrap;gap:1rem;font-size:.85rem;color:var(--muted)}
+.legend i{display:inline-block;width:.9rem;height:.9rem;border-radius:2px;vertical-align:-2px;margin-right:.35rem}
+
+/* forms & tools */
+.tool{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:1rem 1.1rem;display:grid;gap:1rem}
+.tool h3{margin:0}
+.fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.7rem}
+label{display:grid;gap:.25rem;font:500 .74rem/1.2 var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+input,select,textarea{font:400 .98rem var(--body);color:var(--ink);background:var(--ground);border:1px solid var(--line);border-radius:3px;padding:.5rem .55rem;width:100%;min-width:0;text-transform:none;letter-spacing:0}
+textarea{min-height:5rem;font-family:var(--mono);font-size:.82rem}
+.btns{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+button{font:600 .9rem var(--body);white-space:nowrap;border-radius:3px;padding:.55rem .9rem;cursor:pointer;border:1px solid var(--ink);background:transparent;color:var(--ink)}
+button.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+button.danger{border-color:var(--bad);color:var(--bad)}
+button:hover{filter:brightness(1.07)}
+.out{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.6rem}
+.stat{border-top:3px solid var(--accent);padding-top:.35rem}
+.stat b{display:block;font:600 1.6rem/1.1 var(--display);font-variant-numeric:tabular-nums}
+.stat span{font-size:.8rem;color:var(--muted)}
+.pill{display:inline-block;font:500 .72rem/1 var(--mono);padding:.3rem .45rem;border-radius:99px;white-space:nowrap;text-transform:uppercase;letter-spacing:.05em}
+.p-green{background:var(--bad-bg);color:var(--bad)}
+.p-air{background:var(--warn-bg);color:var(--warn)}
+.p-kiln{background:var(--info-bg);color:var(--info)}
+.p-dry{background:var(--ok-bg);color:var(--ok)}
+.p-none{background:var(--ground);color:var(--muted);border:1px solid var(--line)}
+.flag{color:var(--bad);font-weight:600}
+.msg{font-size:.88rem;color:var(--muted);min-height:1.2em}
+.example-note{font:500 .78rem var(--mono);background:var(--warn-bg);color:var(--warn);padding:.45rem .6rem;border-radius:3px}
+.tabs{display:flex;gap:.3rem;flex-wrap:wrap;border-bottom:1px solid var(--line)}
+.tabs button{border:0;border-bottom:3px solid transparent;border-radius:0;padding:.5rem .7rem}
+.tabs button[aria-selected="true"]{border-bottom-color:var(--accent);color:var(--accent)}
+.gear{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem}
+.gear ul{list-style:none;padding:0;gap:.5rem}
+.gear li{display:grid;gap:.1rem;border-bottom:1px dashed var(--line);padding-bottom:.45rem}
+.gear li:last-child{border-bottom:0}
+.gear a{font-weight:600}
+.checklist{list-style:none;padding:0}
+.checklist li{padding-left:1.6rem;position:relative}
+.checklist li::before{content:"";position:absolute;left:0;top:.35rem;width:.95rem;height:.95rem;border:2px solid var(--muted);border-radius:2px}
+footer{border-top:1px solid var(--line);padding-block:2rem;padding-inline:16px;color:var(--muted);font-size:.85rem}
+footer div{max-width:1180px;margin:0 auto}
+
+@media print{
+  nav.toc,.mast .specs,.tool .btns,button{display:none!important}
+  .wrap{display:block}
+  body{background:#fff;color:#000}
+}
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <div class="mast-in">
+    <div class="eyebrow">Field guide · Enterolobium cyclocarpum · 3-partner job</div>
+    <h1>Earpod <span>Slab Yard</span></h1>
+    <p class="lede">Every step from a 66-inch earpod trunk to dry, sellable live-edge slabs: milling, end sealing, labeling, air drying, the solar kiln, moisture journaling, finishing, pricing and shipping a container to market.</p>
+    <div class="specs">
+      <span class="spec">Log <b>66″ Ø</b></span>
+      <span class="spec">Bar <b>78″</b> ≈ <b>70″</b> usable</span>
+      <span class="spec">Air dry <b>~6 mo</b> under cover</span>
+      <span class="spec">Kiln finish to <b>7–9% MC</b></span>
+      <span class="spec">Market <b>NYC · LA · SD</b></span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+<nav class="toc" aria-label="Sections">
+  <ol>
+    <li><a href="#plan"><span class="n">01</span>The plan</a></li>
+    <li><a href="#wood"><span class="n">02</span>Know the wood</a></li>
+    <li><a href="#mill"><span class="n">03</span>Build the mill</a></li>
+    <li><a href="#cut"><span class="n">04</span>Milling day</a></li>
+    <li><a href="#seal"><span class="n">05</span>Seal the ends</a></li>
+    <li><a href="#label"><span class="n">06</span>Label every slab</a></li>
+    <li><a href="#yard"><span class="n">07</span>Air-drying yard</a></li>
+    <li><a href="#moisture"><span class="n">08</span>Measuring moisture</a></li>
+    <li><a href="#times"><span class="n">09</span>Drying times</a></li>
+    <li><a href="#kiln"><span class="n">10</span>Solar kiln</a></li>
+    <li><a href="#journal" class="navtool"><span class="n">11</span>Slab journal</a></li>
+    <li><a href="#finish"><span class="n">12</span>Flatten &amp; seal</a></li>
+    <li><a href="#grade"><span class="n">13</span>Grade &amp; price</a></li>
+    <li><a href="#ship"><span class="n">14</span>Container to market</a></li>
+    <li><a href="#deal"><span class="n">15</span>The 3-way deal</a></li>
+    <li><a href="#gear"><span class="n">16</span>Gear list</a></li>
+    <li><a href="#sources"><span class="n">17</span>Sources</a></li>
+  </ol>
+</nav>
+
+<main>
+
+<!-- 01 -->
+<section id="plan">
+  <div class="sec-head"><span class="eyebrow">01 · Overview</span><h2>The plan</h2></div>
+  <p class="intro">Mill the tree green, seal the ends the same day, tag every slab, stack it on stickers under a roof with open sides, and let the air take it down to about 20% moisture. Then finish in a solar kiln to 7–9%, flatten or at least surface the best pieces, and sell. Everything you do is recorded against the slab's ID.</p>
+  <ol class="steps">
+    <li><div><b>Before the cut.</b> Written agreement with the tree owners and between the three of you (section 15). Yard, roof and stickers ready before a single slab comes off the log.</div></li>
+    <li><div><b>Mill.</b> Cut 2″, 4″ and 6″ slabs oversize. Keep every slab in its original order.</div></li>
+    <li><div><b>Within the hour:</b> seal both ends, write the ID on the slab, nail the tag, photograph it, weigh it if you can, and cut a moisture wafer from the first slab of each log.</div></li>
+    <li><div><b>Stack</b> on level foundations, stickers every 16″, weighted top, roof overhang, open sides.</div></li>
+    <li><div><b>Log moisture</b> every 2 weeks for the first 2 months, then monthly. Weight-based numbers beat meter numbers on thick slabs.</div></li>
+    <li><div><b>Kiln</b> when the sample slabs are at or under 20–25%. Thin stock first, thick stock on a gentler schedule.</div></li>
+    <li><div><b>Equalize, condition, sterilize</b> (core at 133°F for 30 min), then store dry and covered. Wrap before shipping.</div></li>
+    <li><div><b>Sell</b> with a photo, ID, dimensions, board feet and final MC for every slab.</div></li>
+  </ol>
+  <div class="callout stop"><strong>Reality check on the 6-month plan</strong><p>Six months under cover works for the 2″ slabs and gets 4″ slabs close. It does <em>not</em> dry 6″ slabs. Plan on 12–18 months total for the 6″ stock. Section 09 has the numbers.</p></div>
+</section>
+
+<!-- 02 -->
+<section id="wood">
+  <div class="sec-head"><span class="eyebrow">02 · Species</span><h2>Know the wood</h2></div>
+  <p class="intro">Earpod is <i>Enterolobium cyclocarpum</i>. The same tree is sold as <b>guanacaste</b> and, in the US slab market, mostly as <b>parota</b>. List it as "Parota (Guanacaste / Earpod)" so buyers searching any name find you.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Property</th><th>Value</th><th>What it means for you</th></tr></thead>
+    <tbody>
+      <tr><td>Basic specific gravity</td><td class="num">≈0.34 (0.34–0.44)</td><td>Light wood. Dries faster than oak or walnut of the same thickness.</td></tr>
+      <tr><td>Air-dry weight</td><td class="num">≈26–28 lb/ft³ (~2.2–2.4 lb per board foot)</td><td>A dry 3′×10′×3″ slab is about 200 lb. Green it can be close to double.</td></tr>
+      <tr><td>Shrinkage, green to oven-dry</td><td class="num">Radial 2.0% · Tangential 5.2% · Volume 7.2%</td><td>Low and fairly even. Stable wood. A 60″ wide slab still moves about 1½–2½″ in width from green to oven-dry, so sticker it flat and don't pin it.</td></tr>
+      <tr><td>Drying behavior</td><td>Dries fast, little warp or checking. Suggested kiln schedule T6-D4 for 1″ stock.</td><td>Forgiving species. Thick slabs and the pith zone are still where cracks start.</td></tr>
+      <tr><td>Durability</td><td>Heartwood resists decay and drywood termites. Sapwood does not.</td><td>Keep sapwood dry and airflow up. Pale sapwood can stain blue-grey if stacked wet and tight.</td></tr>
+      <tr><td>Machining</td><td>Tension wood common: fuzzy and torn grain when planing.</td><td>Sharp cutters, shallow passes, sand to finish. Router sleds need a sharp spoilboard bit.</td></tr>
+      <tr><td>Dust</td><td>Irritating to eyes, nose and throat. Can cause allergies.</td><td>Respirator (P100) when sanding and flattening. Not optional for three people working hundreds of slabs.</td></tr>
+    </tbody>
+  </table></div>
+  <p class="small">Figures from the USDA Forest Products Laboratory tech sheet and common trade data. Your tree will vary; your own moisture wafers are the real numbers.</p>
+</section>
+
+<!-- 03 -->
+<section id="mill">
+  <div class="sec-head"><span class="eyebrow">03 · Equipment</span><h2>Build the mill</h2></div>
+  <p class="intro">A 78″ bar cutting a 66″ log leaves very little spare. The mill clamps eat into the bar at both ends, so plan on roughly <b>70″ of usable cut width</b>. Measure yours once it's built and write the real number on the frame.</p>
+  <div class="cols">
+    <div class="panel"><h3>Powerhead</h3>
+      <ul>
+        <li>Use the biggest saw you can get: 120cc class (Stihl MS 881, Husqvarna 3120XP) or equivalent.</li>
+        <li>On a bar this long, a <b>second powerhead</b> on the nose end (double-ended mill) doubles power and halves the time per cut. It's worth considering for a job with hundreds of cuts.</li>
+        <li>Rich enough mix, clean air filter every tank. Milling is full throttle for minutes at a time.</li>
+      </ul></div>
+    <div class="panel"><h3>Bar, chain, oil</h3>
+      <ul>
+        <li><b>Ripping chain</b> (10° top-plate angle, not the 30° crosscut angle). .404″ pitch is the usual choice on long bars.</li>
+        <li>Skip or semi-skip chain clears the long chips better on a 78″ bar.</li>
+        <li><b>Auxiliary oiler</b> feeding the nose. The saw's pump can't oil 78″ of bar by itself.</li>
+        <li>Touch up the chain every tank. Keep 3–4 sharpened loops so you swap and keep cutting.</li>
+      </ul></div>
+    <div class="panel"><h3>Fabricating the frame</h3>
+      <ul>
+        <li>Crossmember across the full bar length has to be stiff. 2″×1″ or 2″×2″ rectangular steel tube, not square aluminum, or the middle of the bar sags and your slabs come out thick in the center.</li>
+        <li>Two bar clamps (powerhead end and nose end), each with a height post that adjusts in ¼″ steps and locks positively.</li>
+        <li>Rollers or skids on the rails so the mill glides on the guide.</li>
+        <li>Helper handle on the nose end. One person pushes, one pulls and keeps the nose tracking.</li>
+        <li>Buying instead: the Granberg G777 Alaskan (MK-IV) takes bars up to 84″ (listed in the gear list).</li>
+      </ul></div>
+  </div>
+  <div class="callout"><strong>Flare and bark</strong><p>The butt of a big earpod usually flares well past its trunk diameter. If the flare is wider than your 70″, cut the flare off with a crosscut first, or slab past it and accept that the first few feet of those slabs won't fit.</p></div>
+</section>
+
+<!-- 04 -->
+<section id="cut">
+  <div class="sec-head"><span class="eyebrow">04 · Procedure</span><h2>Milling day</h2></div>
+  <ol class="steps">
+    <li><div><b>Clean the log.</b> Wire-brush or strip bark along the cut line. Sand and embedded rocks kill a chain in seconds. Check for nails, fence wire and old tree hardware with a metal detector.</div></li>
+    <li><div><b>Get it up and stable.</b> Log off the dirt on cribbing or blocks, wedged so it cannot roll. Working height around knee to thigh saves your back.</div></li>
+    <li><div><b>First cut on a guide.</b> Screw a pair of straight 2×8 or 2×10 boards, an aluminum ladder, or a purpose-built slabbing rail to the top of the log. Shim it level and in one plane. That first flat face sets every slab under it.</div></li>
+    <li><div><b>Set thickness, then cut.</b> Every later cut rides on the previous face. Drive plastic wedges into the kerf behind the bar so the slab can't pinch it.</div></li>
+    <li><div><b>Lift slabs off with a plan.</b> A green 66″ × 10′ × 4″ earpod slab can weigh 700–900 lb. Use a tractor, skid steer with forks, a gantry and chain hoist, or rollers and a ramp. Don't hand-carry the big ones.</div></li>
+    <li><div><b>Keep them in order.</b> Stack sequence slabs together (bookmatch sets sell for more). Mark the ID before the slab leaves the log.</div></li>
+  </ol>
+
+  <h3>Cut thickness</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Finished target</th><th>Cut green at</th><th>Why the extra</th></tr></thead>
+    <tbody>
+      <tr><td>2″</td><td class="num">2⅜–2½″</td><td rowspan="3">Shrinkage (~2–5%), saw wobble on a long bar, and ¼–½″ lost to flattening after drying. Too thin and a cupped slab won't clean up at the thickness you sold it as.</td></tr>
+      <tr><td>4″</td><td class="num">4½–4¾″</td></tr>
+      <tr><td>6″</td><td class="num">6½–7″</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="callout"><strong>The pith slab</strong><p>The slab through the center of the tree (the pith) is the one most likely to split while drying. Options: cut it thicker and accept a crack you'll bowtie later, rip it down the pith into two narrower slabs, or cut two slabs whose faces sit just either side of the pith. Big earpod trunks are often hollow or punky in the middle anyway, so check the end grain first.</p></div>
+
+  <div class="tool" id="planner">
+    <h3>Cut planner</h3>
+    <p class="small">Through-and-through cut plan for one log. Widths are measured at the middle of each slab under the bark. Board feet = thickness × width × length ÷ 144.</p>
+    <div class="fields">
+      <label for="cp-d">Log Ø under bark (in)<input id="cp-d" type="number" value="66" min="6" step="1"></label>
+      <label for="cp-l">Log length (ft)<input id="cp-l" type="number" value="10" min="1" step="0.5"></label>
+      <label for="cp-t">Slab thickness, green (in)<input id="cp-t" type="number" value="2.5" min="0.5" step="0.125"></label>
+      <label for="cp-k">Kerf (in)<input id="cp-k" type="number" value="0.4" min="0.1" step="0.05"></label>
+      <label for="cp-min">Min useful width (in)<input id="cp-min" type="number" value="18" min="4" step="1"></label>
+      <label for="cp-mill">Mill usable width (in)<input id="cp-mill" type="number" value="70" min="10" step="1"></label>
+      <label for="cp-gd">Green density (lb/ft³)<input id="cp-gd" type="number" value="48" min="20" step="1"></label>
+    </div>
+    <div class="out" id="cp-out"></div>
+    <div class="tbl"><table>
+      <thead><tr><th>#</th><th class="r">Width (in)</th><th class="r">Board ft</th><th class="r">Green wt (lb)</th><th>Note</th></tr></thead>
+      <tbody id="cp-rows"></tbody>
+    </table></div>
+    <p class="small">Green density is an estimate (earpod runs roughly 40–55 lb/ft³ green). Weigh your first few slabs and put the real number in.</p>
+  </div>
+</section>
+
+<!-- 05 -->
+<section id="seal">
+  <div class="sec-head"><span class="eyebrow">05 · Same day</span><h2>Seal the ends</h2></div>
+  <p class="intro">End grain loses water 10–15 times faster than face grain. Unsealed ends dry, shrink, and split back into the slab, sometimes a foot or more. Sealing is the cheapest thing you'll do and it saves the most money.</p>
+  <ul>
+    <li>Seal within an hour of the cut, ideally as soon as the slab comes off the log. Also seal the fresh log ends when you buck it.</li>
+    <li>Use a wax emulsion end sealer such as <b>Anchorseal 2</b>. Brush or roll a thick coat across the whole end, including the first inch of the faces and the bark edge.</li>
+    <li>Seal any big check, knot hole or exposed pith on the face too.</li>
+    <li>Recoat anything that flakes or that you trim later. A gallon covers roughly 100–150 ft² of end grain; buy it by the 5-gallon pail.</li>
+    <li>Do <b>not</b> seal the faces. The slab needs to dry through them.</li>
+  </ul>
+</section>
+
+<!-- 06 -->
+<section id="label">
+  <div class="sec-head"><span class="eyebrow">06 · Inventory</span><h2>Label every slab</h2></div>
+  <p class="intro">With hundreds of slabs from several trees, the ID is the only thing that ties a slab to its moisture history, its photos and its price. Use one format and never reuse an ID.</p>
+  <div class="tagrow">
+    <div class="alutag">EP01-A-07<small>2.5″ · 10′2″ · milled 2026-10-12</small></div>
+    <div class="alutag">EP01-A-08<small>2.5″ · bookmatch of -07</small></div>
+  </div>
+  <div class="idparts">
+    <div><b>EP</b><p class="small">Species code. EP earpod, MK monkeypod, MG mango, etc.</p></div>
+    <div><b>01</b><p class="small">Tree number. Keep a tree list: owner, location, date felled, photos.</p></div>
+    <div><b>A</b><p class="small">Log letter. A is the butt log, then B, C going up the tree.</p></div>
+    <div><b>07</b><p class="small">Slab number counting from the first cut (01 is the top cap slab).</p></div>
+  </div>
+  <h3>Mark it three ways</h3>
+  <ol class="steps">
+    <li><div><b>Aluminum tag</b> on one end, stamped with a letter/number punch set, fixed with <b>aluminum nails only</b>. Steel staples or nails ruin planer knives and saw teeth later.</div></li>
+    <li><div><b>Paint marker or lumber crayon</b> on the face near both ends. Rain and sealer can hide the tag; the face mark is your backup.</div></li>
+    <li><div><b>Photo</b> of the full slab with the tag in the shot, the day it's milled. Name the file with the ID. Later add a dry photo and a finished photo.</div></li>
+  </ol>
+  <p class="small">Optional: print weatherproof QR labels that link to the slab's row in your shared spreadsheet. Buyers like scanning it at a showroom.</p>
+</section>
+
+<!-- 07 -->
+<section id="yard">
+  <div class="sec-head"><span class="eyebrow">07 · Air drying</span><h2>Air-drying yard</h2></div>
+  <p class="intro">Goal: steady, gentle drying. Keep off the rain, keep out of direct sun, keep air moving through every layer.</p>
+  <div class="cols">
+    <div class="panel"><h3>Foundation</h3>
+      <ul>
+        <li>Bottom layer at least 12–18″ off the ground. Concrete blocks or treated 4×6 / 6×6 bearers every 2′ or less, so a 10′ slab sits on 5–6 supports.</li>
+        <li>All bearers level and in one plane (string line or laser). A twisted foundation dries a twisted slab.</li>
+        <li>Weeds cut, ground covered with gravel or weed cloth, no standing water.</li>
+      </ul></div>
+    <div class="panel"><h3>Stickers</h3>
+      <ul>
+        <li>Dry stickers, ¾–1″ thick, 1½″ wide, all exactly the same thickness. Use pine, fir or dry earpod offcuts.</li>
+        <li>Every <b>16″</b> along the slab (12″ for 2″ stock if it wants to warp), one flush with each end so the ends can't curl.</li>
+        <li>Stickers stacked <b>directly above each other</b> in vertical columns, all the way down to the bearers.</li>
+        <li>Wet stickers or hardwood stickers on sapwood leave sticker stain. Keep them dry.</li>
+      </ul></div>
+    <div class="panel"><h3>The stack</h3>
+      <ul>
+        <li>One thickness per stack or per layer. Put the thick slabs at the bottom.</li>
+        <li>Slabs in sequence, live edges not touching, 1–2″ gaps side by side for airflow.</li>
+        <li>Weight the top: concrete blocks or ratchet straps, around 50–100 lb per ft² of top area. Keeps the top layers from cupping.</li>
+        <li>Stacks 6′ apart or more, long side facing the prevailing wind.</li>
+      </ul></div>
+    <div class="panel"><h3>Roof, not walls</h3>
+      <ul>
+        <li>Roof with 1–2′ overhang on all sides. Metal roofing on a frame, or a simple carport.</li>
+        <li>Sides open. Tarps draped over a stack trap moisture and grow mold. If you tarp, tarp the roof only.</li>
+        <li>Shade cloth on the sunny side in the first months. Direct sun on green thick slabs checks the surface.</li>
+      </ul></div>
+  </div>
+  <div class="callout"><strong>First 4 weeks are the riskiest</strong><p>Walk the stacks weekly. Look for surface checks, mold, and stain. Mold on the surface: more airflow and spacing. Surface checks on the top layers: more shade, less wind. Photograph problems with the tag visible and note them in the journal.</p></div>
+  <div class="callout"><strong>Air drying has a floor</strong><p>Outdoor wood only dries to the local equilibrium moisture content (EMC). In a humid, warm climate that's usually 13–18%. You can't air dry to 8%; that's what the kiln is for. And kiln-dried slabs stored back outside will pick moisture back up.</p></div>
+</section>
+
+<!-- 08 -->
+<section id="moisture">
+  <div class="sec-head"><span class="eyebrow">08 · Measurement</span><h2>Measuring moisture</h2></div>
+  <p class="intro">Moisture content (MC) is the weight of water divided by the weight of the dry wood. Green earpod can start near or above 100%. You're taking it down to 7–9%. Three tools, from most to least trustworthy:</p>
+
+  <h3>1 · Oven-dry wafer (the truth)</h3>
+  <ol class="steps">
+    <li><div>When milling, cut a 1″-thick wafer across the slab at least 12″ from the end (the end has already dried). One per log is the minimum, one per thickness is better.</div></li>
+    <li><div>Knock off splinters and bark. Weigh it immediately on a gram scale (0.1 g). That's the <b>wet weight</b>.</div></li>
+    <li><div>Dry it in an oven at 215–220°F (101–105°C). Reweigh every few hours until the weight stops dropping. That's the <b>oven-dry weight</b>.</div></li>
+    <li><div><code>MC % = (wet − oven-dry) ÷ oven-dry × 100</code></div></li>
+  </ol>
+
+  <h3>2 · Weighing sample slabs (how you track thick stock)</h3>
+  <p>Pick 3–5 representative sample slabs per thickness and make them easy to get at in the stack. Weigh each one green with a hanging crane scale, and use the wafer MC from the same log to work out what it will weigh when bone dry. After that, every weighing gives you its MC:</p>
+  <div class="panel"><code>Oven-dry weight = green weight ÷ (1 + green MC/100)</code><code>Current MC % = (current weight ÷ oven-dry weight − 1) × 100</code>
+    <p class="small">Example: 610 lb green, wafer says 105% MC. Oven-dry weight = 610 ÷ 2.05 = 297.6 lb. Two months later it weighs 372 lb, so MC = (372 ÷ 297.6 − 1) × 100 = 25%. The journal (section 11) does this math for you.</p></div>
+  <p>The US Forest Products Lab uses this sample-board method to run commercial kilns. It averages the whole slab, core included, which no meter can do on a 4–6″ slab.</p>
+
+  <h3>3 · Moisture meters (fast, surface-biased)</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Type</th><th>Reads</th><th>Use it for</th></tr></thead>
+    <tbody>
+      <tr><td>Pin meter, short pins</td><td>¼–5/16″ deep</td><td>Quick checks on 2″ stock, final checks before sale. Reliable range is about 6–30%.</td></tr>
+      <tr><td>Pin meter + insulated hammer electrode</td><td>Down to 1–2″</td><td>Thick slabs. Drive insulated pins to ¼ of the thickness for an average reading, to ½ for the core. Take shell and core on the same spot to see the gradient.</td></tr>
+      <tr><td>Pinless (Wagner Orion etc.)</td><td>¼″ or ¾″ deep, no holes</td><td>Scanning dry slabs for wet spots and showing buyers. Needs the right specific gravity setting (start at 0.40 for earpod, then calibrate).</td></tr>
+    </tbody>
+  </table></div>
+  <ul>
+    <li>Calibrate once: take meter readings on a sample slab the same day you weigh it, and write down the offset between meter and weight-method MC.</li>
+    <li>Set the species or specific gravity correction. Most pin meters are calibrated for Douglas fir. If earpod isn't in the meter's list, use a similar-density setting and apply your offset.</li>
+    <li>Read in the same marked spots every time (circle them with a paint marker), at least 12″ from the ends, both faces.</li>
+    <li>Temperature affects pin readings. Take readings in the morning, not straight out of a 140°F kiln, or apply the meter's temperature correction.</li>
+  </ul>
+
+  <h3>What to record, every time</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Field</th><th>Example</th></tr></thead>
+    <tbody>
+      <tr><td>Date · who</td><td>2026-12-01 · JT</td></tr>
+      <tr><td>Slab ID</td><td>EP01-A-07</td></tr>
+      <tr><td>Stage · location</td><td>Air · Stack 2, layer 3</td></tr>
+      <tr><td>Weight (sample slabs)</td><td>372 lb</td></tr>
+      <tr><td>Meter shell / core</td><td>18% / 27%</td></tr>
+      <tr><td>Weather or kiln conditions</td><td>Dry week, 84°F / 60% RH</td></tr>
+      <tr><td>Defects noticed</td><td>New surface check near end, 4″</td></tr>
+    </tbody>
+  </table></div>
+  <p><b>Schedule:</b> sample slabs every 2 weeks for the first 2 months, then monthly in the yard. In the kiln, every 2–3 days. Spot-check non-sample slabs with a meter monthly and before they're sold.</p>
+</section>
+
+<!-- 09 -->
+<section id="times">
+  <div class="sec-head"><span class="eyebrow">09 · Schedule</span><h2>Drying times</h2></div>
+  <p class="intro">Rough numbers for earpod under a roof in a warm climate, then a solar kiln. Drying time grows faster than thickness: a 6″ slab takes far more than three times as long as a 2″ slab. Trust your sample-slab weights over this table.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Green cut</th><th>Air dry to ~20–25%</th><th>Solar kiln to 7–9%</th><th>Total, typical</th><th>Fits the 6-month plan?</th></tr></thead>
+    <tbody>
+      <tr><td><b>2″</b> (8/4)</td><td class="num">2–4 months</td><td class="num">2–4 weeks</td><td class="num">3–5 months</td><td><span class="pill p-dry">Yes</span></td></tr>
+      <tr><td><b>4″</b> (16/4)</td><td class="num">5–9 months</td><td class="num">1–2 months</td><td class="num">7–11 months</td><td><span class="pill p-air">Close</span></td></tr>
+      <tr><td><b>6″</b> (24/4)</td><td class="num">9–15 months</td><td class="num">2–4 months</td><td class="num">12–19 months</td><td><span class="pill p-green">No</span></td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="gantt" role="img" aria-label="Drying timeline by thickness, 0 to 20 months. 2 inch: air 2 to 4 months, kiln to 5 months. 4 inch: air 5 to 9 months, kiln to 11 months. 6 inch: air 9 to 15 months, kiln to 19 months. The 6-month mark is shown.">
+    <div class="g-row"><span class="g-lab">2″</span><div class="g-track">
+      <div class="g-bar g-air" style="left:0;width:10%"></div><div class="g-bar g-air-x" style="left:10%;width:10%"></div>
+      <div class="g-bar g-kiln" style="left:20%;width:3.5%"></div><div class="g-bar g-kiln-x" style="left:23.5%;width:1.5%"></div>
+      <div class="g-mark" style="left:30%"></div></div></div>
+    <div class="g-row"><span class="g-lab">4″</span><div class="g-track">
+      <div class="g-bar g-air" style="left:0;width:25%"></div><div class="g-bar g-air-x" style="left:25%;width:20%"></div>
+      <div class="g-bar g-kiln" style="left:45%;width:5%"></div><div class="g-bar g-kiln-x" style="left:50%;width:5%"></div>
+      <div class="g-mark" style="left:30%"></div></div></div>
+    <div class="g-row"><span class="g-lab">6″</span><div class="g-track">
+      <div class="g-bar g-air" style="left:0;width:45%"></div><div class="g-bar g-air-x" style="left:45%;width:30%"></div>
+      <div class="g-bar g-kiln" style="left:75%;width:10%"></div><div class="g-bar g-kiln-x" style="left:85%;width:10%"></div>
+      <div class="g-mark" style="left:30%"></div></div></div>
+    <div class="g-axis"><span></span><div class="g-ticks"><span style="left:0">0</span><span style="left:15%">3</span><span style="left:30%">6 mo</span><span style="left:45%">9</span><span style="left:60%">12</span><span style="left:75%">15</span><span style="left:90%">18</span><span style="left:100%">20</span></div></div>
+    <div class="legend"><span><i style="background:var(--accent);opacity:.85"></i>Air dry, fast case</span><span><i style="background:var(--accent);opacity:.35"></i>Air dry, slow case</span><span><i style="background:var(--tag)"></i>Kiln, fast</span><span><i style="background:var(--tag);opacity:.45"></i>Kiln, slow</span><span><i style="border-left:2px dashed var(--bad);width:0;border-radius:0"></i>6-month mark</span></div>
+  </div>
+
+  <ul>
+    <li><b>Faster:</b> hot dry season, steady wind, narrower slabs, sapwood-heavy slabs, 16″ sticker spacing in an uncrowded yard.</li>
+    <li><b>Slower:</b> rainy season, humid still air, wide heartwood slabs, crowded stacks, the pith slab.</li>
+    <li>Fill the kiln with 2″ stock first. The 4″ and 6″ slabs keep air drying meanwhile, which is the cheapest drying you'll get.</li>
+    <li>Thick stock can go into the solar kiln at 25–30% if you run it gently (shaded glazing, vents mostly closed, high humidity) for the first weeks. Rushing it causes internal checks (honeycomb) you won't see until you cut it.</li>
+  </ul>
+</section>
+
+<!-- 10 -->
+<section id="kiln">
+  <div class="sec-head"><span class="eyebrow">10 · Finish drying</span><h2>Solar kiln</h2></div>
+  <p class="intro">Build to the Virginia Tech solar kiln design and adjust the size for your slabs. It's a proven, cheap design: a sloped clear roof over a black absorber, insulated walls, fans that push hot air through the stack, and vents to dump the moist air.</p>
+  <div class="cols">
+    <div class="panel"><h3>Sizing</h3>
+      <ul>
+        <li>Rule of the VT design: <b>1 ft² of clear roof per 10 board feet of 1″ lumber</b>. VT plans come in 800–1,000 bf and 1,500–2,000 bf versions.</li>
+        <li>For thick slabs, this ratio gives more heat than needed, so you can load more bf per ft² of glazing, or shade part of the roof early on.</li>
+        <li>Inside width must take your widest slab plus 12″+ of air space on each side. For 60–66″ slabs that means at least 8′ inside.</li>
+        <li>Inside length = longest slab + 2–3′ for fan and baffle space.</li>
+      </ul></div>
+    <div class="panel"><h3>Build</h3>
+      <ul>
+        <li>Roof glazing: twin-wall polycarbonate (UV-rated), sloped close to your latitude, facing the equator.</li>
+        <li>Absorber under the glazing: corrugated metal painted flat black.</li>
+        <li>Walls and floor insulated (foam board, R-10 or better), interior sealed with a vapor barrier or paint.</li>
+        <li>2–4 circulation fans pushing air across the absorber and down through the stack. A baffle forces air through the stickered layers instead of over the top.</li>
+        <li>Two vents with flaps: intake low on one end, exhaust high on the other.</li>
+        <li>Big door on one end so you can load with forks.</li>
+        <li>A thermostat switch so fans run only when the kiln is warm (e.g., an Inkbird controller in cooling mode, or solar-powered fans that run with the sun).</li>
+        <li>A WiFi temperature/humidity logger inside so you can check without opening the door.</li>
+      </ul></div>
+    <div class="panel"><h3>Loading</h3>
+      <ul>
+        <li>Same sticker rules as the yard. Sample slabs where you can reach them.</li>
+        <li>Same thickness in one charge, or thick on the bottom and pulled out later.</li>
+        <li>Weight or strap the top layer.</li>
+        <li>Fill the kiln. Empty space lets air bypass the stack.</li>
+      </ul></div>
+  </div>
+
+  <h3>Operating by moisture content</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Wettest sample slab</th><th>How to run it</th></tr></thead>
+    <tbody>
+      <tr><td>Above 30%</td><td>Keep it in the yard. Solar kilns waste their best days on wet thick wood.</td></tr>
+      <tr><td>30 → 20%</td><td>Gentle. Vents mostly closed, shade cloth over part of the glazing for thick slabs, humidity inside 60–80% during the day. Check for surface checks every few days.</td></tr>
+      <tr><td>20 → 12%</td><td>Full sun. Open vents in the heat of the day when inside humidity is high, close them at night. Daytime temps 120–150°F are normal in good weather.</td></tr>
+      <tr><td>12% → target</td><td>Run it hot. Vents open more. Target 7–9% for mainland buyers (6–8% if your main market is heated NYC interiors).</td></tr>
+      <tr><td>Equalize</td><td>When the driest sample is at the target, hold until the wettest sample catches up to about 1% above target.</td></tr>
+      <tr><td>Condition</td><td>Close vents and add humidity (water pans or a mister on a timer) for 1–3 days so the dry outer shell regains a little moisture. This relieves case-hardening stress so slabs don't cup or bow when you rip or flatten them.</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="cols">
+    <div class="callout go"><strong>Sterilize before you ship</strong><p>Wood held at a core temperature of <b>133°F (56°C) for 30 minutes</b> kills insects and eggs. That's the ISPM-15 heat-treat standard. Drill a hole to the center of a thick sample slab, insert a probe thermometer, seal around it, and log the time the core holds 133°F+. Write it in the journal. Buyers and freight inspectors ask.</p></div>
+    <div class="callout"><strong>Case-hardening check (prong test)</strong><p>Crosscut a 1″ wafer from a dry test piece, cut out the center to leave a U with two prongs, and leave it overnight. Prongs pinch inward: still stressed, condition longer. Prongs stay straight: done.</p></div>
+  </div>
+</section>
+
+<!-- 11 -->
+<section id="journal">
+  <div class="sec-head"><span class="eyebrow">11 · Tool</span><h2>Slab journal</h2></div>
+  <p class="intro">Register each slab once, then log every reading against its ID. If a slab has a green weight and green MC, the journal calculates its current MC from each new weight. Otherwise it uses the meter reading.</p>
+  <div class="callout"><strong>Where the data lives</strong><p>This journal saves in this browser on this device only. With three of you, pick one master: either one person runs the journal and exports CSV weekly to a shared folder, or keep the master in a shared Google Sheet with the same columns and use this page as the field tool. Export after every session so nothing is lost.</p></div>
+
+  <div class="tool">
+    <div class="out" id="j-stats"></div>
+    <p class="example-note" id="j-example" hidden>These are example slabs so you can see how the journal works. They disappear automatically when you add your first real slab.</p>
+    <div class="tabs" role="tablist">
+      <button type="button" role="tab" id="tab-inv" aria-selected="true" data-tab="inv">Inventory</button>
+      <button type="button" role="tab" id="tab-add" aria-selected="false" data-tab="add">Add slab</button>
+      <button type="button" role="tab" id="tab-read" aria-selected="false" data-tab="read">Log reading</button>
+      <button type="button" role="tab" id="tab-data" aria-selected="false" data-tab="data">Export / import</button>
+    </div>
+
+    <div data-panel="inv">
+      <div class="fields">
+        <label for="j-filter">Filter by ID, tree, status<input id="j-filter" type="search" placeholder="EP01-A"></label>
+        <label for="j-sort">Sort<select id="j-sort"><option value="id">ID</option><option value="mc">Latest MC, wettest first</option><option value="age">Days since milled</option></select></label>
+      </div>
+      <div class="tbl"><table>
+        <thead><tr><th>ID</th><th class="r">T″</th><th class="r">W×L</th><th class="r">BF</th><th>Location</th><th class="r">Latest MC</th><th>Status</th><th class="r">Days</th><th>Readings</th></tr></thead>
+        <tbody id="j-rows"></tbody>
+      </table></div>
+      <div id="j-detail"></div>
+    </div>
+
+    <form data-panel="add" id="f-slab" hidden>
+      <div class="fields">
+        <label for="s-id">Slab ID<input id="s-id" required placeholder="EP01-A-07" autocomplete="off"></label>
+        <label for="s-tree">Tree / species<input id="s-tree" placeholder="EP01 earpod, Smith property"></label>
+        <label for="s-date">Date milled<input id="s-date" type="date" required></label>
+        <label for="s-t">Thickness green (in)<input id="s-t" type="number" step="0.125" min="0" required></label>
+        <label for="s-w">Avg width (in)<input id="s-w" type="number" step="0.5" min="0" required></label>
+        <label for="s-l">Length (in)<input id="s-l" type="number" step="0.5" min="0" required></label>
+        <label for="s-loc">Location<input id="s-loc" placeholder="Stack 2 · layer 3"></label>
+        <label for="s-gw">Green weight (lb)<input id="s-gw" type="number" step="0.5" min="0" placeholder="optional"></label>
+        <label for="s-gmc">Green MC % (wafer)<input id="s-gmc" type="number" step="0.1" min="0" placeholder="optional"></label>
+        <label for="s-sample">Sample slab?<select id="s-sample"><option value="no">No</option><option value="yes">Yes, weigh it</option></select></label>
+      </div>
+      <label for="s-notes">Notes<input id="s-notes" placeholder="Bookmatch with -08, crack at pith end, figure"></label>
+      <div class="btns"><button class="primary" type="submit">Save slab</button><span class="msg" id="s-msg"></span></div>
+    </form>
+
+    <form data-panel="read" id="f-read" hidden>
+      <div class="fields">
+        <label for="r-id">Slab ID<input id="r-id" list="r-ids" required autocomplete="off"><datalist id="r-ids"></datalist></label>
+        <label for="r-date">Date<input id="r-date" type="date" required></label>
+        <label for="r-stage">Stage<select id="r-stage"><option>Air</option><option>Kiln</option><option>Stored</option><option>Shipped</option></select></label>
+        <label for="r-who">Who<input id="r-who" placeholder="Initials"></label>
+        <label for="r-wt">Weight (lb)<input id="r-wt" type="number" step="0.5" min="0"></label>
+        <label for="r-shell">Meter shell %<input id="r-shell" type="number" step="0.1" min="0"></label>
+        <label for="r-core">Meter core %<input id="r-core" type="number" step="0.1" min="0"></label>
+        <label for="r-cond">Conditions<input id="r-cond" placeholder="Kiln 138°F / 45% RH"></label>
+      </div>
+      <label for="r-notes">Notes / defects<input id="r-notes" placeholder="Surface check 4″ near end"></label>
+      <div class="btns"><button class="primary" type="submit">Save reading</button><span class="msg" id="r-msg"></span></div>
+    </form>
+
+    <div data-panel="data" hidden>
+      <div class="btns">
+        <button type="button" id="x-dl-slabs">Download slabs.csv</button>
+        <button type="button" id="x-dl-reads">Download readings.csv</button>
+        <button type="button" id="x-copy-slabs">Copy slabs CSV</button>
+        <button type="button" id="x-copy-reads">Copy readings CSV</button>
+      </div>
+      <label for="x-text">CSV text (paste here to import, or copy from here)<textarea id="x-text" spellcheck="false"></textarea></label>
+      <div class="btns">
+        <button type="button" id="x-import">Import pasted CSV</button>
+        <label for="x-file" style="display:inline-grid">Or import a .csv file<input id="x-file" type="file" accept=".csv,text/csv"></label>
+      </div>
+      <div class="btns">
+        <button type="button" class="danger" id="x-clear">Delete all journal data</button>
+        <span id="x-confirm" hidden><b class="flag">Delete everything on this device?</b> <button type="button" class="danger" id="x-yes">Yes, delete</button> <button type="button" id="x-no">Keep it</button></span>
+      </div>
+      <p class="msg" id="x-msg"></p>
+      <p class="small">Import merges by slab ID: existing slabs are updated, readings are added. Column headers must match the export.</p>
+    </div>
+  </div>
+
+  <details>
+    <summary>Paper field sheet (print from your browser)</summary>
+    <div>
+      <p class="small">For the yard, where phones get wet. Copy it into the journal the same day.</p>
+      <div class="tbl"><table>
+        <thead><tr><th>Date</th><th>Who</th><th>Slab ID</th><th>Stage / loc</th><th>Weight lb</th><th>Shell %</th><th>Core %</th><th>Conditions</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>&nbsp;</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>&nbsp;</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>&nbsp;</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>&nbsp;</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>&nbsp;</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>&nbsp;</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </details>
+</section>
+
+<!-- 12 -->
+<section id="finish">
+  <div class="sec-head"><span class="eyebrow">12 · After drying</span><h2>Flatten &amp; seal</h2></div>
+  <p class="intro">Decide per slab: sell rough (cheapest, buyer finishes), sell flattened and sanded (best value per hour of work), or sell finished (highest price, highest labor). Most slab yards sell flattened and sanded, unfinished.</p>
+  <div class="cols">
+    <div class="panel"><h3>Flatten</h3>
+      <ul>
+        <li>Router sled with a 2–2½″ spoilboard/slab-flattening bit. Shim the slab so it can't rock; flatten one face, flip, flatten the other.</li>
+        <li>Or pay a shop with a wide-belt sander or CNC per slab. Get a price per square foot before you commit.</li>
+        <li>Sand 80 → 120 → 180. Earpod's tension wood fuzzes; a light raise-the-grain wipe and re-sand at 180 helps.</li>
+        <li>Clean the bark edge with a wire brush or drawknife. Loose bark falls off in transit anyway.</li>
+      </ul></div>
+    <div class="panel"><h3>Cracks and voids</h3>
+      <ul>
+        <li><b>Bowties</b> (butterfly keys) across cracks, installed only after the slab is dry. Router template plus a chisel; contrasting wood sells.</li>
+        <li>Fill voids with slow-cure or deep-pour epoxy, tinted black or clear. Tape the back of through-cracks.</li>
+        <li>Stabilize punky spots with thin penetrating epoxy.</li>
+      </ul></div>
+    <div class="panel"><h3>Sealing for sale</h3>
+      <ul>
+        <li><b>Unfinished slabs:</b> one coat of dewaxed shellac or a light sanding sealer slows moisture pickup in transit and shows the color. Tell buyers what's on it.</li>
+        <li><b>Finished slabs:</b> hardwax oils (Rubio Monocoat, Osmo Polyx) are one-day finishes buyers like. Tables that get heavy use: a catalyzed or water-based polyurethane.</li>
+        <li>Finish both faces equally, or the slab can cup.</li>
+        <li>Dry slabs stored outdoors regain moisture. Keep them in the kiln, an enclosed shed, or shrink-wrapped until they ship.</li>
+      </ul></div>
+  </div>
+</section>
+
+<!-- 13 -->
+<section id="grade">
+  <div class="sec-head"><span class="eyebrow">13 · Sales</span><h2>Grade &amp; price</h2></div>
+  <p class="intro">Slabs sell by board foot at the low end and by the piece at the high end. Width drives price the most: a single slab over 48″ wide is rare and can be priced as a one-off tabletop.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Grade</th><th>What it is</th><th>How to sell it</th></tr></thead>
+    <tbody>
+      <tr><td><b>A · Showpiece</b></td><td>40″+ wide, 8′+ long, clean, figure or strong sap/heart contrast, flat and dry. Bookmatched pairs.</td><td>Priced by the piece. Pro photos, video, listed individually.</td></tr>
+      <tr><td><b>B · Table slab</b></td><td>24–40″ wide, dining/desk length, minor cracks that bowtie well.</td><td>Board foot price with a width premium. The bulk of revenue.</td></tr>
+      <tr><td><b>C · Shorts &amp; narrow</b></td><td>Under 24″ wide, under 5′, benches, shelves, coffee tables.</td><td>Board foot price, bundle deals, makers and hobbyists.</td></tr>
+      <tr><td><b>D · Offcuts</b></td><td>Cookies, pieces with rot or big checks.</td><td>Turning blanks, cutting boards, charcuterie, or firewood.</td></tr>
+    </tbody>
+  </table></div>
+  <div class="callout"><strong>Get real comps before you price</strong><p>Slab prices swing widely by city, width and finish. Before anything ships, collect 10 current listings of parota / guanacaste slabs in each target city (slab yards, Facebook Marketplace, Etsy, Craigslist). Write down width, length, thickness, finish, and price, and compute $/bf. SoCal already has a steady supply of Mexican parota, so wide, dry, flattened slabs are how you stand out there.</p></div>
+
+  <div class="tool" id="bfcalc">
+    <h3>Board foot &amp; price calculator</h3>
+    <div class="fields">
+      <label for="b-t">Thickness (in)<input id="b-t" type="number" value="2.25" step="0.125" min="0"></label>
+      <label for="b-w1">Width end 1 (in)<input id="b-w1" type="number" value="38" step="0.5" min="0"></label>
+      <label for="b-w2">Width middle (in)<input id="b-w2" type="number" value="41" step="0.5" min="0"></label>
+      <label for="b-w3">Width end 2 (in)<input id="b-w3" type="number" value="36" step="0.5" min="0"></label>
+      <label for="b-l">Length (in)<input id="b-l" type="number" value="118" step="0.5" min="0"></label>
+      <label for="b-p">Price per BF ($)<input id="b-p" type="number" value="22" step="1" min="0"></label>
+      <label for="b-dd">Dry density (lb/ft³)<input id="b-dd" type="number" value="28" step="1" min="10"></label>
+    </div>
+    <div class="out" id="b-out"></div>
+    <p class="small">Average the three widths measured inside the bark. Sample price is a placeholder, not a quote; replace it with your comps.</p>
+  </div>
+
+  <h3>Listing checklist</h3>
+  <ul class="checklist">
+    <li>Full-slab photo both faces in daylight, one wet-looking photo (wipe with mineral spirits), close-ups of figure and any defect.</li>
+    <li>ID, species (Parota / Guanacaste / Earpod), thickness, length, width at both ends and middle, board feet.</li>
+    <li>Final MC with the date measured, and "kiln dried and heat treated 133°F core".</li>
+    <li>Finish state: rough, flattened, sanded to 180, sealed with ____.</li>
+    <li>Pickup location and freight options.</li>
+  </ul>
+</section>
+
+<!-- 14 -->
+<section id="ship">
+  <div class="sec-head"><span class="eyebrow">14 · Logistics</span><h2>Container to market</h2></div>
+  <p class="intro">A full container only makes sense when the slabs are dry, sorted, photographed, and mostly pre-sold or listed. Ship green or half-dry wood in a closed steel box and you'll open it to a container of mold.</p>
+
+  <div class="tbl"><table>
+    <thead><tr><th>Container</th><th>Inside (L × W × H)</th><th>Door</th><th>Realistic slab load</th><th>Weight at ~2.3 lb/bf</th></tr></thead>
+    <tbody>
+      <tr><td>20′ standard</td><td class="num">19′4″ × 7′8″ × 7′10″</td><td class="num">7′8″ × 7′6″</td><td class="num">~4,000–6,500 bf</td><td class="num">~9,000–15,000 lb</td></tr>
+      <tr><td>40′ standard</td><td class="num">39′6″ × 7′8″ × 7′10″</td><td class="num">7′8″ × 7′6″</td><td class="num">~9,000–13,000 bf</td><td class="num">~21,000–30,000 lb</td></tr>
+      <tr><td>40′ high cube</td><td class="num">39′6″ × 7′8″ × 8′10″</td><td class="num">7′8″ × 8′5″</td><td class="num">~10,000–15,000 bf</td><td class="num">~23,000–35,000 lb</td></tr>
+    </tbody>
+  </table></div>
+  <p class="small">Live-edge slabs pack poorly compared with lumber, so these loads are well under the box's solid volume. A 66″ wide slab fits the 7′8″ door lying flat. Road weight limits usually cap a 40′ box at about 42,000–44,000 lb of cargo; dry earpod will fill the space before it hits that. Confirm with your forwarder.</p>
+
+  <h3>Packing</h3>
+  <ul>
+    <li>Only slabs at target MC, verified with a meter on every slab going in. Record the reading in the journal with stage "Shipped".</li>
+    <li>Bundle by grade and size on 4×4 skids with dry stickers, strapped, so they can be forklifted at the other end.</li>
+    <li>Stretch-wrap or cover with moving blankets under the straps. Protect live edges and corners.</li>
+    <li>Container desiccant strips on the walls. Ocean containers "rain" from condensation when they cross temperature zones.</li>
+    <li>Block and brace so nothing can shift. Load heavy bundles low and centered.</li>
+    <li>Packing list: every ID in the box with dimensions, bf, grade, photo link. That list is also your sales sheet.</li>
+  </ul>
+
+  <h3>Paperwork and rules</h3>
+  <ul>
+    <li><b>If you're in Hawaii or another island:</b> ocean freight to the mainland is by Jones Act carriers only (Matson, Pasha). Call the USDA APHIS Plant Protection and Quarantine office before you book and ask what they need for kiln-dried hardwood lumber going to the mainland. Keep your heat-treatment log.</li>
+    <li><b>On the mainland:</b> a container on a truck or rail (or a flatbed with tarps) is a normal domestic freight move. Get quotes from a freight broker.</li>
+    <li>Insure the load at declared value.</li>
+    <li>Get at least three quotes, door to door, including drayage at both ends and what happens if the box sits (demurrage and per-diem charges add up fast).</li>
+  </ul>
+
+  <h3>Which city</h3>
+  <div class="cols">
+    <div class="panel"><h3>Los Angeles</h3>
+      <p>Largest furniture maker and interior design market on the West Coast. Many slab yards already sell parota, so price pressure is real.</p>
+      <p class="small">Strong for: volume sales to a slab yard, wide A-grade pieces to designers. Cheapest freight from Hawaii.</p></div>
+    <div class="panel"><h3>San Diego</h3>
+      <p>Smaller market, closest to the Mexican parota supply. Lowest prices of the three for common slabs.</p>
+      <p class="small">Strong for: a quick wholesale sale if that's the priority.</p></div>
+    <div class="panel"><h3>New York City</h3>
+      <p>Highest retail prices and less parota on the market. Also the most expensive freight, warehouse space and delivery.</p>
+      <p class="small">Strong for: A-grade and bookmatched slabs sold to designers and custom furniture shops. Target MC 6–8%.</p></div>
+  </div>
+
+  <h3>Ways to sell a container</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Option</th><th>Price</th><th>Speed</th><th>Your work</th></tr></thead>
+    <tbody>
+      <tr><td>Sell the whole container to a slab yard or importer, before it ships</td><td>Lowest $/bf</td><td>Fastest, least risk</td><td>Packing list, photos, samples</td></tr>
+      <tr><td>Pre-sell the A-grade individually, wholesale the rest</td><td>Mixed</td><td>Medium</td><td>Listings for top slabs</td></tr>
+      <tr><td>Rent short-term warehouse space and hold a weekend slab sale / sealed-bid auction</td><td>High for top pieces</td><td>1–3 months</td><td>Someone on site, marketing, delivery</td></tr>
+      <tr><td>Consignment with a slab gallery or furniture maker</td><td>Good, minus 25–50% commission</td><td>Slow</td><td>Low</td></tr>
+    </tbody>
+  </table></div>
+  <p>For a "highest bidder" sale: send the packing list with photos to 10–20 slab yards, furniture makers and designers in the target city 4–6 weeks before the box lands, set a bid deadline, and require a deposit to hold. Sell before the container arrives and you avoid paying warehouse rent.</p>
+</section>
+
+<!-- 15 -->
+<section id="deal">
+  <div class="sec-head"><span class="eyebrow">15 · Partnership</span><h2>The 3-way deal</h2></div>
+  <p class="intro">Three partners, a tree owner, a year or more of drying, and a container of wood worth real money. Write it down before milling day, and have each person sign.</p>
+  <div class="cols">
+    <div class="panel"><h3>With the tree owners</h3>
+      <ul class="checklist">
+        <li>Who owns the slabs: you, them, or a split (e.g., they keep 2 slabs of their choice, or a % of sales).</li>
+        <li>Milling fee, if any, and who pays for tree removal and hauling.</li>
+        <li>Access to their property, how long logs can sit there, cleanup.</li>
+        <li>Liability for injuries and damage on site.</li>
+      </ul></div>
+    <div class="panel"><h3>Between the three of you</h3>
+      <ul class="checklist">
+        <li>Who puts in money (bar, chain, saw, kiln, roof, fuel, shipping) and who puts in labor.</li>
+        <li>How costs are paid back: usually all receipts reimbursed first, then profit split.</li>
+        <li>Profit split: equal thirds, or weighted by money and hours.</li>
+        <li>Who can set prices and accept offers, and the lowest price anyone can take without asking.</li>
+        <li>What happens if someone leaves, or if the container doesn't sell.</li>
+        <li>One shared spreadsheet or ledger for every expense and sale, with receipt photos.</li>
+      </ul></div>
+  </div>
+
+  <div class="tool" id="split">
+    <h3>Split calculator</h3>
+    <div class="fields">
+      <label for="p-rev">Total sales ($)<input id="p-rev" type="number" value="60000" step="100" min="0"></label>
+      <label for="p-own">Tree owner share (% of sales)<input id="p-own" type="number" value="10" step="1" min="0" max="100"></label>
+      <label for="p-a">Partner A costs paid ($)<input id="p-a" type="number" value="4200" step="50" min="0"></label>
+      <label for="p-b">Partner B costs paid ($)<input id="p-b" type="number" value="2600" step="50" min="0"></label>
+      <label for="p-c">Partner C costs paid ($)<input id="p-c" type="number" value="1800" step="50" min="0"></label>
+      <label for="p-ship">Shared costs from sales ($)<input id="p-ship" type="number" value="9500" step="50" min="0"></label>
+    </div>
+    <div class="out" id="p-out"></div>
+    <p class="small">Order used: tree owner's share off the top, then shared costs paid from sales (freight, warehouse, commissions), then each partner reimbursed for what they paid, then the rest in equal thirds. Example numbers only.</p>
+  </div>
+  <p class="small">This is a planning checklist, not legal or tax advice. For the amounts involved, an hour with a local attorney or accountant to set up the agreement is money well spent.</p>
+</section>
+
+<!-- 16 -->
+<section id="gear">
+  <div class="sec-head"><span class="eyebrow">16 · Shopping</span><h2>Gear list</h2></div>
+  <p class="intro">Links open Amazon searches for each item so you can compare current sellers and prices. Stickers, roofing, lumber for the kiln frame, and polycarbonate are usually cheaper at a local building supplier.</p>
+  <div class="gear">
+    <div class="panel"><h3>Moisture</h3><ul>
+      <li><a href="https://www.amazon.com/s?k=Wagner+Meters+Orion+930+moisture+meter" target="_blank" rel="noopener">Wagner Orion 930 pinless meter</a><span class="small">Two depths (¼″ and ¾″), specific gravity setting. Good for scanning dry slabs.</span></li>
+      <li><a href="https://www.amazon.com/s?k=Delmhorst+J-2000+wood+moisture+meter" target="_blank" rel="noopener">Delmhorst J-2000 pin meter</a><span class="small">Pro pin meter with species corrections; accepts external electrodes.</span></li>
+      <li><a href="https://www.amazon.com/s?k=moisture+meter+hammer+electrode+insulated+pins" target="_blank" rel="noopener">Hammer electrode with insulated pins</a><span class="small">For shell and core readings on 4–6″ slabs. Match the connector to your meter.</span></li>
+      <li><a href="https://www.amazon.com/s?k=Lignomat+mini-Ligno+moisture+meter" target="_blank" rel="noopener">Lignomat Mini-Ligno</a><span class="small">Alternative pro pin meter with species settings.</span></li>
+      <li><a href="https://www.amazon.com/s?k=General+Tools+MMD4E+moisture+meter" target="_blank" rel="noopener">General Tools MMD4E</a><span class="small">Budget pin meter. One per person for quick checks.</span></li>
+      <li><a href="https://www.amazon.com/s?k=digital+crane+scale+1000+lb" target="_blank" rel="noopener">Hanging crane scale, 1,000 lb</a><span class="small">Weighs sample slabs from a tripod, forks, or hoist. Get 2,000 lb for 6″ stock.</span></li>
+      <li><a href="https://www.amazon.com/s?k=digital+scale+0.1g+3000g" target="_blank" rel="noopener">Gram scale, 0.1 g, 3 kg capacity</a><span class="small">For oven-dry wafers.</span></li>
+    </ul></div>
+
+    <div class="panel"><h3>Milling</h3><ul>
+      <li><a href="https://www.amazon.com/s?k=Granberg+G777+Alaskan+chainsaw+mill+MK-IV" target="_blank" rel="noopener">Granberg G777 Alaskan MK-IV</a><span class="small">Takes bars up to 84″, if you'd rather buy than build.</span></li>
+      <li><a href="https://www.amazon.com/s?k=.404+ripping+chain+chainsaw+mill" target="_blank" rel="noopener">.404 ripping chain</a><span class="small">Buy loops sized for your 78″ bar (count drive links on the bar).</span></li>
+      <li><a href="https://www.amazon.com/s?k=Granberg+auxiliary+bar+oiler+kit" target="_blank" rel="noopener">Auxiliary bar oiler kit</a><span class="small">Oils the nose end of the long bar.</span></li>
+      <li><a href="https://www.amazon.com/s?k=chainsaw+slabbing+rail+alaskan+mill+guide" target="_blank" rel="noopener">Slabbing rails / first-cut guide</a><span class="small">Or use straight 2×10s or an aluminum ladder.</span></li>
+      <li><a href="https://www.amazon.com/s?k=Granberg+File-N-Joint+chain+sharpener" target="_blank" rel="noopener">Bar-mounted chain sharpener</a><span class="small">Consistent angles on ripping chain. Plus a .404 file kit.</span></li>
+      <li><a href="https://www.amazon.com/s?k=felling+wedges+plastic+set" target="_blank" rel="noopener">Plastic felling wedges</a><span class="small">Keep the kerf open behind the bar.</span></li>
+      <li><a href="https://www.amazon.com/s?k=cant+hook+log+peavey" target="_blank" rel="noopener">Cant hook / peavey</a><span class="small">Rolling and positioning the log.</span></li>
+    </ul></div>
+
+    <div class="panel"><h3>Safety</h3><ul>
+      <li><a href="https://www.amazon.com/s?k=chainsaw+chaps" target="_blank" rel="noopener">Chainsaw chaps</a><span class="small">For each person on the saw.</span></li>
+      <li><a href="https://www.amazon.com/s?k=forestry+helmet+face+shield+ear+muffs" target="_blank" rel="noopener">Forestry helmet with mesh face shield and muffs</a></li>
+      <li><a href="https://www.amazon.com/s?k=3M+6502QL+respirator+P100+filters" target="_blank" rel="noopener">Half-face respirator with P100 filters</a><span class="small">Earpod dust is an irritant. Use it when sanding and flattening.</span></li>
+      <li><a href="https://www.amazon.com/s?k=safety+glasses+anti+fog" target="_blank" rel="noopener">Safety glasses</a></li>
+      <li><a href="https://www.amazon.com/s?k=cut+resistant+work+gloves" target="_blank" rel="noopener">Work gloves</a></li>
+      <li><a href="https://www.amazon.com/s?k=steel+toe+boots+logging" target="_blank" rel="noopener">Steel-toe boots</a><span class="small">You're moving 500+ lb slabs.</span></li>
+    </ul></div>
+
+    <div class="panel"><h3>Sealing &amp; labeling</h3><ul>
+      <li><a href="https://www.amazon.com/s?k=Anchorseal+2+end+grain+sealer" target="_blank" rel="noopener">Anchorseal 2 end-grain sealer</a><span class="small">Buy the 5-gallon pail.</span></li>
+      <li><a href="https://www.amazon.com/s?k=numbered+aluminum+tree+tags" target="_blank" rel="noopener">Aluminum tags</a><span class="small">Blank or pre-numbered.</span></li>
+      <li><a href="https://www.amazon.com/s?k=metal+letter+number+stamp+set" target="_blank" rel="noopener">Letter and number punch set</a><span class="small">For stamping IDs into the tags.</span></li>
+      <li><a href="https://www.amazon.com/s?k=aluminum+nails" target="_blank" rel="noopener">Aluminum nails</a><span class="small">Never steel in a slab.</span></li>
+      <li><a href="https://www.amazon.com/s?k=Sakura+Solid+Marker+paint+stick" target="_blank" rel="noopener">Solid paint markers</a><span class="small">Write on wet wood and end sealer.</span></li>
+      <li><a href="https://www.amazon.com/s?k=lumber+crayon" target="_blank" rel="noopener">Lumber crayons</a></li>
+      <li><a href="https://www.amazon.com/s?k=waterproof+QR+code+labels" target="_blank" rel="noopener">Weatherproof QR labels</a><span class="small">Optional.</span></li>
+    </ul></div>
+
+    <div class="panel"><h3>Yard &amp; kiln</h3><ul>
+      <li><a href="https://www.amazon.com/s?k=Govee+WiFi+thermometer+hygrometer" target="_blank" rel="noopener">WiFi temperature/humidity logger</a><span class="small">Kiln conditions on your phone.</span></li>
+      <li><a href="https://www.amazon.com/s?k=Inkbird+ITC-308+temperature+controller" target="_blank" rel="noopener">Inkbird temperature controller</a><span class="small">Switches the kiln fans on above a set temperature (cooling mode).</span></li>
+      <li><a href="https://www.amazon.com/s?k=probe+thermometer+long+stainless+probe+alarm" target="_blank" rel="noopener">Probe thermometer</a><span class="small">For the 133°F core heat-treat check.</span></li>
+      <li><a href="https://www.amazon.com/s?k=high+velocity+air+circulator+fan+20+inch" target="_blank" rel="noopener">Circulation fans</a><span class="small">Must tolerate heat and humidity.</span></li>
+      <li><a href="https://www.amazon.com/s?k=solar+powered+attic+fan" target="_blank" rel="noopener">Solar-powered fans</a><span class="small">Off-grid kiln option: they run when the sun heats it.</span></li>
+      <li><a href="https://www.amazon.com/s?k=shade+cloth+50+percent" target="_blank" rel="noopener">Shade cloth, 50%</a><span class="small">For the yard's sunny side and to throttle the kiln.</span></li>
+      <li><a href="https://www.amazon.com/s?k=twin+wall+polycarbonate+sheet+UV" target="_blank" rel="noopener">Twin-wall polycarbonate</a><span class="small">Compare against a local greenhouse supplier.</span></li>
+      <li><a href="https://www.amazon.com/s?k=ratchet+straps+heavy+duty" target="_blank" rel="noopener">Ratchet straps</a><span class="small">Hold down stack tops and bundles.</span></li>
+    </ul></div>
+
+    <div class="panel"><h3>Finishing &amp; shipping</h3><ul>
+      <li><a href="https://www.amazon.com/s?k=router+slab+flattening+bit+2+inch" target="_blank" rel="noopener">Slab flattening router bit</a></li>
+      <li><a href="https://www.amazon.com/s?k=router+sled+slab+flattening+jig" target="_blank" rel="noopener">Router sled kit</a></li>
+      <li><a href="https://www.amazon.com/s?k=bowtie+butterfly+inlay+router+template" target="_blank" rel="noopener">Bowtie inlay template</a></li>
+      <li><a href="https://www.amazon.com/s?k=deep+pour+epoxy+resin+wood" target="_blank" rel="noopener">Deep-pour epoxy</a><span class="small">Voids and cracks.</span></li>
+      <li><a href="https://www.amazon.com/s?k=Rubio+Monocoat+oil+plus+2C" target="_blank" rel="noopener">Rubio Monocoat Oil Plus 2C</a></li>
+      <li><a href="https://www.amazon.com/s?k=Osmo+Polyx+oil" target="_blank" rel="noopener">Osmo Polyx-Oil</a></li>
+      <li><a href="https://www.amazon.com/s?k=Zinsser+SealCoat+dewaxed+shellac" target="_blank" rel="noopener">Dewaxed shellac (SealCoat)</a><span class="small">Light seal on unfinished slabs.</span></li>
+      <li><a href="https://www.amazon.com/s?k=pallet+stretch+wrap+film" target="_blank" rel="noopener">Stretch wrap</a></li>
+      <li><a href="https://www.amazon.com/s?k=shipping+container+desiccant+strips" target="_blank" rel="noopener">Container desiccant strips</a></li>
+    </ul></div>
+  </div>
+</section>
+
+<!-- 17 -->
+<section id="sources">
+  <div class="sec-head"><span class="eyebrow">17 · Reference</span><h2>Sources</h2></div>
+  <ul>
+    <li><a href="https://www.fpl.fs.usda.gov/documnts/fplgtr/fplgtr117.pdf" target="_blank" rel="noopener">Air Drying of Lumber (USDA FPL-GTR-117)</a>: yard layout, stickers, stacking, drying rates.</li>
+    <li><a href="https://www.fpl.fs.usda.gov/documnts/fplgtr/fplgtr118.pdf" target="_blank" rel="noopener">Drying Hardwood Lumber (USDA FPL-GTR-118)</a>: sample boards, kiln schedules, defects, conditioning.</li>
+    <li><a href="https://www.pubs.ext.vt.edu/420/420-030/420-030.html" target="_blank" rel="noopener">Design and Operation of a Solar-Heated Dry Kiln (Virginia Tech Extension 420-030)</a>: the kiln design and sizing rule.</li>
+    <li><a href="https://sbio.vt.edu/for-the-community/vt-solar-kiln.html" target="_blank" rel="noopener">Virginia Tech solar kiln page</a>: plans for the 800–1,000 bf and 1,500–2,000 bf versions.</li>
+    <li><a href="https://www.fpl.fs.usda.gov/documnts/TechSheets/Chudnoff/TropAmerican/htmlDocs_tropamerican/Enterolobiumcyclocarpum.html" target="_blank" rel="noopener">Enterolobium cyclocarpum tech sheet (USDA FPL)</a>: density, shrinkage, drying, dust.</li>
+    <li><a href="https://www.wood-database.com/guanacaste/" target="_blank" rel="noopener">Guanacaste on The Wood Database</a>: photos and working notes.</li>
+    <li><a href="https://www.aphis.usda.gov/plant-health" target="_blank" rel="noopener">USDA APHIS Plant Protection and Quarantine</a>: rules for moving wood from Hawaii and territories.</li>
+  </ul>
+</section>
+
+</main>
+</div>
+
+<footer><div>Earpod Slab Yard · field guide for our crew. Numbers are planning estimates; your sample slabs and moisture readings decide when wood is ready.</div></footer>
+
+<script>
+(function(){
+  "use strict";
+  var $ = function(id){ return document.getElementById(id); };
+  var num = function(id){ var v = parseFloat($(id).value); return isFinite(v) ? v : 0; };
+  var fmt = function(n, d){ return Number(n).toLocaleString("en-US", {minimumFractionDigits: d||0, maximumFractionDigits: d||0}); };
+  var esc = function(s){ return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]; }); };
+  var stat = function(v, l){ return '<div class="stat"><b>' + v + '</b><span>' + l + '</span></div>'; };
+
+  /* ---------- cut planner ---------- */
+  function planCuts(){
+    var D = num("cp-d"), L = num("cp-l"), t = num("cp-t"), k = num("cp-k"), minW = num("cp-min"), mill = num("cp-mill"), gd = num("cp-gd");
+    var R = D/2, rows = [], out = $("cp-out"), body = $("cp-rows");
+    if (!(R > 0 && t > 0 && L > 0)) { out.innerHTML = ""; body.innerHTML = ""; return; }
+    var chord = function(y){ return Math.abs(y) >= R ? 0 : 2*Math.sqrt(R*R - y*y); };
+    // first face: highest y where chord >= minW
+    var yTop = Math.sqrt(Math.max(R*R - (minW/2)*(minW/2), 0));
+    var y = yTop, i = 0, bfTot = 0, wtTot = 0;
+    while (y - t >= -yTop && i < 200) {
+      var top = y, bot = y - t, mid = y - t/2;
+      var w = chord(mid), wMax = Math.max(chord(top), chord(bot), (top > 0 && bot < 0) ? D : 0);
+      var bf = t * w * L*12 / 144;
+      var wt = (t/12) * (w/12) * L * gd;
+      var note = [];
+      if (top >= 0 && bot <= 0) note.push("Pith slab");
+      if (wMax > mill) note.push('<span class="flag">Wider than mill (' + fmt(wMax,0) + '″)</span>');
+      i++; bfTot += bf; wtTot += wt;
+      rows.push('<tr><td>' + String(i).padStart(2,"0") + '</td><td class="r">' + fmt(w,1) + '</td><td class="r">' + fmt(bf,0) + '</td><td class="r">' + fmt(wt,0) + '</td><td>' + note.join(" · ") + '</td></tr>');
+      y = bot - k;
+    }
+    body.innerHTML = rows.join("") || '<tr><td colspan="5">No slabs fit. Check the numbers.</td></tr>';
+    out.innerHTML = stat(i, "slabs from this log") + stat(fmt(bfTot,0), "board feet, green") + stat(fmt(wtTot/2000,1) + " t", "green weight (short tons)") + stat(fmt(D,0) + "″ / " + fmt(mill,0) + "″", "log vs. mill width");
+  }
+  ["cp-d","cp-l","cp-t","cp-k","cp-min","cp-mill","cp-gd"].forEach(function(id){ $(id).addEventListener("input", planCuts); });
+  planCuts();
+
+  /* ---------- board feet & price ---------- */
+  function bfCalc(){
+    var t = num("b-t"), w = (num("b-w1") + num("b-w2") + num("b-w3"))/3, l = num("b-l"), p = num("b-p"), dd = num("b-dd");
+    var bf = t*w*l/144, wt = (t*w*l/1728)*dd;
+    $("b-out").innerHTML = stat(fmt(bf,1), "board feet") + stat(fmt(w,1) + "″", "average width") + stat("$" + fmt(bf*p,0), "at $" + fmt(p,0) + "/bf") + stat(fmt(wt,0) + " lb", "dry weight, approx.");
+  }
+  ["b-t","b-w1","b-w2","b-w3","b-l","b-p","b-dd"].forEach(function(id){ $(id).addEventListener("input", bfCalc); });
+  bfCalc();
+
+  /* ---------- partner split ---------- */
+  function split(){
+    var rev = num("p-rev"), own = rev*num("p-own")/100, shared = num("p-ship");
+    var a = num("p-a"), b = num("p-b"), c = num("p-c");
+    var afterOwner = rev - own - shared;
+    var reimb = a + b + c;
+    var profit = afterOwner - reimb;
+    var third = profit/3;
+    var money = function(n){ return (n < 0 ? "−$" : "$") + fmt(Math.abs(n),0); };
+    var html = stat(money(own), "tree owner") + stat(money(profit), profit < 0 ? "loss after costs" : "profit to split");
+    html += stat(money(a + third), "Partner A total (" + money(a) + " back + " + money(third) + ")");
+    html += stat(money(b + third), "Partner B total (" + money(b) + " back + " + money(third) + ")");
+    html += stat(money(c + third), "Partner C total (" + money(c) + " back + " + money(third) + ")");
+    $("p-out").innerHTML = html;
+  }
+  ["p-rev","p-own","p-a","p-b","p-c","p-ship"].forEach(function(id){ $(id).addEventListener("input", split); });
+  split();
+
+  /* ---------- journal ---------- */
+  var KEY = "earpod-slab-journal-v1";
+  var today = function(){ var d = new Date(); return d.getFullYear() + "-" + String(d.getMonth()+1).padStart(2,"0") + "-" + String(d.getDate()).padStart(2,"0"); };
+  var addDays = function(iso, n){ var d = new Date(iso + "T12:00:00"); d.setDate(d.getDate()+n); return d.toISOString().slice(0,10); };
+  function sample(){
+    var m = addDays(today(), -120);
+    return {
+      example: true,
+      slabs: [
+        {id:"EP01-A-01",tree:"EP01 earpod",date:m,t:2.5,w:34,l:120,loc:"Stack 1 · top",gw:"",gmc:"",sample:"no",notes:"Cap slab, lots of sapwood"},
+        {id:"EP01-A-07",tree:"EP01 earpod",date:m,t:2.5,w:61,l:122,loc:"Stack 1 · layer 3",gw:610,gmc:105,sample:"yes",notes:"Bookmatch with -08"},
+        {id:"EP01-A-08",tree:"EP01 earpod",date:m,t:2.5,w:62,l:122,loc:"Stack 1 · layer 3",gw:"",gmc:"",sample:"no",notes:"Bookmatch with -07"},
+        {id:"EP01-A-12",tree:"EP01 earpod",date:m,t:4.5,w:65,l:120,loc:"Stack 2 · bottom",gw:1180,gmc:105,sample:"yes",notes:"Near pith, watch for crack"},
+        {id:"EP01-A-15",tree:"EP01 earpod",date:m,t:6.75,w:63,l:120,loc:"Stack 3 · bottom",gw:"",gmc:"",sample:"no",notes:""}
+      ],
+      reads: [
+        {id:"EP01-A-07",date:addDays(m,14),stage:"Air",who:"JT",wt:540,shell:"",core:"",cond:"",notes:""},
+        {id:"EP01-A-07",date:addDays(m,60),stage:"Air",who:"JT",wt:420,shell:"",core:"",cond:"Dry month",notes:""},
+        {id:"EP01-A-07",date:addDays(m,112),stage:"Kiln",who:"AB",wt:338,shell:"",core:"",cond:"Kiln 136°F / 48% RH",notes:"Into kiln"},
+        {id:"EP01-A-12",date:addDays(m,60),stage:"Air",who:"JT",wt:960,shell:"",core:"",cond:"",notes:""},
+        {id:"EP01-A-12",date:addDays(m,112),stage:"Air",who:"AB",wt:815,shell:24,core:41,cond:"",notes:"Small end check"},
+        {id:"EP01-A-01",date:addDays(m,112),stage:"Air",who:"AB",wt:"",shell:17,core:19,cond:"",notes:""},
+        {id:"EP01-A-08",date:addDays(m,112),stage:"Kiln",who:"AB",wt:"",shell:13,core:16,cond:"",notes:""}
+      ]
+    };
+  }
+  var db;
+  function load(){
+    try { var raw = localStorage.getItem(KEY); if (raw) { db = JSON.parse(raw); } } catch(e) { db = null; }
+    if (!db || !Array.isArray(db.slabs)) db = sample();
+  }
+  function save(){ try { localStorage.setItem(KEY, JSON.stringify(db)); } catch(e) {} }
+  function dropExample(){ if (db.example) { db = {slabs: [], reads: []}; } }
+
+  function mcOf(slab, r){
+    var gw = parseFloat(slab.gw), gmc = parseFloat(slab.gmc), w = parseFloat(r.wt);
+    if (gw > 0 && gmc >= 0 && w > 0) { var od = gw/(1+gmc/100); return {v:(w/od - 1)*100, src:"weight"}; }
+    var s = parseFloat(r.shell), c = parseFloat(r.core);
+    if (isFinite(s) && isFinite(c)) return {v:(s+c)/2, src:"meter avg"};
+    if (isFinite(c)) return {v:c, src:"meter core"};
+    if (isFinite(s)) return {v:s, src:"meter shell"};
+    return null;
+  }
+  function latest(slab){
+    var rs = db.reads.filter(function(r){ return r.id === slab.id; }).sort(function(a,b){ return a.date < b.date ? -1 : 1; });
+    for (var i = rs.length-1; i >= 0; i--) { var m = mcOf(slab, rs[i]); if (m) return {mc:m, r:rs[i], n:rs.length, all:rs}; }
+    return {mc:null, r:null, n:rs.length, all:rs};
+  }
+  function status(mc){
+    if (!mc) return '<span class="pill p-none">No reading</span>';
+    var v = mc.v;
+    if (v > 25) return '<span class="pill p-green">Air drying</span>';
+    if (v > 12) return '<span class="pill p-air">Kiln ready</span>';
+    if (v > 9) return '<span class="pill p-kiln">Finishing</span>';
+    return '<span class="pill p-dry">Dry</span>';
+  }
+  var days = function(iso){ return iso ? Math.max(0, Math.round((new Date(today()+"T12:00:00") - new Date(iso+"T12:00:00"))/864e5)) : ""; };
+  var bfOf = function(s){ return (parseFloat(s.t)||0)*(parseFloat(s.w)||0)*(parseFloat(s.l)||0)/144; };
+  var openId = null;
+
+  function render(){
+    $("j-example").hidden = !db.example;
+    var q = $("j-filter").value.trim().toLowerCase(), sort = $("j-sort").value;
+    var list = db.slabs.map(function(s){ var L = latest(s); return {s:s, L:L}; });
+    var counts = {total:list.length, dry:0, bf:0, wet:0};
+    list.forEach(function(x){ counts.bf += bfOf(x.s); if (x.L.mc && x.L.mc.v <= 9) counts.dry++; if (x.L.mc && x.L.mc.v > 25) counts.wet++; });
+    $("j-stats").innerHTML = stat(counts.total, "slabs registered") + stat(fmt(counts.bf,0), "board feet (green dims)") + stat(counts.wet, "still over 25%") + stat(counts.dry, "dry, 9% or less");
+    if (q) list = list.filter(function(x){ return (x.s.id + " " + x.s.tree + " " + x.s.loc + " " + status(x.L.mc).replace(/<[^>]+>/g,"")).toLowerCase().indexOf(q) >= 0; });
+    list.sort(function(a,b){
+      if (sort === "mc") return (b.L.mc ? b.L.mc.v : -1) - (a.L.mc ? a.L.mc.v : -1);
+      if (sort === "age") return days(b.s.date) - days(a.s.date);
+      return a.s.id < b.s.id ? -1 : 1;
+    });
+    $("j-rows").innerHTML = list.map(function(x){
+      var s = x.s, m = x.L.mc;
+      return '<tr><td class="mono"><b>' + esc(s.id) + '</b>' + (s.sample === "yes" ? ' <span class="small">sample</span>' : '') + '</td><td class="r">' + esc(s.t) + '</td><td class="r">' + esc(s.w) + '×' + esc(s.l) + '</td><td class="r">' + fmt(bfOf(s),0) + '</td><td>' + esc(s.loc) + '</td><td class="r">' + (m ? fmt(m.v,1) + '%<br><span class="small">' + m.src + '</span>' : '–') + '</td><td>' + status(m) + '</td><td class="r">' + days(s.date) + '</td><td><button type="button" data-open="' + esc(s.id) + '">' + x.L.n + ' · view</button></td></tr>';
+    }).join("") || '<tr><td colspan="9">No slabs match.</td></tr>';
+    $("r-ids").innerHTML = db.slabs.map(function(s){ return '<option value="' + esc(s.id) + '">'; }).join("");
+    renderDetail();
+  }
+  function renderDetail(){
+    var box = $("j-detail");
+    var s = db.slabs.filter(function(x){ return x.id === openId; })[0];
+    if (!s) { box.innerHTML = ""; return; }
+    var L = latest(s);
+    var rows = L.all.map(function(r){ var m = mcOf(s, r); return '<tr><td>' + esc(r.date) + '</td><td>' + esc(r.stage) + '</td><td>' + esc(r.who) + '</td><td class="r">' + esc(r.wt) + '</td><td class="r">' + esc(r.shell) + '</td><td class="r">' + esc(r.core) + '</td><td class="r">' + (m ? fmt(m.v,1) + '%' : '–') + '</td><td>' + esc(r.cond) + (r.notes ? ' · ' + esc(r.notes) : '') + '</td></tr>'; }).join("");
+    var od = (parseFloat(s.gw) > 0 && parseFloat(s.gmc) >= 0) ? fmt(parseFloat(s.gw)/(1+parseFloat(s.gmc)/100),1) + ' lb oven-dry est.' : 'no green weight baseline';
+    box.innerHTML = '<div class="panel"><h3 class="mono">' + esc(s.id) + '</h3><p class="small">' + esc(s.tree) + ' · milled ' + esc(s.date) + ' · ' + esc(s.t) + '″ × ' + esc(s.w) + '″ × ' + esc(s.l) + '″ · ' + od + (s.notes ? ' · ' + esc(s.notes) : '') + '</p><div class="tbl"><table><thead><tr><th>Date</th><th>Stage</th><th>Who</th><th class="r">Wt lb</th><th class="r">Shell</th><th class="r">Core</th><th class="r">MC</th><th>Notes</th></tr></thead><tbody>' + (rows || '<tr><td colspan="8">No readings yet.</td></tr>') + '</tbody></table></div><div class="btns"><button type="button" data-log="' + esc(s.id) + '" class="primary">Log a reading</button><button type="button" data-close="1">Close</button></div></div>';
+  }
+  $("j-rows").addEventListener("click", function(e){ var b = e.target.closest("[data-open]"); if (b) { openId = b.getAttribute("data-open"); renderDetail(); $("j-detail").scrollIntoView({block:"nearest"}); } });
+  $("j-detail").addEventListener("click", function(e){
+    if (e.target.closest("[data-close]")) { openId = null; renderDetail(); }
+    var b = e.target.closest("[data-log]"); if (b) { showTab("read"); $("r-id").value = b.getAttribute("data-log"); $("r-wt").focus(); }
+  });
+  $("j-filter").addEventListener("input", render);
+  $("j-sort").addEventListener("change", render);
+
+  function showTab(name){
+    document.querySelectorAll(".tabs [data-tab]").forEach(function(b){ b.setAttribute("aria-selected", b.getAttribute("data-tab") === name ? "true" : "false"); });
+    document.querySelectorAll("[data-panel]").forEach(function(p){ p.hidden = p.getAttribute("data-panel") !== name; });
+  }
+  document.querySelector(".tabs").addEventListener("click", function(e){ var b = e.target.closest("[data-tab]"); if (b) showTab(b.getAttribute("data-tab")); });
+
+  $("s-date").value = today(); $("r-date").value = today();
+  $("f-slab").addEventListener("submit", function(e){
+    e.preventDefault();
+    dropExample();
+    var s = {id:$("s-id").value.trim().toUpperCase(), tree:$("s-tree").value.trim(), date:$("s-date").value, t:$("s-t").value, w:$("s-w").value, l:$("s-l").value, loc:$("s-loc").value.trim(), gw:$("s-gw").value, gmc:$("s-gmc").value, sample:$("s-sample").value, notes:$("s-notes").value.trim()};
+    var i = db.slabs.findIndex(function(x){ return x.id === s.id; });
+    if (i >= 0) { db.slabs[i] = s; $("s-msg").textContent = "Updated " + s.id + "."; } else { db.slabs.push(s); $("s-msg").textContent = "Saved " + s.id + "."; }
+    save(); render();
+    ["s-id","s-w","s-gw","s-notes"].forEach(function(id){ $(id).value = ""; });
+    $("s-id").focus();
+  });
+  $("f-read").addEventListener("submit", function(e){
+    e.preventDefault();
+    var id = $("r-id").value.trim().toUpperCase();
+    if (!db.slabs.some(function(s){ return s.id === id; })) { $("r-msg").textContent = id + " isn't registered. Add the slab first, then log the reading."; return; }
+    var r = {id:id, date:$("r-date").value, stage:$("r-stage").value, who:$("r-who").value.trim(), wt:$("r-wt").value, shell:$("r-shell").value, core:$("r-core").value, cond:$("r-cond").value.trim(), notes:$("r-notes").value.trim()};
+    if (!r.wt && !r.shell && !r.core && !r.notes) { $("r-msg").textContent = "Enter a weight, a meter reading, or a note."; return; }
+    db.reads.push(r); save(); render();
+    var s = db.slabs.filter(function(x){ return x.id === id; })[0], m = mcOf(s, r);
+    $("r-msg").textContent = "Saved reading for " + id + (m ? " · MC " + fmt(m.v,1) + "% (" + m.src + ")" : "") + ".";
+    ["r-id","r-wt","r-shell","r-core","r-notes"].forEach(function(x){ $(x).value = ""; });
+    $("r-id").focus();
+  });
+
+  /* CSV */
+  var SCOLS = ["id","tree","date","t","w","l","loc","gw","gmc","sample","notes"];
+  var RCOLS = ["id","date","stage","who","wt","shell","core","cond","notes"];
+  var SHEAD = ["slab_id","tree","date_milled","thickness_in","width_in","length_in","location","green_weight_lb","green_mc_pct","sample_slab","notes"];
+  var RHEAD = ["slab_id","date","stage","who","weight_lb","meter_shell_pct","meter_core_pct","conditions","notes"];
+  var cell = function(v){ v = String(v == null ? "" : v); return /[",\n]/.test(v) ? '"' + v.replace(/"/g,'""') + '"' : v; };
+  function toCSV(rows, cols, head){ return [head.join(",")].concat(rows.map(function(r){ return cols.map(function(c){ return cell(r[c]); }).join(","); })).join("\n"); }
+  function parseCSV(text){
+    var rows = [], row = [], f = "", q = false;
+    for (var i = 0; i < text.length; i++) {
+      var ch = text[i];
+      if (q) { if (ch === '"') { if (text[i+1] === '"') { f += '"'; i++; } else q = false; } else f += ch; }
+      else if (ch === '"') q = true;
+      else if (ch === ",") { row.push(f); f = ""; }
+      else if (ch === "\n" || ch === "\r") { if (ch === "\r" && text[i+1] === "\n") i++; row.push(f); rows.push(row); row = []; f = ""; }
+      else f += ch;
+    }
+    if (f !== "" || row.length) { row.push(f); rows.push(row); }
+    return rows.filter(function(r){ return r.some(function(c){ return c.trim() !== ""; }); });
+  }
+  function importCSV(text){
+    var rows = parseCSV(text.trim());
+    if (rows.length < 2) return "Nothing to import. Paste CSV that includes the header row.";
+    var head = rows[0].map(function(h){ return h.trim().toLowerCase(); });
+    var isS = head.indexOf("date_milled") >= 0, isR = head.indexOf("weight_lb") >= 0;
+    if (!isS && !isR) return "Header not recognized. Use the columns from a slabs.csv or readings.csv export.";
+    dropExample();
+    var H = isS ? SHEAD : RHEAD, C = isS ? SCOLS : RCOLS, n = 0;
+    rows.slice(1).forEach(function(r){
+      var o = {};
+      H.forEach(function(h, k){ var ix = head.indexOf(h); o[C[k]] = ix >= 0 ? (r[ix] || "").trim() : ""; });
+      if (!o.id) return;
+      o.id = o.id.toUpperCase();
+      if (isS) { var i = db.slabs.findIndex(function(x){ return x.id === o.id; }); if (i >= 0) db.slabs[i] = o; else db.slabs.push(o); }
+      else {
+        if (!db.slabs.some(function(s){ return s.id === o.id; })) db.slabs.push({id:o.id,tree:"",date:o.date,t:"",w:"",l:"",loc:"",gw:"",gmc:"",sample:"no",notes:"Added from readings import"});
+        var dup = db.reads.some(function(x){ return RCOLS.every(function(c){ return String(x[c]) === String(o[c]); }); });
+        if (!dup) db.reads.push(o);
+      }
+      n++;
+    });
+    save(); render();
+    return "Imported " + n + (isS ? " slabs." : " readings.");
+  }
+  function download(name, text){
+    try {
+      var a = document.createElement("a");
+      a.href = URL.createObjectURL(new Blob([text], {type:"text/csv"}));
+      a.download = name; document.body.appendChild(a); a.click(); a.remove();
+      $("x-msg").textContent = "Downloading " + name + ". If nothing downloads, use Copy instead.";
+    } catch(e) { $("x-msg").textContent = "Download isn't available here. Use Copy instead."; }
+  }
+  function copy(text, label){
+    $("x-text").value = text;
+    var done = function(){ $("x-msg").textContent = label + " copied. Paste it into a spreadsheet or a .csv file."; };
+    var fail = function(){ $("x-text").focus(); $("x-text").select(); $("x-msg").textContent = label + " is in the box below and selected. Copy it with Ctrl+C / Cmd+C."; };
+    try { navigator.clipboard.writeText(text).then(done, fail); } catch(e) { fail(); }
+  }
+  var slabsCSV = function(){ return toCSV(db.slabs, SCOLS, SHEAD); };
+  var readsCSV = function(){ return toCSV(db.reads, RCOLS, RHEAD); };
+  $("x-dl-slabs").addEventListener("click", function(){ download("slabs.csv", slabsCSV()); });
+  $("x-dl-reads").addEventListener("click", function(){ download("readings.csv", readsCSV()); });
+  $("x-copy-slabs").addEventListener("click", function(){ copy(slabsCSV(), "Slabs CSV"); });
+  $("x-copy-reads").addEventListener("click", function(){ copy(readsCSV(), "Readings CSV"); });
+  $("x-import").addEventListener("click", function(){ $("x-msg").textContent = importCSV($("x-text").value); });
+  $("x-file").addEventListener("change", function(e){
+    var f = e.target.files && e.target.files[0]; if (!f) return;
+    var rd = new FileReader(); rd.onload = function(){ $("x-msg").textContent = importCSV(String(rd.result)); e.target.value = ""; }; rd.readAsText(f);
+  });
+  $("x-clear").addEventListener("click", function(){ $("x-confirm").hidden = false; });
+  $("x-no").addEventListener("click", function(){ $("x-confirm").hidden = true; });
+  $("x-yes").addEventListener("click", function(){ db = {slabs: [], reads: []}; save(); openId = null; render(); $("x-confirm").hidden = true; $("x-msg").textContent = "Journal cleared on this device."; });
+
+  load(); render();
+})();
+</script>
+</body>
+</html>
