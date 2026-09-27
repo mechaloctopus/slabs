@@ -261,6 +261,15 @@ button:hover:not(:disabled){filter:brightness(1.07)}
 .gear a{font-weight:600}
 footer{border-top:1px solid var(--line);padding-block:2rem;padding-inline:16px;color:var(--muted);font-size:.85rem}
 footer div{max-width:1240px;margin:0 auto}
+.rates{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1rem}
+.rate{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--accent);border-radius:4px;padding:1rem 1.1rem;display:grid;gap:.35rem;align-content:start}
+.rate.hi{border-top-color:var(--tag);background:var(--raised)}
+.rate-p{font:700 2.6rem/1 var(--display);font-variant-numeric:tabular-nums}
+.rate-p small{font-size:1.1rem;font-weight:600;color:var(--muted)}
+.rate b{font-family:var(--display);font-size:1.25rem;text-transform:uppercase;letter-spacing:.02em}
+.rate span:last-child{color:var(--muted);font-size:.92rem}
+th[scope="row"]{white-space:nowrap;width:1%}
+@media (max-width:560px){th[scope="row"]{white-space:normal}}
 @media print{.appbar,nav.toc,button,.lockbar{display:none!important}body{background:#fff;color:#000}}
 </style>
 </head>
@@ -274,6 +283,7 @@ footer div{max-width:1240px;margin:0 auto}
       <a href="#log" data-view-link="log">Slab log</a>
       <a href="#species" data-view-link="species">Species &amp; ID</a>
       <a href="#tools" data-view-link="tools">Calculators</a>
+      <a href="#services" data-view-link="services">Hire a sawyer</a>
     </nav>
   </div>
 </header>
@@ -289,7 +299,8 @@ footer div{max-width:1240px;margin:0 auto}
       <a class="chip" href="#log">Open the <b>slab log</b></a>
       <a class="chip" href="#species">Identify a <b>species</b></a>
       <a class="chip" href="#tools">Plan a <b>cut</b></a>
-      <a class="chip" href="#ch-mill">Rig a <b>76–84″</b> mill</a>
+      <a class="chip" href="#ch-mill">Rig a <b>76–86″</b> mill</a>
+      <a class="chip" href="#services">Hire <b>on-site big-log milling</b></a>
     </div>
   </div>
 
@@ -1242,6 +1253,105 @@ footer div{max-width:1240px;margin:0 auto}
       <p class="small">Order: landowner share, shared costs (freight, storage, commission), reimburse each partner, split the rest equally. Example numbers.</p>
     </div>
   </div>
+</div>
+</div>
+
+<!-- ============ SERVICES ============ -->
+<div class="view" id="services" data-view="services" hidden>
+<div class="view-in" style="padding-block:1.5rem 4rem;display:grid;grid-template-columns:minmax(0,1fr);gap:2.2rem">
+  <div class="hero" style="border-bottom:0;padding-block:.5rem 0">
+    <div class="eyebrow">Mobile sawyer · Kauaʻi</div>
+    <h1>Big-log <span>milling on site</span></h1>
+    <p class="lede">An 86″ Alaskan chainsaw mill powered by a Stihl MS 881 slabs the logs most portable sawmills can't reach or can't fit. If you have a 50–75″ monkeypod, earpod, mango or other big hardwood on the ground, it can become table slabs where it lies instead of firewood.</p>
+    <div class="chips">
+      <span class="chip">Mill <b>86″ Alaskan</b></span>
+      <span class="chip">Power <b>Stihl MS 881</b></span>
+      <span class="chip">Logs to <b>~70″+ Ø</b></span>
+      <span class="chip">From <b>$175/hr</b></span>
+    </div>
+  </div>
+
+  <section class="ch" id="svc-why">
+    <div class="sec-head"><span class="eyebrow">What you're hiring</span><h2>Why a long-bar mill</h2></div>
+    <div class="cols">
+      <div class="panel"><h3>Cuts what band mills can't</h3><p>Most portable band mills cut up to about 30–36″ wide and need the log lifted onto the mill. This mill goes to the log and cuts across the full width of trunks far bigger than that, so a 60″+ tree becomes 60″-wide slabs instead of being quartered or cut up.</p></div>
+      <div class="panel"><h3>Goes where the tree fell</h3><p>No trailer mill to back in, no loader needed just to get the log on a deck. Backyards, hillsides, narrow access, and trees that can't be moved in one piece.</p></div>
+      <div class="panel"><h3>Recovers the tree</h3><p>A huge tropical hardwood is usually the most valuable thing a tree service hauls away as waste. Slabbed, sealed and dried, it becomes dining tables, counters, benches and bar tops.</p></div>
+    </div>
+  </section>
+
+  <section class="ch" id="svc-rates">
+    <div class="sec-head"><span class="eyebrow">Rate sheet</span><h2>Rates</h2></div>
+    <div class="rates">
+      <div class="rate"><span class="rate-p">$175<small>/hr</small></span><b>Standard chainsaw milling</b><span>Sawyer, MS 881 and long-bar Alaskan mill. Logs under about 50″ in diameter.</span></div>
+      <div class="rate hi"><span class="rate-p">$225<small>/hr</small></span><b>Big-log work</b><span>Logs 50″+ in diameter, difficult hardwoods, or any cut that needs the full 86″ setup.</span></div>
+      <div class="rate"><span class="rate-p">$250–300<small>/hr</small></span><b>Two-person crew</b><span>Sawyer plus a helper on wedges, fuel, rigging and slab handling. Faster on big jobs; rate depends on log size.</span></div>
+    </div>
+    <div class="tbl"><table>
+      <tbody>
+        <tr><th scope="row">Minimum</th><td>3 hours, starting when I arrive and begin setting up ($525 at the standard rate).</td></tr>
+        <tr><th scope="row">Travel / mobilization</th><td>$75–$150, depending on distance.</td></tr>
+        <tr><th scope="row">Included in the hourly rate</th><td>Mill setup, leveling and cutting the first guide cut, milling, refueling, chain sharpening and normal adjustments.</td></tr>
+        <tr><th scope="row">Moving logs and slabs</th><td>You supply the machinery (tractor, loader, forklift) and an operator, or handling is quoted separately.</td></tr>
+        <tr><th scope="row">Embedded metal</th><td>Nails, fence wire, bolts and old hardware destroy chain. You pay for any damaged chain, and the clock keeps running while it's repaired or changed.</td></tr>
+        <tr><th scope="row">Dirt and rocks</th><td>Logs with dirt or stone in the bark or cracks get an additional sharpening / chain charge.</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section class="ch" id="svc-hourly">
+    <div class="sec-head"><span class="eyebrow">How it's priced</span><h2>Why hourly, not by the board foot</h2></div>
+    <p class="intro">Board-foot pricing works for band mills cutting average logs all day. It doesn't work for giant logs on a chainsaw mill:</p>
+    <ul>
+      <li><b>Speed changes enormously with the log.</b> A 30″ softwood and a 70″ dense hardwood can differ several-fold in feet per minute, and log condition, bark, cracks and grain all move it further.</li>
+      <li><b>The kerf is wide.</b> A chainsaw mill turns more of the log into sawdust than a band mill, so a per-board-foot price ends up charging for wood that isn't there.</li>
+      <li><b>The hard work doesn't show up in board feet.</b> Rigging, leveling the first cut, wedging and handling are where the time goes on a huge log.</li>
+    </ul>
+    <p>Hourly pricing is fair to both sides: an easy log costs you less, and a difficult one doesn't turn into a loss for the sawyer mid-job.</p>
+    <h3>Why the rate is above ordinary portable milling</h3>
+    <ul>
+      <li>Specialty capacity: very few mobile sawyers on the island can cut logs this wide.</li>
+      <li>Equipment cost and wear: a 120cc pro saw, an 86″ mill, long ripping chains that cost far more than standard loops, and bars that wear with every hour of full-throttle milling.</li>
+      <li>Fuel, bar oil and sharpening on every cut.</li>
+      <li>Extremely physical work, done safely.</li>
+    </ul>
+  </section>
+
+  <section class="ch" id="svc-prep">
+    <div class="sec-head"><span class="eyebrow">Before I come out</span><h2>Getting a quote</h2></div>
+    <div class="cols">
+      <div class="panel"><h3>Send me</h3><ul class="checklist">
+        <li>Photos of the log(s), both ends and full length.</li>
+        <li>Diameter at each end and length (a tape measure is fine).</li>
+        <li>Species, if you know it.</li>
+        <li>Location and access: can a truck get close, is the ground flat?</li>
+        <li>Slab thickness you want (2″, 3″, 4″, 6″…).</li>
+        <li>How the slabs will be moved and where they're going.</li>
+      </ul></div>
+      <div class="panel"><h3>On the day</h3><ul class="checklist">
+        <li>Log accessible and stable, ideally raised off the dirt.</li>
+        <li>Tell me about any known nails, wire, signs, clotheslines or old hardware in the tree.</li>
+        <li>Equipment and an operator for moving slabs, if you're supplying them.</li>
+        <li>A place to stack slabs on stickers, out of the rain and sun.</li>
+        <li>End sealer on hand so slabs can be sealed as they come off (see <a href="#ch-seal">Seal the ends</a>).</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <section class="ch" id="svc-est">
+    <div class="sec-head"><span class="eyebrow">Ballpark</span><h2>Job estimator</h2></div>
+    <div class="tool" id="svc-calc">
+      <div class="fields">
+        <label for="q-rate">Service<select id="q-rate"><option value="175">Standard · $175/hr</option><option value="225" selected>Big-log 50″+ · $225/hr</option><option value="250">Two-person crew · $250/hr</option><option value="300">Two-person crew, biggest logs · $300/hr</option></select></label>
+        <label for="q-hrs">Estimated hours on site<input id="q-hrs" type="number" value="6" min="0" step="0.5"></label>
+        <label for="q-trav">Travel<select id="q-trav"><option value="75">Near · $75</option><option value="100" selected>Mid · $100</option><option value="150">Far · $150</option></select></label>
+        <label for="q-chain">Chains damaged by metal<input id="q-chain" type="number" value="0" min="0" step="1"></label>
+        <label for="q-chcost">Cost per chain ($)<input id="q-chcost" type="number" value="0" min="0" step="5"></label>
+      </div>
+      <div class="out" id="q-out"></div>
+      <p class="small">An estimate for planning, not a quote. Actual time depends on the log; hours are billed as worked with the 3-hour minimum.</p>
+    </div>
+  </section>
 </div>
 </div>
 
