@@ -19,14 +19,14 @@
   var DRY_FACTOR = { 1: 0.8, 2: 1.0, 3: 1.45 };
 
   /* ================= router ================= */
-  var VIEWS = ["guide", "log", "species", "tools", "services"];
+  var VIEWS = ["home", "guide", "log", "species", "tools", "services"];
   function route() {
-    var h = (location.hash || "#guide").slice(1);
+    var h = (location.hash || "#home").slice(1);
     var view = VIEWS.indexOf(h) >= 0 ? h : null, target = null;
     if (!view) {
       target = document.getElementById(h);
       var host = target && target.closest("[data-view]");
-      view = host ? host.getAttribute("data-view") : "guide";
+      view = host ? host.getAttribute("data-view") : "home";
     }
     $$("[data-view]").forEach(function (v) { v.hidden = v.getAttribute("data-view") !== view; });
     $$("[data-view-link]").forEach(function (a) { if (a.getAttribute("data-view-link") === view) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current"); });
@@ -718,9 +718,9 @@
 
   /* ================= services estimator ================= */
   function quote() {
-    var rate = parseFloat($("q-rate").value), hrs = Math.max(num("q-hrs"), 3), trav = parseFloat($("q-trav").value), chains = num("q-chain") * num("q-chcost");
+    var rate = parseFloat($("q-rate").value), hrs = Math.max(num("q-hrs"), 3), trav = parseFloat($("q-trav").value), chains = num("q-chain") * 300 + num("q-regrind") * 60 + num("q-dirt") * 40;
     var labor = rate * hrs, total = labor + trav + chains;
-    $("q-out").innerHTML = stat("$" + fmt(total, 0), "estimated total") + stat("$" + fmt(labor, 0), fmt(hrs, 1) + " hr × $" + rate + (num("q-hrs") < 3 ? " (3-hr minimum)" : "")) + stat("$" + fmt(trav, 0), "travel") + (chains ? stat("$" + fmt(chains, 0), "damaged chain") : "");
+    $("q-out").innerHTML = stat("$" + fmt(total, 0), "estimated total") + stat("$" + fmt(labor, 0), fmt(hrs, 1) + " hr × $" + rate + (num("q-hrs") < 3 ? " (3-hr minimum)" : "")) + stat("$" + fmt(trav, 0), "travel") + (chains ? stat("$" + fmt(chains, 0), "chain charges") : "");
   }
   $("svc-calc").addEventListener("input", quote); $("svc-calc").addEventListener("change", quote); quote();
 

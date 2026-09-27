@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Slabyard</title>
-<meta name="description" content="Slabbing toolkit: field manual, slab log with moisture tracking and photos, species ID library and calculators for milling, drying and selling live-edge slabs.">
+<title>Pith &amp; Pixel</title>
+<meta name="description" content="Pith &amp; Pixel, Kauaʻi: fat slab milling with an 86-inch Alaskan mill, custom carpentry, art fabrication and software. Plus the Slabyard toolkit: field manual, slab log with moisture tracking and photos, species ID library and calculators for milling, drying and selling live-edge slabs.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -261,6 +261,20 @@ button:hover:not(:disabled){filter:brightness(1.07)}
 .gear a{font-weight:600}
 footer{border-top:1px solid var(--line);padding-block:2rem;padding-inline:16px;color:var(--muted);font-size:.85rem}
 footer div{max-width:1240px;margin:0 auto}
+.btn.primary-link{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem}
+.svc{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:1.1rem 1.2rem;display:grid;gap:.5rem;align-content:start;color:var(--ink);text-decoration:none}
+a.svc{border-color:var(--accent);box-shadow:inset 0 4px 0 var(--tag)}
+a.svc:hover{background:var(--raised)}
+.svc-k{font:500 .78rem var(--mono);color:var(--muted)}
+.svc h3{font-size:1.6rem;text-transform:uppercase}
+.svc p{font-size:.95rem}
+.svc-more{font:600 .85rem var(--body);color:var(--accent)}
+.contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;background:var(--ink);color:var(--ground);border-radius:4px;padding:1.2rem 1.3rem}
+.contact div{display:grid;gap:.2rem}
+.contact span{font:500 .72rem var(--mono);text-transform:uppercase;letter-spacing:.08em;opacity:.7}
+.contact b{font:600 1.5rem/1.15 var(--display)}
+.contact a{color:var(--tag)}
 .rates{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1rem}
 .rate{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--accent);border-radius:4px;padding:1rem 1.1rem;display:grid;gap:.35rem;align-content:start}
 .rate.hi{border-top-color:var(--tag);background:var(--raised)}
@@ -277,19 +291,82 @@ th[scope="row"]{white-space:nowrap;width:1%}
 
 <header class="appbar">
   <div class="appbar-in">
-    <a class="brand" href="#guide"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="16" cy="16" r="9" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="16" cy="16" r="4" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M2 12h28M2 20h28" stroke="var(--tag)" stroke-width="2"/></svg>Slabyard</a>
+    <a class="brand" href="#home"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="16" cy="16" r="9" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="16" cy="16" r="4" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M2 12h28M2 20h28" stroke="var(--tag)" stroke-width="2"/></svg>Pith &amp; Pixel</a>
     <nav class="views" aria-label="Main">
+      <a href="#home" data-view-link="home">Home</a>
+      <a href="#services" data-view-link="services">Slab milling</a>
       <a href="#guide" data-view-link="guide">Manual</a>
       <a href="#log" data-view-link="log">Slab log</a>
       <a href="#species" data-view-link="species">Species &amp; ID</a>
       <a href="#tools" data-view-link="tools">Calculators</a>
-      <a href="#services" data-view-link="services">Hire a sawyer</a>
     </nav>
   </div>
 </header>
 
 <!-- ============ MANUAL ============ -->
-<div class="view" id="guide" data-view="guide">
+<!-- ============ HOME ============ -->
+<div class="view" id="home" data-view="home">
+<div class="view-in" style="padding-block:1.5rem 4rem;display:grid;grid-template-columns:minmax(0,1fr);gap:2.4rem">
+  <div class="hero" style="border-bottom:0;padding-block:1rem 0">
+    <div class="eyebrow">Kauaʻi · wood · fabrication · code</div>
+    <h1>Pith <span>&amp;</span> Pixel</h1>
+    <p class="lede">Fat slab milling, custom carpentry, art fabrication and software, from one shop on Kauaʻi. From the heart of the tree to the last line of code.</p>
+    <div class="btns">
+      <a class="btn primary-link" href="tel:+18086477410">Call or text (808) 647-7410</a>
+      <a class="btn" href="#services">Slab milling rates</a>
+    </div>
+  </div>
+
+  <section class="ch" id="home-services">
+    <div class="sec-head"><span class="eyebrow">Services</span><h2>What I do</h2></div>
+    <div class="svc-grid">
+      <a class="svc" href="#services">
+        <span class="svc-k">01</span><h3>Fat slab milling</h3>
+        <p>On-site slabbing of giant logs with an 86″ Alaskan mill and a Stihl MS 881. Monkeypod, earpod, mango and other big hardwoods up to about 70″+ across, cut where they lie.</p>
+        <span class="svc-more">Rates and booking →</span>
+      </a>
+      <div class="svc">
+        <span class="svc-k">02</span><h3>Custom carpentry</h3>
+        <p>Live-edge tables, counters, benches, shelving, built-ins and repairs. Slabs milled, dried and finished in-house, or built from your own wood.</p>
+        <span class="svc-more">Quoted per project</span>
+      </div>
+      <div class="svc">
+        <span class="svc-k">03</span><h3>Art fabrication</h3>
+        <p>Multimedia art builds for artists and venues: wood, metal, resin, lighting and electronics, from sketch to installed piece.</p>
+        <span class="svc-more">Quoted per project</span>
+      </div>
+      <div class="svc">
+        <span class="svc-k">04</span><h3>Software &amp; research</h3>
+        <p>Websites, web and mobile apps, automation, data tools, and research on any topic. Any language, any stack. This site and its slab-tracking software are an example.</p>
+        <span class="svc-more">Hourly or fixed bid</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="ch" id="home-tool">
+    <div class="sec-head"><span class="eyebrow">Built here</span><h2>Slabyard toolkit</h2></div>
+    <p class="intro">Free working software for anyone milling and drying slabs: an 18-chapter field manual, a slab log with moisture tracking and photos, a species ID library, and calculators for cut plans, weights, drying time and container loads.</p>
+    <div class="chips">
+      <a class="chip" href="#guide">Field <b>manual</b></a>
+      <a class="chip" href="#log">Slab <b>log</b></a>
+      <a class="chip" href="#species">Species <b>&amp; ID</b></a>
+      <a class="chip" href="#tools">Calculators</a>
+    </div>
+  </section>
+
+  <section class="ch" id="home-contact">
+    <div class="sec-head"><span class="eyebrow">Contact</span><h2>Get in touch</h2></div>
+    <div class="contact">
+      <div><span>Name</span><b>Josh Trembath</b></div>
+      <div><span>Phone / text</span><b><a href="tel:+18086477410">(808) 647-7410</a></b></div>
+      <div><span>Service area</span><b>Kauaʻi, island-wide</b></div>
+    </div>
+    <p>For milling, text photos of the log (both ends and full length), rough diameter and length, and the location. For builds and software, a few lines about what you need is plenty to start.</p>
+  </section>
+</div>
+</div>
+
+<div class="view" id="guide" data-view="guide" hidden>
 <div class="view-in">
   <div class="hero">
     <div class="eyebrow">Field manual · big-log chainsaw milling · live-edge slabs</div>
@@ -1260,7 +1337,7 @@ th[scope="row"]{white-space:nowrap;width:1%}
 <div class="view" id="services" data-view="services" hidden>
 <div class="view-in" style="padding-block:1.5rem 4rem;display:grid;grid-template-columns:minmax(0,1fr);gap:2.2rem">
   <div class="hero" style="border-bottom:0;padding-block:.5rem 0">
-    <div class="eyebrow">Mobile sawyer · Kauaʻi</div>
+    <div class="eyebrow">Pith &amp; Pixel · fat slab milling · Kauaʻi</div>
     <h1>Big-log <span>milling on site</span></h1>
     <p class="lede">An 86″ Alaskan chainsaw mill powered by a Stihl MS 881 slabs the logs most portable sawmills can't reach or can't fit. If you have a 50–75″ monkeypod, earpod, mango or other big hardwood on the ground, it can become table slabs where it lies instead of firewood.</p>
     <div class="chips">
@@ -1293,8 +1370,8 @@ th[scope="row"]{white-space:nowrap;width:1%}
         <tr><th scope="row">Travel / mobilization</th><td>$75–$150, depending on distance.</td></tr>
         <tr><th scope="row">Included in the hourly rate</th><td>Mill setup, leveling and cutting the first guide cut, milling, refueling, chain sharpening and normal adjustments.</td></tr>
         <tr><th scope="row">Moving logs and slabs</th><td>You supply the machinery (tractor, loader, forklift) and an operator, or handling is quoted separately.</td></tr>
-        <tr><th scope="row">Embedded metal</th><td>Nails, fence wire, bolts and old hardware destroy chain. You pay for any damaged chain, and the clock keeps running while it's repaired or changed.</td></tr>
-        <tr><th scope="row">Dirt and rocks</th><td>Logs with dirt or stone in the bark or cracks get an additional sharpening / chain charge.</td></tr>
+        <tr><th scope="row">Embedded metal</th><td>Nails, fence wire, bolts and old hardware destroy chain. The clock keeps running while chain is changed or repaired, plus:<br><b>$300</b> per long-bar ripping chain ruined (replacement loop for the 84″ bar)<br><b>$60</b> per chain that can be saved with a regrind</td></tr>
+        <tr><th scope="row">Dirt and rocks</th><td><b>$40</b> per extra chain sharpening caused by dirt, sand or stone in the bark or cracks. Clean logs avoid it.</td></tr>
       </tbody>
     </table></div>
   </section>
@@ -1338,6 +1415,15 @@ th[scope="row"]{white-space:nowrap;width:1%}
     </div>
   </section>
 
+  <section class="ch" id="svc-contact">
+    <div class="sec-head"><span class="eyebrow">Book it</span><h2>Contact</h2></div>
+    <div class="contact">
+      <div><span>Sawyer</span><b>Josh Trembath</b></div>
+      <div><span>Call or text</span><b><a href="tel:+18086477410">(808) 647-7410</a></b></div>
+      <div><span>Service area</span><b>Kauaʻi, island-wide</b></div>
+    </div>
+  </section>
+
   <section class="ch" id="svc-est">
     <div class="sec-head"><span class="eyebrow">Ballpark</span><h2>Job estimator</h2></div>
     <div class="tool" id="svc-calc">
@@ -1345,8 +1431,9 @@ th[scope="row"]{white-space:nowrap;width:1%}
         <label for="q-rate">Service<select id="q-rate"><option value="175">Standard · $175/hr</option><option value="225" selected>Big-log 50″+ · $225/hr</option><option value="250">Two-person crew · $250/hr</option><option value="300">Two-person crew, biggest logs · $300/hr</option></select></label>
         <label for="q-hrs">Estimated hours on site<input id="q-hrs" type="number" value="6" min="0" step="0.5"></label>
         <label for="q-trav">Travel<select id="q-trav"><option value="75">Near · $75</option><option value="100" selected>Mid · $100</option><option value="150">Far · $150</option></select></label>
-        <label for="q-chain">Chains damaged by metal<input id="q-chain" type="number" value="0" min="0" step="1"></label>
-        <label for="q-chcost">Cost per chain ($)<input id="q-chcost" type="number" value="0" min="0" step="5"></label>
+        <label for="q-chain">Chains ruined by metal ($300)<input id="q-chain" type="number" value="0" min="0" step="1"></label>
+        <label for="q-regrind">Chains reground ($60)<input id="q-regrind" type="number" value="0" min="0" step="1"></label>
+        <label for="q-dirt">Extra sharpenings, dirt ($40)<input id="q-dirt" type="number" value="0" min="0" step="1"></label>
       </div>
       <div class="out" id="q-out"></div>
       <p class="small">An estimate for planning, not a quote. Actual time depends on the log; hours are billed as worked with the 3-hour minimum.</p>
@@ -1362,7 +1449,7 @@ th[scope="row"]{white-space:nowrap;width:1%}
   </div>
 </div>
 
-<footer><div>Slabyard · field manual and slab log. Figures are planning estimates; your sample slabs, wafers and meters decide when wood is ready.</div></footer>
+<footer><div><b>Pith &amp; Pixel</b> · Josh Trembath · (808) 647-7410 · Kauaʻi, Hawaiʻi<br>Slabyard toolkit figures are planning estimates; your sample slabs, wafers and meters decide when wood is ready.</div></footer>
 
 <script src="js/species.js"></script>
 <script src="js/app.js"></script>
